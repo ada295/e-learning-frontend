@@ -1,15 +1,21 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon">
+<mat-toolbar class = 'nav' color="primary">
+  <button mat-icon-button class="example-icon" routerLink="/">
     <mat-icon class="e-letter" svgIcon="alphabetELetter" aria-hidden="false"></mat-icon>-nauczanie
   </button>
   <span class="example-spacer"></span>
-  <button mat-button>
+  <button mat-button routerLink="/kursy">
     Kursy
   </button>
-  <button mat-button>
+  <button mat-button routerLink="/kalendarz">
     Kalendarz
   </button>
   <button mat-button>
     Dziennik
   </button>
 </mat-toolbar>
+
+<div class="bottom-nav">
+  Kursy
+</div>
+
+<router-outlet></router-outlet>

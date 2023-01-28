@@ -12,11 +12,14 @@ import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MatNativeDateModule} from "@angular/material/core";
+import { CoursesComponent } from './courses/courses.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
