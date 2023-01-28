@@ -14,12 +14,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatNativeDateModule} from "@angular/material/core";
 import { CoursesComponent } from './courses/courses.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import { AllCoursesComponent } from './all-courses/all-courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    CoursesComponent
+    CoursesComponent,
+    AllCoursesComponent
   ],
   imports: [
     BrowserModule,

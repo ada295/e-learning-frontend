@@ -1,4 +1,12 @@
-.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab__text-label,
-.mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab__text-label {
-  color: white !important;
+/*.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab__text-label,*/
+/*.mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab__text-label {*/
+/*  color: white !important;*/
+/*}*/
+
+.mat-mdc-tab:hover {
+  background-color: rgba(103, 58, 183, 0.5) !important;
+}
+
+mat-tab-group {
+  height: 100%;
 }
