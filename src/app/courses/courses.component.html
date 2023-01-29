@@ -1,8 +1,12 @@
 <mat-tab-group>
-  <mat-tab label="Aktualne"> Content 1</mat-tab>
-  <mat-tab label="Ukończone"> Content 2</mat-tab>
+  <mat-tab label="Aktualne">
+    <app-actual-courses [allCourses]="allCourses"></app-actual-courses>
+  </mat-tab>
+  <mat-tab label="Ukończone">
+    <app-finished-courses [allCourses]="allCourses"></app-finished-courses>
+  </mat-tab>
   <mat-tab label="Wszystkie">
-    <app-all-courses></app-all-courses>
+    <app-all-courses [allCourses]="allCourses"></app-all-courses>
   </mat-tab>
   <mat-tab label="Dołącz do kursu"> Content 4</mat-tab>
 </mat-tab-group>

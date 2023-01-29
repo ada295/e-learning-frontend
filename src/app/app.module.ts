@@ -15,13 +15,19 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { CoursesComponent } from './courses/courses.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { AllCoursesComponent } from './all-courses/all-courses.component';
+import { CourseLayoutComponent } from './course-layout/course-layout.component';
+import { ActualCoursesComponent } from './actual-courses/actual-courses.component';
+import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     CoursesComponent,
-    AllCoursesComponent
+    AllCoursesComponent,
+    CourseLayoutComponent,
+    ActualCoursesComponent,
+    FinishedCoursesComponent
   ],
   imports: [
     BrowserModule,
