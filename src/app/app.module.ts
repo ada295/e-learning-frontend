@@ -18,6 +18,7 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseLayoutComponent } from './course-layout/course-layout.component';
 import { ActualCoursesComponent } from './actual-courses/actual-courses.component';
 import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FinishedCoursesComponent } from './finished-courses/finished-courses.co
     AllCoursesComponent,
     CourseLayoutComponent,
     ActualCoursesComponent,
-    FinishedCoursesComponent
+    FinishedCoursesComponent,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,
