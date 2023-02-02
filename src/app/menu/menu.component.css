@@ -1,11 +1,6 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-
-.nav {
-
-}
-
 .bottom-nav {
   box-sizing: border-box;
   margin-bottom: 25px;

@@ -19,6 +19,8 @@ import { CourseLayoutComponent } from './course-layout/course-layout.component';
 import { ActualCoursesComponent } from './actual-courses/actual-courses.component';
 import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { LessonsComponent } from './lessons/lessons.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -29,22 +31,24 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     CourseLayoutComponent,
     ActualCoursesComponent,
     FinishedCoursesComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    LessonsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatToolbarModule,
-    HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatTabsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatToolbarModule,
+        HttpClientModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatCardModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

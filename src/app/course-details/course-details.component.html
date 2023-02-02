@@ -1,1 +1,17 @@
-<p>course-details works!</p>
+<div class="course-details">
+  <div class="course-name">{{courseDetails?.name}}</div>
+  <div class="course-description">{{courseDetails?.description}}</div>
+  <div class="lesson-container" *ngFor="let lesson of lessons">
+    <mat-card>
+      <mat-card-content>
+        <button mat-button routerLink="/lekcje/{{lesson.id}}" class="lesson">{{lesson.name}}</button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Zadania</button>
+        <button mat-button>Materiały</button>
+        <button mat-button>Test</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>
