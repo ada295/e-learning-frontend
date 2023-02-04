@@ -1,0 +1,34 @@
+<div [formGroup]="exampleABCD">
+  <h4>Jaki jest wynik działania 2+2?</h4>
+  <p>
+    <mat-checkbox formControlName="answerA">3</mat-checkbox>
+  </p>
+  <p>
+    <mat-checkbox formControlName="answerB">4</mat-checkbox>
+  </p>
+  <p>
+    <mat-checkbox formControlName="answerC">5</mat-checkbox>
+  </p>
+  <p>
+    <mat-checkbox formControlName="answerD">0</mat-checkbox>
+  </p>
+  <p>{{exampleABCD.value | json}}</p>
+</div>
+
+
+<!--<div [formGroup]="exampleABCDOneChoice">-->
+<!--  <h4>Jaki jest wynik działania 2+2?</h4>-->
+<!--  <p>-->
+<!--    <mat-checkbox formControlName="answerA" (change)="clearOther()">3</mat-checkbox>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <mat-checkbox formControlName="answerB">4</mat-checkbox>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <mat-checkbox formControlName="answerC">5</mat-checkbox>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <mat-checkbox formControlName="answerD">0</mat-checkbox>-->
+<!--  </p>-->
+<!--  <p>{{exampleABCD.value | json}}</p>-->
+<!--</div>-->

@@ -22,6 +22,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { LessonsComponent } from './lessons/lessons.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { ExamComponent } from './exam/exam.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -33,24 +35,26 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ActualCoursesComponent,
     FinishedCoursesComponent,
     CourseDetailsComponent,
-    LessonsComponent
+    LessonsComponent,
+    ExamComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatIconModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatDividerModule,
-        MatButtonModule,
-        MatToolbarModule,
-        HttpClientModule,
-        MatNativeDateModule,
-        ReactiveFormsModule,
-        MatTabsModule,
-        MatCardModule,
-        MatExpansionModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

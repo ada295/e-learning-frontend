@@ -18,10 +18,22 @@
 
     <mat-card>
       <mat-card-actions>
-        <button mat-button class="button1"><mat-icon style="color: dodgerblue">library_books</mat-icon>Zadania</button>
-        <button mat-button class="button2"><mat-icon style="color: coral">perm_media</mat-icon>Materiały</button>
-        <button mat-button class="button3"><mat-icon style="color: lightseagreen">school</mat-icon>Test</button>
-        <button mat-button class="button4"><mat-icon style="color: rebeccapurple">people</mat-icon>Ogłoszenia</button>
+        <button mat-button>
+          <mat-icon style="color: dodgerblue">library_books</mat-icon>
+          Zadania
+        </button>
+        <button mat-button>
+          <mat-icon style="color: coral">perm_media</mat-icon>
+          Materiały
+        </button>
+        <button mat-button routerLink="/test/1">
+          <mat-icon style="color: lightseagreen">school</mat-icon>
+          Test
+        </button>
+        <button mat-button>
+          <mat-icon style="color: rebeccapurple">people</mat-icon>
+          Ogłoszenia
+        </button>
       </mat-card-actions>
     </mat-card>
 
