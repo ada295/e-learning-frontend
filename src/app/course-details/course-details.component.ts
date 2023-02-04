@@ -1,7 +1,7 @@
 import {Component, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Course, Lesson} from "../api-models";
+import {Course, CourseDetails, Lesson} from "../api-models";
 
 
 @Component({
@@ -9,21 +9,44 @@ import {Course, Lesson} from "../api-models";
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.css']
 })
-export class CourseDetailsComponent implements OnInit{
+export class CourseDetailsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private httpClient:HttpClient) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
   }
 
-  courseDetails: Course | undefined;
-  lessons: Lesson[] = [];
+  courseDetails: CourseDetails | undefined;
+  status: boolean = false;
+
+  clickEvent() {
+    this.status = !this.status;
+  }
+
+  // lessons: Lesson[] = [];
 
 
   ngOnInit() {
     //pobranie wartości z adrmMap.geesu URL /kursy/:id
     let id = this.route.snapshot.paramMap.get('id');
 
-    this.httpClient.get<Course>("http://localhost:8080/courses/"+id).subscribe(course => this.courseDetails = course)
+    this.httpClient.get<CourseDetails>("http://localhost:8080/courses/" + id).subscribe(course => this.courseDetails = course)
 
-    this.httpClient.get<Lesson[]>("http://localhost:8080/lessons?courseId="+id).subscribe(lessons => this.lessons = lessons)
+    // this.httpClient.get<Course>("http://localhost:8080/courses/"+id).subscribe(course => this.courseDetails = course)
+    //
+    // this.httpClient.get<Lesson[]>("http://localhost:8080/lessons?courseId="+id).subscribe(lessons => this.lessons = lessons)
+
+
+  }
+
+  toggleClass(event: any, classA: string, classB: string) {
+    //event - informacje co dokladnie zostalo klikniete
+
+    if (event.target.classList.contains(classA)) {
+      event.target.classList.add(classB);
+      event.target.classList.remove(classA);
+    } else {
+      event.target.classList.add(classA);
+      event.target.classList.remove(classB);
+    }
+
   }
 }

@@ -9,4 +9,5 @@ import {Course} from "../api-models";
 export class CourseLayoutComponent {
   @Input()
   courses: Course[] = [];
+
 }

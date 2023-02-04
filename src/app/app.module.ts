@@ -21,6 +21,7 @@ import { FinishedCoursesComponent } from './finished-courses/finished-courses.co
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { LessonsComponent } from './lessons/lessons.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {MatCardModule} from "@angular/material/card";
         ReactiveFormsModule,
         MatTabsModule,
         MatCardModule,
+        MatExpansionModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

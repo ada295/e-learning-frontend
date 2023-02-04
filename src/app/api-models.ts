@@ -10,3 +10,9 @@ export class Lesson {
   name: string = "";
   course: Course | undefined;
 }
+
+export class CourseDetails {
+  course: Course | undefined;
+  lessons: Lesson[] = [];
+  // students: null,
+}

@@ -3,6 +3,11 @@
   margin: 20px 10%;
 }
 
-.lesson {
-
+.right-button:hover {
+  background-color: darkorange;
 }
+
+button:hover{
+  text-underline: rgba(103, 58, 183, 0.5);
+}
+
