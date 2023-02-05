@@ -15,11 +15,6 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   courseDetails: CourseDetails | undefined;
-  status: boolean = false;
-
-  clickEvent() {
-    this.status = !this.status;
-  }
 
   // lessons: Lesson[] = [];
 

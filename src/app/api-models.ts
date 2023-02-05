@@ -16,3 +16,25 @@ export class CourseDetails {
   lessons: Lesson[] = [];
   // students: null,
 }
+
+export class ExamDetailsExamResponse {
+  id: number = 0;
+  name: string | undefined;
+}
+
+export class ExamDetailsQuestionResponse {
+  id: number = 0;
+  content: string | undefined;
+  points: number = 0;
+  answers: ExamDetailsAnswerResponse[] = [];
+}
+
+export class ExamDetailsAnswerResponse {
+  id: number = 0;
+  content: string | undefined;
+}
+
+export class ExamDetailsResponse {
+  exam: ExamDetailsExamResponse | undefined;
+  questions: ExamDetailsQuestionResponse[] = [];
+}

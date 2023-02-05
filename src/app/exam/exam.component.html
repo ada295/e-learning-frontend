@@ -1,18 +1,8 @@
-<div [formGroup]="exampleABCD">
-  <h4>Jaki jest wynik działania 2+2?</h4>
-  <p>
-    <mat-checkbox formControlName="answerA">3</mat-checkbox>
+<div *ngFor="let question of exam?.questions">
+  <h4>{{question.content}}</h4>
+  <p *ngFor="let answer of question.answers">
+    <mat-checkbox>{{answer.content}}</mat-checkbox>
   </p>
-  <p>
-    <mat-checkbox formControlName="answerB">4</mat-checkbox>
-  </p>
-  <p>
-    <mat-checkbox formControlName="answerC">5</mat-checkbox>
-  </p>
-  <p>
-    <mat-checkbox formControlName="answerD">0</mat-checkbox>
-  </p>
-  <p>{{exampleABCD.value | json}}</p>
 </div>
 
 
