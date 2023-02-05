@@ -1,8 +1,22 @@
 <div *ngFor="let question of exam?.questions">
   <h4>{{question.content}}</h4>
-  <p *ngFor="let answer of question.answers">
-    <mat-checkbox>{{answer.content}}</mat-checkbox>
-  </p>
+  <div *ngIf="question.questionType == 'ONE_CHOICE'">
+    <mat-radio-group
+      class="exam-radio-group">
+      <mat-radio-button class="exam-radio-button" *ngFor="let answer of question.answers" [value]="answer.content">
+        {{answer.content}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div *ngIf="question.questionType == 'MULTI_CHOICE'">
+
+    <p *ngFor="let answer of question.answers">
+      <mat-checkbox>{{answer.content}}</mat-checkbox>
+    </p>
+  </div>
+
+
 </div>
 
 

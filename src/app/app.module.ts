@@ -24,6 +24,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { ExamComponent } from './exam/exam.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatCardModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

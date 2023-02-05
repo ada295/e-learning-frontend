@@ -26,6 +26,7 @@ export class ExamDetailsQuestionResponse {
   id: number = 0;
   content: string | undefined;
   points: number = 0;
+  questionType: string | undefined;
   answers: ExamDetailsAnswerResponse[] = [];
 }
 
