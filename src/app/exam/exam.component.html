@@ -1,11 +1,31 @@
-<div *ngFor="let question of exam?.questions">
+<!--<div *ngFor="let question of exam?.questions">-->
+<!--  <h4>{{question.content}}</h4>-->
+<!--  <div *ngIf="question.questionType == 'ONE_CHOICE'">-->
+<!--    <mat-radio-group-->
+<!--      class="exam-radio-group">-->
+<!--      <mat-radio-button class="exam-radio-button" *ngFor="let answer of question.answers" [value]="answer.content">-->
+<!--        {{answer.content}}-->
+<!--      </mat-radio-button>-->
+<!--    </mat-radio-group>-->
+<!--  </div>-->
+
+<!--  <div *ngIf="question.questionType == 'MULTI_CHOICE'">-->
+
+<!--    <p *ngFor="let answer of question.answers">-->
+<!--      <mat-checkbox>{{answer.content}}</mat-checkbox>-->
+<!--    </p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div *ngFor="let question of exam?.questions; let i = index" [formGroup]="examAnswers[i]">
   <h4>{{question.content}}</h4>
   <div *ngIf="question.questionType == 'ONE_CHOICE'">
-    <mat-radio-group
-      class="exam-radio-group">
-      <mat-radio-button class="exam-radio-button" *ngFor="let answer of question.answers" [value]="answer.content">
-        {{answer.content}}
-      </mat-radio-button>
+    <mat-radio-group class="exam-radio-group" formControlName="answers">
+      <p *ngFor="let answer of question.answers; let y = index">
+        <mat-radio-button [value]="answer.id" class="exam-radio-button">
+          {{answer.content}}
+        </mat-radio-button>
+      </p>
     </mat-radio-group>
   </div>
 
@@ -16,14 +36,25 @@
     </p>
   </div>
 
-
+  <p>{{examAnswers[i].value | json}}</p>
 </div>
 
+<button (click)="showConfirmation()" mat-button>Zakończ test</button>
 
-<!--<div [formGroup]="exampleABCDOneChoice">-->
+
+<div [formGroup]="exampleABCD">
+  <h4>Jaki jest wynik działania 2+2?</h4>
+
+  <p *ngFor="let answer of exampleABCDOdpowiedziTest; let i = index" formArrayName="answers">
+    <mat-checkbox [formControlName]="i">{{answer}}</mat-checkbox>
+  </p>
+
+  <p>{{exampleABCD.value | json}}</p>
+</div>
+<!--<div [formGroup]="exampleABCD">-->
 <!--  <h4>Jaki jest wynik działania 2+2?</h4>-->
 <!--  <p>-->
-<!--    <mat-checkbox formControlName="answerA" (change)="clearOther()">3</mat-checkbox>-->
+<!--    <mat-checkbox formControlName="answerA">3</mat-checkbox>-->
 <!--  </p>-->
 <!--  <p>-->
 <!--    <mat-checkbox formControlName="answerB">4</mat-checkbox>-->
