@@ -39,14 +39,15 @@ export class ExamComponent implements OnInit {
         if (this.exam && this.exam.questions) {
           for (let i = 0; i < this.exam.questions.length; i++) {
             let answersIds = this.exam.questions[i].answers.map(ans => ans.id);
-            if (this.exam.questions[i].questionType == "MULTI_CHOICE") {
+            let questionType = this.exam.questions[i].questionType;
+            if (questionType == "MULTI_CHOICE") {
               let formGroup = this.formBuilder.group({
                 questionId: this.exam.questions[i].id,
                 answersIds: this.formBuilder.array(answersIds),
                 answers: this.formBuilder.array(this.exam.questions[i].answers.map(() => false)), //zwraca false dla kazdego pytania
               });
               this.examAnswers.push(formGroup);
-            } else if (this.exam.questions[i].questionType == "ONE_CHOICE") {
+            } else if (questionType == "ONE_CHOICE" || questionType == "OPEN") {
               let formGroup = this.formBuilder.group({
                 questionId: this.exam.questions[i].id,
                 answersIds: this.formBuilder.array(answersIds),
@@ -58,17 +59,20 @@ export class ExamComponent implements OnInit {
         }
       }
     );
-
-
   }
 
   showConfirmation() {
     let decision = confirm('Czy na pewno chcesz zakończyć test?');
     if (decision) {
+      //zmienic na inne wysylanie id, bo mozna tym za bardzo manipulowac
+      let id = this.route.snapshot.paramMap.get('id');
       // wysłanie odpowiedzi do BE
+      let body = this.examAnswers.map(e => e.value);
+      this.httpClient.post<any>("http://localhost:8080/exam/" + id + "/finish", body)
+        .subscribe(value => {
+        });
     }
   }
-
 
   //
   // exampleABCD = this.formBuilder.group({

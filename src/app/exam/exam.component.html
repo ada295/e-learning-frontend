@@ -19,6 +19,7 @@
 
 <div *ngFor="let question of exam?.questions; let i = index" [formGroup]="examAnswers[i]">
   <h4>{{question.content}}</h4>
+
   <div *ngIf="question.questionType == 'ONE_CHOICE'">
     <mat-radio-group class="exam-radio-group" formControlName="answers">
       <p *ngFor="let answer of question.answers">
@@ -35,21 +36,17 @@
     </p>
   </div>
 
+  <div *ngIf="question.questionType == 'OPEN'">
+    <textarea formControlName="answers">
+
+    </textarea>
+  </div>
+
   <p>{{examAnswers[i].value | json}}</p>
 </div>
 
 <button (click)="showConfirmation()" mat-button>Zakończ test</button>
 
-
-<div [formGroup]="exampleABCD">
-  <h4>Jaki jest wynik działania 2+2?</h4>
-
-  <p *ngFor="let answer of exampleABCDOdpowiedziTest; let i = index" formArrayName="answers">
-    <mat-checkbox [formControlName]="i">{{answer}}</mat-checkbox>
-  </p>
-
-  <p>{{exampleABCD.value | json}}</p>
-</div>
 <!--<div [formGroup]="exampleABCD">-->
 <!--  <h4>Jaki jest wynik działania 2+2?</h4>-->
 <!--  <p>-->
