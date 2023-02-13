@@ -21,7 +21,7 @@
   <h4>{{question.content}}</h4>
   <div *ngIf="question.questionType == 'ONE_CHOICE'">
     <mat-radio-group class="exam-radio-group" formControlName="answers">
-      <p *ngFor="let answer of question.answers; let y = index">
+      <p *ngFor="let answer of question.answers">
         <mat-radio-button [value]="answer.id" class="exam-radio-button">
           {{answer.content}}
         </mat-radio-button>
@@ -30,9 +30,8 @@
   </div>
 
   <div *ngIf="question.questionType == 'MULTI_CHOICE'">
-
-    <p *ngFor="let answer of question.answers">
-      <mat-checkbox>{{answer.content}}</mat-checkbox>
+    <p *ngFor="let answer of question.answers; let y = index" formArrayName="answers">
+      <mat-checkbox [formControlName]="y">{{answer.content}}</mat-checkbox>
     </p>
   </div>
 

@@ -39,7 +39,6 @@ export class ExamComponent implements OnInit {
         if (this.exam && this.exam.questions) {
           for (let i = 0; i < this.exam.questions.length; i++) {
             let answersIds = this.exam.questions[i].answers.map(ans => ans.id);
-
             if (this.exam.questions[i].questionType == "MULTI_CHOICE") {
               let formGroup = this.formBuilder.group({
                 questionId: this.exam.questions[i].id,
@@ -72,7 +71,7 @@ export class ExamComponent implements OnInit {
 
 
   //
-  // exampleABCDOneChoice = this.formBuilder.group({
+  // exampleABCD = this.formBuilder.group({
   //   answerA: false,
   //   answerB: false,
   //   answerC: false,
