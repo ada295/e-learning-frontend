@@ -16,36 +16,39 @@
 <!--    </p>-->
 <!--  </div>-->
 <!--</div>-->
+<div class="question-container">
+  <div *ngFor="let question of exam?.questions; let i = index" [formGroup]="examAnswers[i]" class="question">
+    <h3><strong>Pytanie {{i + 1}}</strong></h3>
+    <h4>{{question.content}}</h4>
 
-<div *ngFor="let question of exam?.questions; let i = index" [formGroup]="examAnswers[i]">
-  <h4>{{question.content}}</h4>
+    <div *ngIf="question.questionType == 'ONE_CHOICE'">
+      <mat-radio-group class="exam-radio-group" formControlName="answers">
+        <p *ngFor="let answer of question.answers">
+          <mat-radio-button [value]="answer.id" class="exam-radio-button">
+            {{answer.content}}
+          </mat-radio-button>
+        </p>
+      </mat-radio-group>
+    </div>
 
-  <div *ngIf="question.questionType == 'ONE_CHOICE'">
-    <mat-radio-group class="exam-radio-group" formControlName="answers">
-      <p *ngFor="let answer of question.answers">
-        <mat-radio-button [value]="answer.id" class="exam-radio-button">
-          {{answer.content}}
-        </mat-radio-button>
+    <div *ngIf="question.questionType == 'MULTI_CHOICE'">
+      <p *ngFor="let answer of question.answers; let y = index" formArrayName="answers">
+        <mat-checkbox [formControlName]="y">{{answer.content}}</mat-checkbox>
       </p>
-    </mat-radio-group>
-  </div>
+    </div>
 
-  <div *ngIf="question.questionType == 'MULTI_CHOICE'">
-    <p *ngFor="let answer of question.answers; let y = index" formArrayName="answers">
-      <mat-checkbox [formControlName]="y">{{answer.content}}</mat-checkbox>
-    </p>
-  </div>
-
-  <div *ngIf="question.questionType == 'OPEN'">
+    <div *ngIf="question.questionType == 'OPEN'">
     <textarea formControlName="answers">
 
     </textarea>
+    </div>
+
+    <p>{{examAnswers[i].value | json}}</p>
   </div>
 
-  <p>{{examAnswers[i].value | json}}</p>
-</div>
+  <button (click)="showConfirmation()" mat-button class="finish-test-button">Zakończ test</button>
 
-<button (click)="showConfirmation()" mat-button>Zakończ test</button>
+</div>
 
 <!--<div [formGroup]="exampleABCD">-->
 <!--  <h4>Jaki jest wynik działania 2+2?</h4>-->
