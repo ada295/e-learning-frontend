@@ -1,0 +1,57 @@
+<div class="step-wrapper">
+  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Imię nauczyciela</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Imię</mat-label>
+          <input matInput placeholder="" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Dalej</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Nazwisko nauczyciela</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nazwisko</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder=""
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Wróć</button>
+          <button mat-button matStepperNext>Dalej</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>E-mail nauczyciela</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="thirdCtrl" placeholder=""
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Wróć</button>
+          <button mat-button matStepperNext>Dalej</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Zapisz kurs</ng-template>
+      <div class="buttons">
+        <button mat-button class="save-course">Zapisz</button>
+        <button mat-button matStepperPrevious>Wróć</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
+
+
+<!--hasło będzie wysyłane na podany adres e-mail-->

@@ -29,6 +29,7 @@ import { AddCourseComponent } from './add-course/add-course/add-course.component
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatInputModule} from "@angular/material/input";
     CourseDetailsComponent,
     LessonsComponent,
     ExamComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    AddTeacherComponent
   ],
   imports: [
     BrowserModule,

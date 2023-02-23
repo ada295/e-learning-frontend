@@ -5,8 +5,13 @@ import {CourseDetailsComponent} from "./course-details/course-details.component"
 import {LessonsComponent} from "./lessons/lessons.component";
 import {ExamComponent} from "./exam/exam.component";
 import {AddCourseComponent} from "./add-course/add-course/add-course.component";
+import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.component";
 
 const routes: Routes = [
+  {
+    path: 'dodaj-nauczyciela',
+    component: AddTeacherComponent
+  },
   {
     path: 'dodaj-kurs',
     component: AddCourseComponent

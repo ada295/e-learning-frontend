@@ -1,23 +1,23 @@
 <div class="step-wrapper">
   <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+    <mat-step [stepControl]="nameFormGroup">
+      <form [formGroup]="nameFormGroup">
         <ng-template matStepLabel>Nazwa kursu</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Nazwa</mat-label>
-          <input matInput placeholder="" formControlName="firstCtrl" required>
+          <input matInput placeholder="" formControlName="name" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Dalej</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="descriptionFormGroup">
+      <form [formGroup]="descriptionFormGroup">
         <ng-template matStepLabel>Krótki opis kursu</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Opis</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder=""
+          <input matInput formControlName="description" placeholder=""
                  required>
         </mat-form-field>
         <div>
@@ -28,8 +28,8 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Zapisz kurs</ng-template>
-      <div>
-        <button mat-button class="save-course">Zapisz</button>
+      <div class="buttons">
+        <button mat-button class="save-course" (click)="addCourse()">Zapisz</button>
         <button mat-button matStepperPrevious>Wróć</button>
       </div>
     </mat-step>
