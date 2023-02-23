@@ -1,0 +1,21 @@
+.step-wrapper {
+  width: 80%;
+  margin: 20px 10%;
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.save-course {
+  background: rgba(103, 58, 183, 1);
+  color: white;
+}
+
+.save-course:hover{
+  background-color: rgba(103, 58, 183, 0.8);
+}

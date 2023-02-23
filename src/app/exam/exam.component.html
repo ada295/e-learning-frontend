@@ -44,6 +44,8 @@
     </div>
 
     <p>{{examAnswers[i].value | json}}</p>
+
+    <button (click)="nextQuestion()" mat-button class="next-question">Następne pytanie</button>
   </div>
 
   <button (click)="showConfirmation()" mat-button class="finish-test-button">Zakończ test</button>

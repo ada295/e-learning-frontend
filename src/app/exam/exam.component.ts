@@ -61,6 +61,10 @@ export class ExamComponent implements OnInit {
     );
   }
 
+  nextQuestion() {
+
+  }
+
   showConfirmation() {
     let decision = confirm('Czy na pewno chcesz zakończyć test?');
     if (decision) {

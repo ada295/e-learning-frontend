@@ -25,6 +25,10 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { ExamComponent } from './exam/exam.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
+import { AddCourseComponent } from './add-course/add-course/add-course.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import {MatRadioModule} from "@angular/material/radio";
     FinishedCoursesComponent,
     CourseDetailsComponent,
     LessonsComponent,
-    ExamComponent
+    ExamComponent,
+    AddCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,9 @@ import {MatRadioModule} from "@angular/material/radio";
     MatExpansionModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
