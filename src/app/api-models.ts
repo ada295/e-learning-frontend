@@ -5,6 +5,13 @@ export class Course {
   finished: boolean = false;
 }
 
+export class Teacher {
+  id: number = 0;
+  name: string = "";
+  surname: string = "";
+  email: string = "";
+}
+
 export class Lesson {
   id: number = 0;
   name: string = "";

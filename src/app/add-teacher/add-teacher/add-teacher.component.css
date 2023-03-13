@@ -11,13 +11,13 @@
   margin-top: 16px;
 }
 
-.save-course {
+.save-teacher {
   background: rgba(103, 58, 183, 1);
   color: white;
   margin-right: 10px;
 }
 
-.save-course:hover {
+.save-teacher:hover {
   background-color: rgb(79, 14, 143);
 }
 

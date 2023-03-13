@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
+import {Course, Teacher} from "../../api-models";
 
 
 @Component({
@@ -9,15 +11,37 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class AddTeacherComponent {
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    name: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    surname: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: ['', Validators.required],
+    email: ['', Validators.required],
   });
   isLinear: any;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private httpClient: HttpClient) {
+  }
+
+
+
+  addTeacher() {
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
+
+      let teacher = new Teacher();
+      teacher.name = this.firstFormGroup.value.name ? this.firstFormGroup.value.name : "";
+      teacher.surname = this.secondFormGroup.value.surname ? this.secondFormGroup.value.surname : "";
+      teacher.email = this.thirdFormGroup.value.email ? this.thirdFormGroup.value.email : "";
+
+
+      this.httpClient.post<Teacher>("http://localhost:8080/teachers", teacher)
+        .subscribe(
+          //kolko przestaje sie krecic
+        )
+    }
+  }
+
+
 }
+

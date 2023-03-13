@@ -5,7 +5,7 @@
         <ng-template matStepLabel>Imię nauczyciela</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Imię</mat-label>
-          <input matInput placeholder="" formControlName="firstCtrl" required>
+          <input matInput placeholder="" formControlName="name" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Dalej</button>
@@ -17,7 +17,7 @@
         <ng-template matStepLabel>Nazwisko nauczyciela</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Nazwisko</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder=""
+          <input matInput formControlName="surname" placeholder=""
                  required>
         </mat-form-field>
         <div>
@@ -32,7 +32,7 @@
         <ng-template matStepLabel>E-mail nauczyciela</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>E-mail</mat-label>
-          <input matInput formControlName="thirdCtrl" placeholder=""
+          <input matInput formControlName="email" placeholder=""
                  required>
         </mat-form-field>
         <div>
@@ -44,9 +44,9 @@
 
 
     <mat-step>
-      <ng-template matStepLabel>Zapisz kurs</ng-template>
+      <ng-template matStepLabel>Dodaj nauczyciela</ng-template>
       <div class="buttons">
-        <button mat-button class="save-course">Zapisz</button>
+        <button mat-button class="save-teacher" (click)="addTeacher()">Zapisz</button>
         <button mat-button matStepperPrevious>Wróć</button>
       </div>
     </mat-step>
