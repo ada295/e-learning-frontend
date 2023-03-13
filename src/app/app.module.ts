@@ -30,6 +30,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.component';
+import { TeachersComponent } from './teachers/teachers.component';
+import {MatLegacyTableModule} from "@angular/material/legacy-table";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.compo
     LessonsComponent,
     ExamComponent,
     AddCourseComponent,
-    AddTeacherComponent
+    AddTeacherComponent,
+    TeachersComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.compo
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    MatLegacyTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

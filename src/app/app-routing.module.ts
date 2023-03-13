@@ -6,8 +6,13 @@ import {LessonsComponent} from "./lessons/lessons.component";
 import {ExamComponent} from "./exam/exam.component";
 import {AddCourseComponent} from "./add-course/add-course/add-course.component";
 import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.component";
+import {TeachersComponent} from "./teachers/teachers.component";
 
 const routes: Routes = [
+  {
+    path: 'nauczyciele',
+    component: TeachersComponent
+  },
   {
     path: 'dodaj-nauczyciela',
     component: AddTeacherComponent
