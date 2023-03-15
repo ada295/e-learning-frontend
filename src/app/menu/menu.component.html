@@ -21,6 +21,12 @@
     <button mat-button routerLink="/nauczyciele">
       Nauczyciele
     </button>
+    <button *ngIf="!sessionService.isLoggedUser()" mat-button class="login" routerLink="/login">
+      Zaloguj się
+    </button>
+    <button *ngIf="sessionService.isLoggedUser()" mat-button class="login" (click)="sessionService.logout()">
+      Wyloguj się
+    </button>
   </mat-toolbar>
 
   <div class="bottom-nav">

@@ -32,6 +32,7 @@ import {MatInputModule} from "@angular/material/input";
 import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import {MatLegacyTableModule} from "@angular/material/legacy-table";
+import { LoginComponent } from './login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatLegacyTableModule} from "@angular/material/legacy-table";
     ExamComponent,
     AddCourseComponent,
     AddTeacherComponent,
-    TeachersComponent
+    TeachersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

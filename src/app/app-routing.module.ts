@@ -7,8 +7,13 @@ import {ExamComponent} from "./exam/exam.component";
 import {AddCourseComponent} from "./add-course/add-course/add-course.component";
 import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.component";
 import {TeachersComponent} from "./teachers/teachers.component";
+import {LoginComponent} from "./login/login/login.component";
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: 'nauczyciele',
     component: TeachersComponent
