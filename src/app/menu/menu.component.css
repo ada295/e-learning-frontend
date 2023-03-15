@@ -22,3 +22,17 @@
 .login{
   background-color: #e3bf32;
 }
+
+.logo{
+  font-size: x-large;
+  position: relative;
+  bottom: 5px;
+  left: 10px;
+  font-family: Consolas;
+}
+
+.e-letter{
+  transform: scale(1.8);
+  position: relative;
+
+}
