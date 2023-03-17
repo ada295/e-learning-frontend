@@ -8,11 +8,16 @@ import {AddCourseComponent} from "./add-course/add-course/add-course.component";
 import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.component";
 import {TeachersComponent} from "./teachers/teachers.component";
 import {LoginComponent} from "./login/login/login.component";
+import {CalendarComponent} from "./calendar/calendar.component";
 
 const routes: Routes = [
   {
+    path: 'kalendarz',
+    component: CalendarComponent
+  },
+  {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'nauczyciele',

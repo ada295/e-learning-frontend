@@ -6,23 +6,21 @@
       <span class="logo">-nauczanie</span>
     </button>
 <!--    <button mat-button class="logo"></button>-->
-
-
     <span class="example-spacer"></span>
-    <button mat-button routerLink="/dodaj-nauczyciela">Dodaj nauczyciela</button>
-    <button mat-button routerLink="/dodaj-kurs">
+    <button mat-button class="button-nav" routerLink="/dodaj-nauczyciela">Dodaj nauczyciela</button>
+    <button mat-button class="button-nav" routerLink="/dodaj-kurs">
       Dodaj kurs
     </button>
-    <button mat-button routerLink="/kursy">
+    <button mat-button class="button-nav" routerLink="/kursy">
       Kursy
     </button>
-    <button mat-button routerLink="/kalendarz">
+    <button mat-button class="button-nav" routerLink="/kalendarz">
       Kalendarz
     </button>
-    <button mat-button routerLink="/dziennik">
+    <button mat-button class="button-nav" routerLink="/dziennik">
       Dziennik
     </button>
-    <button mat-button routerLink="/nauczyciele">
+    <button mat-button class="button-nav" routerLink="/nauczyciele">
       Nauczyciele
     </button>
     <button *ngIf="!sessionService.isLoggedUser()" mat-button class="login" routerLink="/login">

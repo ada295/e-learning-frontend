@@ -21,6 +21,7 @@
 
 .login{
   background-color: #e3bf32;
+  margin-left: 10px;
 }
 
 .logo{
@@ -34,5 +35,13 @@
 .e-letter{
   transform: scale(1.8);
   position: relative;
-
 }
+
+.logoE:hover{
+  background-color: rgba(52, 27, 117, 0.42);
+}
+
+.button-nav:hover{
+  background-color: rgba(52, 27, 117, 0.07);
+}
+

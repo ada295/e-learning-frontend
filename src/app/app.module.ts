@@ -33,6 +33,8 @@ import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.compo
 import { TeachersComponent } from './teachers/teachers.component';
 import {MatLegacyTableModule} from "@angular/material/legacy-table";
 import { LoginComponent } from './login/login/login.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { LoginComponent } from './login/login/login.component';
     AddCourseComponent,
     AddTeacherComponent,
     TeachersComponent,
-    LoginComponent
+    LoginComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { LoginComponent } from './login/login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatLegacyTableModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
