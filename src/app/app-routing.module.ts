@@ -9,6 +9,7 @@ import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.compone
 import {TeachersComponent} from "./teachers/teachers.component";
 import {LoginComponent} from "./login/login/login.component";
 import {CalendarComponent} from "./calendar/calendar.component";
+import {JoinCourseComponent} from "./join-course/join-course.component";
 
 const routes: Routes = [
   {

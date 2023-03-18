@@ -35,6 +35,8 @@ import {MatLegacyTableModule} from "@angular/material/legacy-table";
 import { LoginComponent } from './login/login/login.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { JoinCourseComponent } from './join-course/join-course.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     AddTeacherComponent,
     TeachersComponent,
     LoginComponent,
-    CalendarComponent
+    CalendarComponent,
+    JoinCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatInputModule,
     MatLegacyTableModule,
     MatDatepickerModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
