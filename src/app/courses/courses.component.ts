@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Course} from "../api-models";
 import {HttpClient} from "@angular/common/http";
+import {SessionService} from "../session.service";
 
 @Component({
   selector: 'app-courses',
@@ -12,7 +13,7 @@ export class CoursesComponent implements OnInit {
 
   allCourses: Course[] = [];
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient:HttpClient, public sessionService: SessionService) {
   }
 
   ngOnInit(): void {

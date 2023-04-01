@@ -8,7 +8,11 @@
   <mat-tab label="Wszystkie">
     <app-all-courses [allCourses]="allCourses"></app-all-courses>
   </mat-tab>
-  <mat-tab label="Dołącz do kursu">
+  <mat-tab *ngIf="sessionService.isStudent()" label="Dołącz do kursu">
     <app-join-course></app-join-course>
   </mat-tab>
+  <mat-tab *ngIf="sessionService.isTeacher()" label="Dodaj kurs">
+    <app-add-course></app-add-course>
+  </mat-tab>
+
 </mat-tab-group>

@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="login-container">
+  <form [formGroup]="loginForm" class="login-container">
     <h1 class="header">Logowanie</h1>
     <br>
     <h3 class="text">Login</h3>
-    <input name="login">
+    <input formControlName="username">
     <br>
     <h3 class="text">Hasło</h3>
-    <input name="password">
+    <input type="password" formControlName="password">
     <br><br>
     <div class="login">
-      <button mat-button class="login-button" (click)="login()">Zaloguj się</button>
+      <button mat-button class="login-button" (click)="login()" [disabled]="!isValidForm()">Zaloguj się</button>
     </div>
-  </div>
+  </form>
 </div>
