@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Course} from "../../api-models";
 import {HttpClient} from "@angular/common/http";
+import {catchError, of} from "rxjs";
 
 
 @Component({
@@ -27,14 +28,20 @@ export class AddCourseComponent {
       let name = this.nameFormGroup.value.name;
       let description = this.descriptionFormGroup.value.description;
       let course = new Course();
-      course.name = name ? name: "";
-      course.description = description ? description: "";
+      course.name = name ? name : "";
+      course.description = description ? description : "";
 
       this.httpClient.post<Course>("http://localhost:8080/courses", course)
-        .subscribe(value => {
-          //uruchamia się, gdy request się wykona
-          //dodać wyświetlenie komunikatu na frontendzie "Dodałeś kurs"
-        });
+        .pipe(
+          catchError(error => {
+            alert(error.error);
+            return of([]);
+          })
+        ).subscribe(value => {
+        //uruchamia się, gdy request się wykona
+        //dodać wyświetlenie komunikatu na frontendzie "Dodałeś kurs"
+        alert("Kurs dodany!");
+      });
     }
 
 

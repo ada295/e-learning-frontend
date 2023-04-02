@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import {Course, Teacher} from "../../api-models";
+import {Teacher} from "../../api-models";
+import {catchError, of} from "rxjs";
 
 
 @Component({
@@ -25,7 +26,6 @@ export class AddTeacherComponent {
   }
 
 
-
   addTeacher() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
 
@@ -36,9 +36,16 @@ export class AddTeacherComponent {
 
 
       this.httpClient.post<Teacher>("http://localhost:8080/teachers", teacher)
-        .subscribe(
-          //kolko przestaje sie krecic
+        .pipe(
+          catchError(error => {
+            alert(error.error);
+            return of([]);
+          })
         )
+        .subscribe(value =>
+          //kolko przestaje sie krecic
+          alert("Nauczyciel dodany!")
+        );
     }
   }
 
