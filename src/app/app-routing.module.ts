@@ -10,11 +10,17 @@ import {TeachersComponent} from "./teachers/teachers.component";
 import {LoginComponent} from "./login/login/login.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {JoinCourseComponent} from "./join-course/join-course.component";
+import {LoggedUserGuard} from "./logged-user.guard";
+import {RoleAccessGuard} from "./role-access-guard.service";
 
 const routes: Routes = [
   {
     path: 'kalendarz',
-    component: CalendarComponent
+    component: CalendarComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
   },
   {
     path: 'login',
@@ -22,31 +28,59 @@ const routes: Routes = [
   },
   {
     path: 'nauczyciele',
-    component: TeachersComponent
+    component: TeachersComponent,
+    canActivate: [LoggedUserGuard,RoleAccessGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
   },
   {
     path: 'dodaj-nauczyciela',
-    component: AddTeacherComponent
+    component: AddTeacherComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
   },
   {
     path: 'dodaj-kurs',
-    component: AddCourseComponent
+    component: AddCourseComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
   },
   {
     path: 'kursy',
-    component: CoursesComponent
+    component: CoursesComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_STUDENT', 'ROLE_TEACHER']
+    }
   },
   {
     path: 'kursy/:id',
-    component: CourseDetailsComponent
+    component: CourseDetailsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
   },
   {
     path: 'lekcja/:id',
-    component: LessonsComponent
+    component: LessonsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
   },
   {
     path: 'test/:id',
-    component: ExamComponent
+    component: ExamComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
   }
 ];
 

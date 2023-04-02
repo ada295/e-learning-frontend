@@ -26,10 +26,13 @@ export class SessionService {
       localStorage.setItem("role", "ROLE_STUDENT");
     } else if (username == "admin" && password == "admin") {
       localStorage.setItem("role", "ROLE_ADMIN");
+    } else {
+      alert("Błędne dane logowania!");
+      return;
     }
 
 
-    this.router.navigateByUrl("/kursy");
+    this.router.navigateByUrl("/");
   }
 
   isStudent() {
