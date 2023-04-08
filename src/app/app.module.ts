@@ -11,7 +11,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import { CoursesComponent } from './courses/courses.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { AllCoursesComponent } from './all-courses/all-courses.component';
@@ -37,6 +37,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { JoinCourseComponent } from './join-course/join-course.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { AddExamComponent } from './add-exam/add-exam/add-exam.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     TeachersComponent,
     LoginComponent,
     CalendarComponent,
-    JoinCourseComponent
+    JoinCourseComponent,
+    AddExamComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatLegacyTableModule,
     MatDatepickerModule,
     MatTooltipModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

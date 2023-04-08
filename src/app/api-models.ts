@@ -46,3 +46,19 @@ export class ExamDetailsResponse {
   exam: ExamDetailsExamResponse | undefined;
   questions: ExamDetailsQuestionResponse[] = [];
 }
+
+export class AddExam {
+  name: string | undefined;
+  questions: AddExamQuestion[] = [];
+}
+
+export class AddExamQuestion {
+  content: string | undefined;
+  points: number = 0;
+  answers: AddQuestionAnswers[] = [];
+}
+
+export class AddQuestionAnswers {
+  content: string | undefined;
+  correct: boolean = false;
+}

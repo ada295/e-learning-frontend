@@ -1,0 +1,27 @@
+<form [formGroup]="examGroup">
+  Podaj imie:
+  <input type="text" formControlName="name" required>
+
+  Podaj ilość pytań:
+  <input type="number" formControlName="amountOfQuestions" required>
+
+  <button (click)="addExam()"></button>
+
+  <div *ngFor="let question of exam.questions; let i = index">
+    Pytanie {{i + 1}}
+
+    <mat-form-field appearance="fill">
+      <mat-label>Typ pytania</mat-label>
+      <mat-select disableRipple>
+        <mat-option value="one-choice">Jednokrotnego wyboru</mat-option>
+        <mat-option value="multi-choice">Wielokrotnego wyboru</mat-option>
+        <mat-option value="open">Otwarte</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    Podaj ilosc odpowiedzi:
+
+    <hr>
+  </div>
+
+</form>

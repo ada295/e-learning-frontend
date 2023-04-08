@@ -29,6 +29,12 @@
       </button>
     </span>
 
+    <span *ngIf="sessionService.isTeacher()">
+      <button mat-button class="button-nav" routerLink="/dodaj-test">
+        Utwórz test
+      </button>
+    </span>
+
     <button *ngIf="!sessionService.isLoggedUser()" mat-button class="login" routerLink="/login">
       Zaloguj się
     </button>

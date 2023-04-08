@@ -12,6 +12,8 @@ import {CalendarComponent} from "./calendar/calendar.component";
 import {JoinCourseComponent} from "./join-course/join-course.component";
 import {LoggedUserGuard} from "./logged-user.guard";
 import {RoleAccessGuard} from "./role-access-guard.service";
+import {AddExam} from "./api-models";
+import {AddExamComponent} from "./add-exam/add-exam/add-exam.component";
 
 const routes: Routes = [
   {
@@ -80,6 +82,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'dodaj-test',
+    component: AddExamComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
     }
   }
 ];
