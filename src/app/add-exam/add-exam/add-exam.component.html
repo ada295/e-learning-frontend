@@ -1,27 +1,57 @@
 <form [formGroup]="examGroup">
-  Podaj imie:
+  Podaj nazwę testu:
   <input type="text" formControlName="name" required>
 
   Podaj ilość pytań:
   <input type="number" formControlName="amountOfQuestions" required>
 
   <button (click)="addExam()"></button>
+</form>
 
-  <div *ngFor="let question of exam.questions; let i = index">
-    Pytanie {{i + 1}}
+
+<div *ngFor="let question of exam.questions; let q = index">
+
+  <form [formGroup]="questionGroups[q]">
+
+    Pytanie {{q + 1}}:
+
+    <input type="text" formControlName="content" required>
 
     <mat-form-field appearance="fill">
       <mat-label>Typ pytania</mat-label>
-      <mat-select disableRipple>
+      <mat-select disableRipple formControlName="type">
         <mat-option value="one-choice">Jednokrotnego wyboru</mat-option>
         <mat-option value="multi-choice">Wielokrotnego wyboru</mat-option>
         <mat-option value="open">Otwarte</mat-option>
       </mat-select>
     </mat-form-field>
     <br>
-    Podaj ilosc odpowiedzi:
+    Podaj ilość odpowiedzi:
+    <input type="number" formControlName="amountOfAnswers">
 
-    <hr>
-  </div>
+    <button (click)="addQuestion(q)"></button>
 
-</form>
+    <div *ngFor="let answer of exam.questions[q].answers; let a=index">
+      <form [formGroup]="answersGroups.get(q)[a]">
+        Odpowiedź {{a + 1}}:
+        <div *ngIf="question.type=='multi-choice'">
+          <input type="text" formControlName="content">
+          <mat-form-field appearance="fill">
+            <mat-label>Prawidłowa TAK/NIE:</mat-label>
+            <mat-select disableRipple formControlName="correct">
+              <mat-option value="true">TAK</mat-option>
+              <mat-option value="false">NIE</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <button (click)="addAnswers(q)"></button>
+  </form>
+
+
+</div>
+
+<hr>
+
+

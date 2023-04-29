@@ -56,6 +56,7 @@ export class AddExamQuestion {
   content: string | undefined;
   points: number = 0;
   answers: AddQuestionAnswers[] = [];
+  type: string = "";
 }
 
 export class AddQuestionAnswers {
