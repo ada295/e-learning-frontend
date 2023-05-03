@@ -1,22 +1,26 @@
-<form [formGroup]="examGroup">
+<form *ngIf="!examBasicInformationSet" [formGroup]="examGroup">
   Podaj nazwę testu:
   <input type="text" formControlName="name" required>
 
   Podaj ilość pytań:
   <input type="number" formControlName="amountOfQuestions" required>
 
-  <button (click)="addExam()"></button>
+  <button (click)="addExam()">Stwórz test</button>
 </form>
 
+<div *ngIf="examBasicInformationSet">
+  <h4>Test: {{examGroup.value.name}}</h4>
+</div>
 
-<div *ngFor="let question of exam.questions; let q = index">
 
-  <form [formGroup]="questionGroups[q]">
+<div *ngFor="let questionGroup of questionGroups; let q = index">
 
-    Pytanie {{q + 1}}:
+  <form [formGroup]="questionGroup">
+
+    <h5>Pytanie {{q + 1}}:</h5>
 
     <input type="text" formControlName="content" required>
-
+    <br>
     <mat-form-field appearance="fill">
       <mat-label>Typ pytania</mat-label>
       <mat-select disableRipple formControlName="type">
@@ -29,13 +33,14 @@
     Podaj ilość odpowiedzi:
     <input type="number" formControlName="amountOfAnswers">
 
-    <button (click)="addQuestion(q)"></button>
+    <button (click)="addQuestion(q)">Stwórz pytanie</button>
 
-    <div *ngFor="let answer of exam.questions[q].answers; let a=index">
-      <form [formGroup]="answersGroups.get(q)[a]">
+    <div *ngFor="let answerGroup of answersGroups.get(q); let a=index">
+      <form [formGroup]="answerGroup">
         Odpowiedź {{a + 1}}:
-        <div *ngIf="question.type=='multi-choice'">
+        <div *ngIf="questionGroup.value.type=='multi-choice'">
           <input type="text" formControlName="content">
+          <br>
           <mat-form-field appearance="fill">
             <mat-label>Prawidłowa TAK/NIE:</mat-label>
             <mat-select disableRipple formControlName="correct">
@@ -46,12 +51,7 @@
         </div>
       </form>
     </div>
-    <button (click)="addAnswers(q)"></button>
+    <hr>
   </form>
-
-
 </div>
-
-<hr>
-
-
+<button (click)="saveExam()">Zapisz Test</button>

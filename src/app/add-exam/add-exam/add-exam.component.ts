@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {AddExam, AddExamQuestion, AddQuestionAnswers} from "../../api-models";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -9,7 +8,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class AddExamComponent {
 
-  exam = new AddExam();
+  examBasicInformationSet = false;
+
   examGroup = this.formBuilder.group({
     name: ['', Validators.required],
     amountOfQuestions: ['', Validators.required],
@@ -22,54 +22,58 @@ export class AddExamComponent {
   }
 
   addExam() {
-    if (this.examGroup.valid && this.examGroup.value.name && this.examGroup.value.amountOfQuestions) {
-      this.exam.name = this.examGroup.value.name;
-      for (let i = 0; i < parseInt(this.examGroup.value.amountOfQuestions); i++) {
-        this.exam.questions.push(new AddExamQuestion());
-        this.questionGroups.push(this.formBuilder.group(
-          {
-            content: ['', Validators.required],
-            amountOfAnswers: ['', Validators.required],
-            type: ['', Validators.required]
-          }
-        ))
+    if (this.examGroup.valid) {
+      this.examBasicInformationSet = true;
+      for (let i = 0; i < parseInt(<string>this.examGroup.value.amountOfQuestions); i++) {
+        this.questionGroups.push(
+          this.formBuilder.group(
+            {
+              content: ['', Validators.required],
+              amountOfAnswers: ['', Validators.required],
+              type: ['', Validators.required]
+            }
+          )
+        )
       }
     }
   }
 
   addQuestion(i: number) {
-
-    if (this.questionGroups[i].valid && this.questionGroups[i].value.content &&
-      this.questionGroups[i].value.type && this.questionGroups[i].value.amountOfAnswers) {
-
-      this.exam.questions[i].content = this.questionGroups[i].value.content;
-      this.exam.questions[i].type = this.questionGroups[i].value.type;
-
-
+    if (this.questionGroups[i].valid) {
       let questionAnswersGroups: FormGroup[] = [];
 
+      // dodac Zmiana ilosci pytan i edycje
+
       for (let j = 0; j < parseInt(this.questionGroups[i].value.amountOfAnswers); j++) {
-        this.exam.questions[i].answers.push(new AddQuestionAnswers());
         questionAnswersGroups.push(
           this.formBuilder.group(
             {
               content: ['', Validators.required],
-              correct: ['', Validators.required],
+              correct: ['', Validators.required]
             }
           )
         );
       }
 
-
       this.answersGroups.set(i, questionAnswersGroups);
     }
   }
 
-  addAnswers(questionNumber: number) {
-    let answersForQuestion = this.answersGroups.get(questionNumber);
-    console.log(answersForQuestion);
-    if (answersForQuestion.valid) {
+  saveExam() {
+    function allAnswersValid() {
+      //change me
+      return true;
+    }
 
+    function allQuestionsValid() {
+      //change me
+      return true;
+    }
+
+    if (this.examGroup.valid && allQuestionsValid() && allAnswersValid()) {
+      console.log(this.examGroup.value);
+      this.questionGroups.forEach(a => console.log(a));
+      this.answersGroups.forEach(a => console.log(a));
     }
   }
 }
