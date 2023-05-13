@@ -49,9 +49,24 @@
             </mat-select>
           </mat-form-field>
         </div>
+        <div *ngIf="questionGroup.value.type=='one-choice'">
+          <input type="text" formControlName="content">
+          <br>
+
+        </div>
       </form>
     </div>
+
+    <mat-form-field *ngIf="questionGroup.value.type=='one-choice' && answersGroups.get(q)" appearance="fill">
+      <mat-label>Wybierz prawidłową odpowiedź: </mat-label>
+      <mat-select disableRipple (selectionChange)="saveOneChoiceQuestion(q, select.selected)" #select>
+        <span *ngFor="let answerGroup of answersGroups.get(q); let number=index">
+        <mat-option value="{{number}}">Odpowiedź {{number+1}}</mat-option>
+        </span>
+      </mat-select>
+    </mat-form-field>
+
     <hr>
   </form>
 </div>
-<button (click)="saveExam()">Zapisz Test</button>
+<button *ngIf="examBasicInformationSet" [disabled]="!isValid()" (click)="saveExam()">Zapisz Test</button>

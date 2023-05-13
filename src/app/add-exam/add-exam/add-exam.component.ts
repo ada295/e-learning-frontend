@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MatOption} from "@angular/material/core";
 
 @Component({
   selector: 'app-add-exam',
@@ -59,21 +60,65 @@ export class AddExamComponent {
     }
   }
 
+  allQuestionsValid() {
+    for (let i = 0; i < this.questionGroups.length; i++) {
+      if (!this.questionGroups[i].valid) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  allAnswersValid() {
+    for (let [_, value] of this.answersGroups) {
+      for (let i = 0; i < value.length; i++) {
+        if (!value[i].valid) {
+          console.log(i);
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   saveExam() {
-    function allAnswersValid() {
-      //change me
-      return true;
-    }
 
-    function allQuestionsValid() {
-      //change me
-      return true;
-    }
-
-    if (this.examGroup.valid && allQuestionsValid() && allAnswersValid()) {
+    if (this.isValid()) {
       console.log(this.examGroup.value);
       this.questionGroups.forEach(a => console.log(a));
       this.answersGroups.forEach(a => console.log(a));
     }
+  }
+
+  isValid() {
+    let atLeastOneAnswer = false;
+    for (let [_, value] of this.answersGroups) {
+      for (let i = 0; i < value.length; i++) {
+        atLeastOneAnswer = true;
+        break;
+      }
+    }
+
+    return this.examGroup.valid && this.allQuestionsValid() && this.allAnswersValid()
+      && this.questionGroups.length > 0 && atLeastOneAnswer;
+  }
+
+  saveOneChoiceQuestion(questionNumber: number, selected: MatOption<any> | MatOption[]) {
+    let correctAnswer = -1;
+    if (selected instanceof MatOption) {
+      correctAnswer = selected.value;
+    } else {
+      correctAnswer = selected[0].value;
+    }
+    let answers = this.answersGroups.get(questionNumber);
+    for (let a = 0; a < answers.length; a++) {
+      answers[a].patchValue({
+        correct: false
+      });
+    }
+    this.answersGroups.get(questionNumber)[correctAnswer].patchValue({
+      correct: true
+    });
+    this.answersGroups.get(questionNumber)[correctAnswer].markAsTouched();
   }
 }
