@@ -1,0 +1,98 @@
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 80%;
+  margin: auto;
+  /*margin-right: 35%;*/
+  /*margin-left: 35%;*/
+  /*margin-top: 40px;*/
+  background-color: rgba(255, 255, 255, 0.8);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /*border: 3px solid rgba(91, 91, 96, 0.85);*/
+  box-shadow: 3px 3px 10px rgba(91, 91, 96, 0.85);
+}
+
+.test-container {
+  align-self: center;
+  margin: 0 20%;
+}
+
+.header {
+  text-align: center;
+  /*color: #481979;*/
+  font-weight: bold;
+  font-family: Arial;
+  color: rgba(91, 91, 96, 0.85);
+}
+
+input {
+  width: 40%;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 30px;
+  border-radius: 5px;
+  border-color: rgba(91, 91, 96, 0.85);
+  border-top: 2px solid rgba(91, 91, 96, 0.85);
+  border-left: 2px solid rgba(91, 91, 96, 0.85);
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid #e3bf32;
+  box-shadow: 0 0 10px #e3bf32;
+
+}
+
+textarea {
+  width: 90%;
+  display: block;
+  margin: 40px auto auto;
+  min-height: 80px;
+  border-radius: 5px;
+  border-color: rgba(91, 91, 96, 0.85);
+  border-top: 2px solid rgba(91, 91, 96, 0.85);
+  border-left: 2px solid rgba(91, 91, 96, 0.85);
+}
+
+textarea:focus {
+  outline: none !important;
+  border: 2px solid #e3bf32;
+  box-shadow: 0 0 10px #e3bf32;
+}
+
+
+.login-button {
+  background-color: #e3bf32;
+  display: block;
+  margin: 0 auto;
+  color: white;
+}
+
+.login-button:hover {
+  box-shadow: 0 0 10px #e3bf32;
+}
+
+.text {
+  margin-left: 5%;
+  margin-bottom: 0;
+  color: rgba(91, 91, 96, 0.85);
+}
+
+h3 {
+  float: left;
+  width: 24%;
+}
+
+.question {
+  padding: 20px;
+}
+
+.question-card {
+  align-self: center;
+  margin: 0 5%;
+}

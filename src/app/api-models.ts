@@ -48,18 +48,19 @@ export class ExamDetailsResponse {
 }
 
 export class AddExam {
-  name: string | undefined;
+  name: string | undefined | null;
+  description: string | undefined | null;
   questions: AddExamQuestion[] = [];
 }
 
 export class AddExamQuestion {
   content: string | undefined;
   points: number = 0;
-  answers: AddQuestionAnswers[] = [];
+  answers: AddQuestionAnswer[] = [];
   type: string = "";
 }
 
-export class AddQuestionAnswers {
+export class AddQuestionAnswer {
   content: string | undefined;
   correct: boolean = false;
 }

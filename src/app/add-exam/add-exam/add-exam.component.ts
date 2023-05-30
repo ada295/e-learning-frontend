@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatOption} from "@angular/material/core";
+import {AddExam, AddExamQuestion, AddQuestionAnswer} from "../../api-models";
+import {HttpClient} from "@angular/common/http";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-add-exam',
@@ -14,12 +17,13 @@ export class AddExamComponent {
   examGroup = this.formBuilder.group({
     name: ['', Validators.required],
     amountOfQuestions: ['', Validators.required],
+    description: ['', Validators.required],
   })
 
   questionGroups: FormGroup[] = [];
   answersGroups = new Map();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
   }
 
   addExam() {
@@ -73,7 +77,6 @@ export class AddExamComponent {
     for (let [_, value] of this.answersGroups) {
       for (let i = 0; i < value.length; i++) {
         if (!value[i].valid) {
-          console.log(i);
           return false;
         }
       }
@@ -82,11 +85,43 @@ export class AddExamComponent {
   }
 
   saveExam() {
-
     if (this.isValid()) {
-      console.log(this.examGroup.value);
-      this.questionGroups.forEach(a => console.log(a));
-      this.answersGroups.forEach(a => console.log(a));
+      let examRequest = new AddExam();
+
+      examRequest.name = this.examGroup.value.name;
+      examRequest.description = this.examGroup.value.description;
+
+      let questionNumber = 0;
+      for (let questionGroup of this.questionGroups) {
+        let addQuestion = new AddExamQuestion();
+        addQuestion.content = questionGroup.value.content;
+        addQuestion.type = questionGroup.value.type;
+        addQuestion.points = questionGroup.value.points;
+
+        for (let answerGroup of this.answersGroups.get(questionNumber)) {
+          let addExamAnswer = new AddQuestionAnswer();
+          addExamAnswer.content = answerGroup.value.content;
+          addExamAnswer.correct = answerGroup.value.correct;
+
+          addQuestion.answers.push(addExamAnswer);
+        }
+
+        examRequest.questions.push(addQuestion);
+        questionNumber++;
+      }
+
+      // pobierz id z linku
+      this.httpClient.post<AddExam>("http://localhost:8080/course/1/exam", examRequest)
+        .pipe(
+          catchError(error => {
+            alert(error.error);
+            return of([]);
+          })
+        )
+        .subscribe(value =>
+          //kolko przestaje sie krecic
+          alert("Test został dodany!")
+        );
     }
   }
 
@@ -103,7 +138,12 @@ export class AddExamComponent {
       && this.questionGroups.length > 0 && atLeastOneAnswer;
   }
 
-  saveOneChoiceQuestion(questionNumber: number, selected: MatOption<any> | MatOption[]) {
+  saveOneChoiceQuestion(questionNumber
+                          :
+                          number, selected
+                          :
+                          MatOption<any> | MatOption[]
+  ) {
     let correctAnswer = -1;
     if (selected instanceof MatOption) {
       correctAnswer = selected.value;
