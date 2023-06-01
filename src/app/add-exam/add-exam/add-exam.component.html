@@ -42,9 +42,9 @@
               <mat-form-field appearance="fill">
                 <mat-label>Typ pytania</mat-label>
                 <mat-select disableRipple formControlName="type">
-                  <mat-option value="one-choice">Jednokrotnego wyboru</mat-option>
-                  <mat-option value="multi-choice">Wielokrotnego wyboru</mat-option>
-                  <mat-option value="open">Otwarte</mat-option>
+                  <mat-option value="ONE_CHOICE">Jednokrotnego wyboru</mat-option>
+                  <mat-option value="MULTI_CHOICE">Wielokrotnego wyboru</mat-option>
+                  <mat-option value="OPEN">Otwarte</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -65,7 +65,7 @@
           <div *ngFor="let answerGroup of answersGroups.get(q); let a=index">
             <form [formGroup]="answerGroup">
               Odpowiedź {{a + 1}}:
-              <div *ngIf="questionGroup.value.type=='multi-choice'">
+              <div *ngIf="questionGroup.value.type=='MULTI_CHOICE'">
                 <input type="text" formControlName="content">
                 <br>
                 <mat-form-field appearance="fill">
@@ -76,7 +76,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div *ngIf="questionGroup.value.type=='one-choice'">
+              <div *ngIf="questionGroup.value.type=='ONE_CHOICE'">
                 <input type="text" formControlName="content">
                 <br>
 
@@ -84,7 +84,7 @@
             </form>
           </div>
 
-          <mat-form-field *ngIf="questionGroup.value.type=='one-choice' && answersGroups.get(q)" appearance="fill">
+          <mat-form-field *ngIf="questionGroup.value.type=='ONE_CHOICE' && answersGroups.get(q)" appearance="fill">
             <mat-label>Wybierz prawidłową odpowiedź:</mat-label>
             <mat-select disableRipple (selectionChange)="saveOneChoiceQuestion(q, select.selected)" #select>
         <span *ngFor="let answerGroup of answersGroups.get(q); let number=index">
