@@ -66,15 +66,30 @@ textarea:focus {
 }
 
 
-.login-button {
+.create-button {
+  /*background-color: #ffd740;*/
   background-color: #e3bf32;
   display: block;
   margin: 0 auto;
   color: white;
 }
 
-.login-button:hover {
+.create-question-button
+{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.create-button:hover {
   box-shadow: 0 0 10px #e3bf32;
+  /*box-shadow: 0 0 10px #ffd740;*/
+}
+
+.exam-name
+{
+  margin: 20px 5%;
+  padding-left: 20px;
+  font-weight: normal;
 }
 
 .text {

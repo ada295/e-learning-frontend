@@ -13,13 +13,13 @@
       <textarea formControlName="description"></textarea>
       <br>
       <br><br>
-      <div class="login">
-        <button mat-button class="login-button" (click)="addExam()">Stwórz test</button>
+      <div>
+        <button mat-button class="create-button" (click)="addExam()">Stwórz test</button>
       </div>
     </form>
 
     <div *ngIf="examBasicInformationSet">
-      <h4>Test: {{examGroup.value.name}}</h4>
+      <h1 class="exam-name">Test: {{examGroup.value.name}}</h1>
     </div>
 
 
@@ -41,7 +41,7 @@
             <div class="col-md-9">
               <mat-form-field appearance="fill">
                 <mat-label>Typ pytania</mat-label>
-                <mat-select disableRipple formControlName="type">
+                <mat-select disableRipple formControlName="type" (selectionChange)="setAmountOfAnswers(q, questionType.selected)" #questionType>
                   <mat-option value="ONE_CHOICE">Jednokrotnego wyboru</mat-option>
                   <mat-option value="MULTI_CHOICE">Wielokrotnego wyboru</mat-option>
                   <mat-option value="OPEN">Otwarte</mat-option>
@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row" *ngIf="questionGroup.value.type=='MULTI_CHOICE' || questionGroup.value.type=='ONE_CHOICE'">
             <div class="col-md-3">
               <h4>Podaj ilość odpowiedzi:</h4>
             </div>
@@ -58,43 +58,64 @@
               <input type="number" formControlName="amountOfAnswers">
             </div>
           </div>
-          <button (click)="addQuestion(q)">Stwórz pytanie</button>
+
+          <button *ngIf="questionGroup.value.type=='MULTI_CHOICE' || questionGroup.value.type=='ONE_CHOICE'"
+                  (click)="addQuestionWithAnswers(q)" mat-button class="create-button create-question-button">Stwórz odpowiedzi
+          </button>
+
           <hr *ngIf="answersGroups.get(q)">
 
 
           <div *ngFor="let answerGroup of answersGroups.get(q); let a=index">
             <form [formGroup]="answerGroup">
-              Odpowiedź {{a + 1}}:
-              <div *ngIf="questionGroup.value.type=='MULTI_CHOICE'">
-                <input type="text" formControlName="content">
-                <br>
-                <mat-form-field appearance="fill">
-                  <mat-label>Prawidłowa TAK/NIE:</mat-label>
-                  <mat-select disableRipple formControlName="correct">
-                    <mat-option value="true">TAK</mat-option>
-                    <mat-option value="false">NIE</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div *ngIf="questionGroup.value.type=='ONE_CHOICE'">
-                <input type="text" formControlName="content">
-                <br>
 
+              <div class="row">
+                <div class="col-md-3">
+                  <h4>Odpowiedź {{a + 1}}:</h4>
+                </div>
+                <div class="col-md-9">
+
+                  <div *ngIf="questionGroup.value.type=='MULTI_CHOICE' || questionGroup.value.type=='ONE_CHOICE'">
+                    <input type="text" formControlName="content">
+                  </div>
+                </div>
               </div>
+
+              <div *ngIf="questionGroup.value.type=='MULTI_CHOICE'" class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Prawidłowa TAK/NIE:</mat-label>
+                    <mat-select disableRipple formControlName="correct">
+                      <mat-option value="true">TAK</mat-option>
+                      <mat-option value="false">NIE</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
             </form>
           </div>
+          <div *ngIf="questionGroup.value.type=='ONE_CHOICE' && answersGroups.get(q)" class="row">
+            <div class="col-md-3">
+              <h4>Wybierz prawidłową odpowiedź:</h4>
+            </div>
 
-          <mat-form-field *ngIf="questionGroup.value.type=='ONE_CHOICE' && answersGroups.get(q)" appearance="fill">
-            <mat-label>Wybierz prawidłową odpowiedź:</mat-label>
-            <mat-select disableRipple (selectionChange)="saveOneChoiceQuestion(q, select.selected)" #select>
-        <span *ngFor="let answerGroup of answersGroups.get(q); let number=index">
-        <mat-option value="{{number}}">Odpowiedź {{number + 1}}</mat-option>
-        </span>
-            </mat-select>
-          </mat-form-field>
 
+            <div class="col-md-9">
+              <mat-form-field appearance="fill">
+                <mat-label>Prawidłowa odpowiedź</mat-label>
+                <mat-select disableRipple (selectionChange)="saveOneChoiceQuestion(q, select.selected)" #select>
+                    <span *ngFor="let answerGroup of answersGroups.get(q); let number=index">
+                      <mat-option value="{{number}}">Odpowiedź {{number + 1}}</mat-option>
+                    </span>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
         </form>
       </mat-card>
+
       <hr>
     </div>
     <button *ngIf="examBasicInformationSet" [disabled]="!isValid()" (click)="saveExam()">Zapisz Test</button>

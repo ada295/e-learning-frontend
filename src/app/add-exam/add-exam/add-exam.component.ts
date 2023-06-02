@@ -43,7 +43,7 @@ export class AddExamComponent {
     }
   }
 
-  addQuestion(i: number) {
+  addQuestionWithAnswers(i: number) {
     if (this.questionGroups[i].valid) {
       let questionAnswersGroups: FormGroup[] = [];
 
@@ -98,12 +98,14 @@ export class AddExamComponent {
         addQuestion.type = questionGroup.value.type;
         addQuestion.points = questionGroup.value.points;
 
-        for (let answerGroup of this.answersGroups.get(questionNumber)) {
-          let addExamAnswer = new AddQuestionAnswer();
-          addExamAnswer.content = answerGroup.value.content;
-          addExamAnswer.correct = answerGroup.value.correct;
+        if(this.answersGroups.get(questionNumber)) {
+          for (let answerGroup of this.answersGroups.get(questionNumber)) {
+            let addExamAnswer = new AddQuestionAnswer();
+            addExamAnswer.content = answerGroup.value.content;
+            addExamAnswer.correct = answerGroup.value.correct;
 
-          addQuestion.answers.push(addExamAnswer);
+            addQuestion.answers.push(addExamAnswer);
+          }
         }
 
         examRequest.questions.push(addQuestion);
@@ -160,5 +162,24 @@ export class AddExamComponent {
       correct: true
     });
     this.answersGroups.get(questionNumber)[correctAnswer].markAsTouched();
+  }
+
+  setAmountOfAnswers(q: number, selected: MatOption<any> | MatOption[]) {
+    let questionType = "";
+    if (selected instanceof MatOption) {
+      questionType = selected.value;
+    } else {
+      questionType = selected[0].value;
+    }
+
+    if (questionType == "OPEN") {
+      this.questionGroups[q].patchValue({
+        amountOfAnswers: 0
+      })
+    } else {
+      this.questionGroups[q].patchValue({
+        amountOfAnswers: null
+      })
+    }
   }
 }

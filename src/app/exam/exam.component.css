@@ -27,14 +27,19 @@
   padding-bottom: 30px;
 }
 
+.finish-test-container
+{
+  text-align: center;
+}
+
 .finish-test-button
 {
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-bottom: 40px;
+  margin-top: 40px;
   background-color: #ffd740;
-  border: 1px solid black;
+  color: white;
 }
 .finish-test-button:hover {
-  background-color: #ffd740;
+  box-shadow: 0 0 10px #e3bf32;
 }
 
