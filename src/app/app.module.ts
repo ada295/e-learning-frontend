@@ -39,6 +39,10 @@ import { JoinCourseComponent } from './join-course/join-course.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { AddExamComponent } from './add-exam/add-exam/add-exam.component';
 import {MatSelectModule} from "@angular/material/select";
+import { MaterialComponent } from './material/material.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,10 @@ import {MatSelectModule} from "@angular/material/select";
     LoginComponent,
     CalendarComponent,
     JoinCourseComponent,
-    AddExamComponent
+    AddExamComponent,
+    MaterialComponent,
+    TasksComponent,
+    AnnouncementsComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +93,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatOptionModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

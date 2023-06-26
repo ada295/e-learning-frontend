@@ -14,6 +14,9 @@ import {LoggedUserGuard} from "./logged-user.guard";
 import {RoleAccessGuard} from "./role-access-guard.service";
 import {AddExam} from "./api-models";
 import {AddExamComponent} from "./add-exam/add-exam/add-exam.component";
+import {MaterialComponent} from "./material/material.component";
+import {TasksComponent} from "./tasks/tasks.component";
+import {AnnouncementsComponent} from "./announcements/announcements.component";
 
 const routes: Routes = [
   {
@@ -77,7 +80,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'test/:id',
+    path: 'lekcja/:id/test',
     component: ExamComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
@@ -90,6 +93,30 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'lekcja/:id/materiały',
+    component: MaterialComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'lekcja/:id/zadania',
+    component:TasksComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'lekcja/:id/ogłoszenia',
+    component: AnnouncementsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
     }
   }
 ];

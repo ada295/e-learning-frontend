@@ -2,3 +2,7 @@
   width: 300px;
   margin: auto;
 }
+
+::ng-deep.event-on-calendar {
+  background-color: red !important;
+}
