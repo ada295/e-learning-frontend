@@ -4,5 +4,9 @@
 }
 
 ::ng-deep.event-on-calendar {
-  background-color: red !important;
+  /*background-color: red !important;*/
+
+  border-radius: 50%;
+  border: 1px solid rebeccapurple !important;
+  box-sizing: border-box;
 }

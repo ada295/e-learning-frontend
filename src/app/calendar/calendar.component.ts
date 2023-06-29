@@ -1,13 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DateRange} from "@angular/material/datepicker";
-import {Lesson} from "../api-models";
+import {Course, Lesson} from "../api-models";
 import {TasksComponent} from "../tasks/tasks.component";
+import {HttpClient} from "@angular/common/http";
+import {SessionService} from "../session.service";
 
-@Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
-})
 
 export class CalendarEvent {
   day: number | undefined
@@ -20,64 +17,39 @@ export class CalendarEvent {
   lesson: Lesson | undefined
 }
 
-export class CalendarComponent {
+@Component({
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.css']
+})
+export class CalendarComponent implements OnInit {
 
+  events: CalendarEvent[] = [];
 
+  constructor(private httpClient: HttpClient, public sessionService: SessionService) {
+  }
 
-  events = [
-    {
-      day: 23,
-      month: 7,
-      year: 2023,
-      description: "",
-      type: "START_EXAM",
-      hour: 10,
-      minutes: 30,
-      lesson: {
-        course: undefined,
-        id: 0,
-        name: ""
-      }
-    },
-    {
-      day: 23,
-      month: 7,
-      year: 2023,
-      description: "",
-      type: "DEADLINE_TASK",
-      hour: 17,
-      minutes: 0,
-      lesson: Lesson
-    },
-    {
-      day: 22,
-      month: 5,
-      year: 2023,
-      description: "",
-      type: "DEADLINE_TASK",
-      hour: 19,
-      minutes: 0,
-      lesson: Lesson
-    },
-    {
-      day: 26,
-      month: 2,
-      year: 2024,
-      description: "Wycieczka do zoo",
-      type: "OTHER",
-      hour: 9,
-      minutes: 5
-    }
-  ];
+  ngOnInit(): void{
+    this.httpClient.get<CalendarEvent[]>("http://localhost:8080/calendar-events")
+      .subscribe(events => {
+        this.events = events;
+      })
+
+  }
+
   selected: Date | DateRange<Date> | null = new Date();
 
   getDateClass = (date: Date) => {
     for (let event of this.events) {
-      if (event.day === date.getDate() && (event.month - 1) === date.getMonth()
+      if (event.day === date.getDate() && (event.month) === (date.getMonth() + 1)
         && event.year === date.getFullYear()) {
         return 'event-on-calendar';
       }
     }
     return '';
+  }
+
+  showEvents() {
+
   }
 }

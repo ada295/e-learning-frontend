@@ -64,3 +64,15 @@ export class AddQuestionAnswer {
   content: string | undefined;
   correct: boolean = false;
 }
+
+export class CalendarEvent {
+  id: number = 0;
+  day: number = 0;
+  month: number = 0;
+  year: number = 0;
+  description: string | undefined;
+  type: string | undefined;
+  hour: number = 0;
+  minutes: number = 0;
+  lesson: Lesson | undefined;
+}
