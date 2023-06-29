@@ -1,6 +1,8 @@
 .demo-inline-calendar-card {
-  width: 300px;
-  margin: auto;
+  width: 450px;
+  margin-top: 50px;
+  margin-left: 200px;
+  display: inline-block;
 }
 
 ::ng-deep.event-on-calendar {
@@ -10,3 +12,14 @@
   border: 1px solid rebeccapurple !important;
   box-sizing: border-box;
 }
+
+.event-list {
+  display: inline-block;
+  margin-left: 100px;
+  font-size: x-large;
+}
+
+/*.event-elements {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/

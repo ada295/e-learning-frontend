@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DateRange} from "@angular/material/datepicker";
-import {Course, Lesson} from "../api-models";
-import {TasksComponent} from "../tasks/tasks.component";
+import {Lesson} from "../api-models";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
 
@@ -25,19 +24,18 @@ export class CalendarEvent {
 export class CalendarComponent implements OnInit {
 
   events: CalendarEvent[] = [];
+  selected: Date | DateRange<Date> | null = new Date();
 
   constructor(private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.httpClient.get<CalendarEvent[]>("http://localhost:8080/calendar-events")
       .subscribe(events => {
         this.events = events;
       })
 
   }
-
-  selected: Date | DateRange<Date> | null = new Date();
 
   getDateClass = (date: Date) => {
     for (let event of this.events) {
@@ -50,6 +48,17 @@ export class CalendarComponent implements OnInit {
   }
 
   showEvents() {
+    console.log(this.selected)
+    let eventsList = [];
+    for (let event of this.events) {
+      if (this.selected != null && this.selected instanceof Date) {
+        if (event.day === this.selected.getDate() && (event.month) === (this.selected.getMonth() + 1)
+          && (event.year) === this.selected.getFullYear()) {
+            eventsList.push(event);
+        }
+      }
+    }
 
+    return eventsList;
   }
 }

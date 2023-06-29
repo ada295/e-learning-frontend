@@ -1,4 +1,9 @@
 <mat-card class="demo-inline-calendar-card">
   <mat-calendar [dateClass]="getDateClass" [(selected)]="selected"></mat-calendar>
 </mat-card>
-<p>Selected date: {{showEvents()}}</p>
+<span class="event-list">
+<ul *ngFor="let event of showEvents()" class="event-elements">
+  <li> {{event.hour}}.{{event.minutes}} - {{event.description}}</li>
+</ul>
+</span>
+
