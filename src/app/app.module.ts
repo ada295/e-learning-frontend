@@ -43,6 +43,7 @@ import { MaterialComponent } from './material/material.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
     AddExamComponent,
     MaterialComponent,
     TasksComponent,
-    AnnouncementsComponent
+    AnnouncementsComponent,
+    AddEventComponent
   ],
   imports: [
     BrowserModule,

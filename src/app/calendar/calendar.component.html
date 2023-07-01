@@ -1,6 +1,7 @@
 <div class="row g-0">
   <div class="col-md-1">
-    <button mat-button class="create-button add-event-button" (click)="addEvent()">Dodaj wydarzenie</button>
+    <button mat-button class="create-button add-event-button button-nav"
+            routerLink="/dodaj-wydarzenie/{{selectedDateAsString()}}" (click)="addEvent()">Dodaj wydarzenie</button>
   </div>
   <div class="col-md-5">
     <mat-card class="demo-inline-calendar-card">

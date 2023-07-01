@@ -48,7 +48,6 @@ export class CalendarComponent implements OnInit {
   }
 
   showEvents() {
-    console.log(this.selected)
     let eventsList = [];
     for (let event of this.events) {
       if (this.selected != null && this.selected instanceof Date) {
@@ -69,5 +68,12 @@ export class CalendarComponent implements OnInit {
 
   createEvent() {
 
+  }
+
+  selectedDateAsString() {
+    if (this.selected != null && this.selected instanceof Date) {
+      return this.selected.getFullYear() + "-" + (this.selected.getMonth()+1) + "-" + this.selected.getDate();
+    }
+    return "";
   }
 }
