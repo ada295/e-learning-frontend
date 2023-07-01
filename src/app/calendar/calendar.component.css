@@ -1,25 +1,114 @@
 .demo-inline-calendar-card {
   width: 450px;
-  margin-top: 50px;
-  margin-left: 200px;
-  display: inline-block;
+  margin-left: 50px;
+}
+
+.add-event-button {
+  margin-left: 50px !important;
+  height: 50px;
+  margin-top: 440px !important;
+}
+
+div.row {
+  margin-top: 45px;
 }
 
 ::ng-deep.event-on-calendar {
   /*background-color: red !important;*/
 
   border-radius: 50%;
-  border: 1px solid rebeccapurple !important;
+  border: 1px solid #481979 !important;
   box-sizing: border-box;
 }
 
 .event-list {
-  display: inline-block;
-  margin-left: 100px;
-  font-size: x-large;
+  font-size: 20px;
+  color: white;
+  margin-left: 50px;
 }
 
-/*.event-elements {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
+.event-elements {
+  width: 500px;
+  background-color: rgba(103, 58, 183, 1);
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-radius: 10px;
+  line-height: 15px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.event-container {
+  align-self: center;
+  margin: 0 20%;
+}
+
+input {
+  width: 40%;
+  display: block;
+  margin: auto 0;
+  height: 30px;
+  border-radius: 5px;
+  border-color: rgba(91, 91, 96, 0.85);
+  border-top: 2px solid rgba(91, 91, 96, 0.85);
+  border-left: 2px solid rgba(91, 91, 96, 0.85);
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid rgba(103, 58, 183, 1);
+}
+
+textarea {
+  width: 90%;
+  display: block;
+  margin: 40px auto auto;
+  min-height: 80px;
+  border-radius: 5px;
+  border-color: rgba(91, 91, 96, 0.85);
+  border-top: 2px solid rgba(91, 91, 96, 0.85);
+  border-left: 2px solid rgba(91, 91, 96, 0.85);
+}
+
+textarea:focus {
+  outline: none !important;
+  border: 2px solid rgba(103, 58, 183, 1);
+}
+
+
+.create-button {
+  /*background-color: #ffd740;*/
+  background-color: #e3bf32;
+  display: block;
+  margin: 0 auto;
+  color: white;
+}
+
+.text {
+  margin-left: 5%;
+  margin-bottom: 0;
+  color: rgba(91, 91, 96, 0.85);
+}
+
+h3 {
+  float: left;
+  width: 24%;
+}
+

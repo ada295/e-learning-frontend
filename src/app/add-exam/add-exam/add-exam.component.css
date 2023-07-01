@@ -43,9 +43,7 @@ input {
 
 input:focus {
   outline: none !important;
-  border: 2px solid #e3bf32;
-  box-shadow: 0 0 10px #e3bf32;
-
+  border: 2px solid rgba(103, 58, 183, 1);
 }
 
 textarea {
@@ -61,8 +59,7 @@ textarea {
 
 textarea:focus {
   outline: none !important;
-  border: 2px solid #e3bf32;
-  box-shadow: 0 0 10px #e3bf32;
+  border: 2px solid rgba(103, 58, 183, 1);
 }
 
 
@@ -78,11 +75,18 @@ textarea:focus {
 {
   margin-top: 30px;
   margin-bottom: 20px;
+  background-color: rgba(103, 58, 183, 1) !important;
 }
 
 .create-button:hover {
-  box-shadow: 0 0 10px #e3bf32;
+  box-shadow: 0 0 5px #e3bf32;
   /*box-shadow: 0 0 10px #ffd740;*/
+}
+
+.create-question-button:hover {
+  /*box-shadow: 0 0 5px rgba(103, 58, 183, 1) !important;*/
+  background-color: #5e239d !important;
+  box-shadow: 0 0 0 !important;
 }
 
 .exam-name

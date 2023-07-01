@@ -61,4 +61,13 @@ export class CalendarComponent implements OnInit {
 
     return eventsList;
   }
+
+  addEvent() {
+    console.log("Dodano")
+  }
+
+
+  createEvent() {
+
+  }
 }

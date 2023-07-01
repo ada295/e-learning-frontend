@@ -118,7 +118,7 @@
 
       <hr>
     </div>
-    <button *ngIf="examBasicInformationSet" [disabled]="!isValid()" (click)="saveExam()">Zapisz Test</button>
+    <button mat-button *ngIf="examBasicInformationSet" [disabled]="!isValid()" class="create-button" (click)="saveExam()">Zapisz Test</button>
   </div>
 </div>
 

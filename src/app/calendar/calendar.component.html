@@ -1,9 +1,40 @@
-<mat-card class="demo-inline-calendar-card">
-  <mat-calendar [dateClass]="getDateClass" [(selected)]="selected"></mat-calendar>
-</mat-card>
-<span class="event-list">
-<ul *ngFor="let event of showEvents()" class="event-elements">
-  <li> {{event.hour}}.{{event.minutes}} - {{event.description}}</li>
-</ul>
-</span>
+<div class="row g-0">
+  <div class="col-md-1">
+    <button mat-button class="create-button add-event-button" (click)="addEvent()">Dodaj wydarzenie</button>
+  </div>
+  <div class="col-md-5">
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [dateClass]="getDateClass" [(selected)]="selected"></mat-calendar>
+    </mat-card>
+  </div>
+  <div class="col-md-6">
+    <div class="event-list" *ngFor="let event of showEvents()">
+      <div class="event-elements">
+        {{event.hour}}.{{event.minutes}} - {{event.description}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <form class="event-container">
+    <br>
+    <h3 class="text">Nazwa wydarzenia: </h3>
+    <input type="textarea" formControlName="name" required>
+    <br>
+    <h3 class="text">Godzina: </h3>
+    <mat-form-field formControlName="hour" appearance="outline">
+      <mat-label>Godzina</mat-label>
+      <input type="time" matInput name="week" min="09:00" max="18:00"/>
+    </mat-form-field>
+    <br>
+    <br><br>
+    <div>
+      <button mat-button class="create-button" (click)="createEvent()">Stwórz wydarzenie</button>
+    </div>
+  </form>
+
+
+
 
