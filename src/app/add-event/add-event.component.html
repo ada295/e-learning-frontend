@@ -5,15 +5,16 @@
     </mat-card>
   </div>
   <div class="col-md-6">
-    <form class="event-container">
+    <h1>Nowe wydarzenie</h1>
+    <form class="event-container" [formGroup]="eventGroup">
       <br>
       <h3 class="text">Nazwa wydarzenia: </h3>
-      <input type="textarea" formControlName="name" required>
+      <textarea formControlName="name" required></textarea>
       <br>
       <h3 class="text">Godzina: </h3>
-      <mat-form-field formControlName="hour" appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>Godzina</mat-label>
-        <input type="time" matInput name="week" min="09:00" max="18:00"/>
+        <input type="time" name="week" min="09:00" max="18:00" matInput formControlName="time" required/>
       </mat-form-field>
       <br>
       <br><br>
@@ -23,6 +24,3 @@
     </form>
   </div>
 </div>
-
-
-

@@ -93,7 +93,7 @@ import { AddEventComponent } from './add-event/add-event.component';
     MatDatepickerModule,
     MatTooltipModule,
     MatOptionModule,
-    MatSelectModule,
+    MatSelectModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
   bootstrap: [AppComponent]
