@@ -3,7 +3,7 @@ mat-table{
   margin-left: 10%;
   margin-right: 10%;
   background-color: rgba(255, 255, 255, 0.62);
-  border: 1px solid black;
+  border: 1px solid rgba(91, 91, 96, 0.85);
   border-radius: 10px;
 }
 
@@ -11,17 +11,19 @@ mat-header-cell{
   color: rgba(103, 58, 183, 1);
   font-weight: bold;
   font-size: large;
+  border-color: rgba(91, 91, 96, 0.85);
 }
 
 mat-row{
   font-weight: 500;
+  border-color: rgba(91, 91, 96, 0.85);
   /*transition: font-size .1s ease-in-out;*/
 }
 
 mat-row:hover{
   background-color: rgb(103, 58, 183, 1);
   color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(91, 91, 96, 0.85);
   font-size: larger;
   cursor: pointer;
 }

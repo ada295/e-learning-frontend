@@ -4,7 +4,7 @@
       <mat-calendar [(selected)]="selected"></mat-calendar>
     </mat-card>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 new-event" >
     <h1>Nowe wydarzenie</h1>
     <form class="event-container" [formGroup]="eventGroup">
       <br>
@@ -14,7 +14,7 @@
       <h3 class="text">Godzina: </h3>
       <mat-form-field appearance="outline">
         <mat-label>Godzina</mat-label>
-        <input type="time" name="week" min="09:00" max="18:00" matInput formControlName="time" required/>
+        <input type="time" name="week" min="00:00" max="23:59" matInput formControlName="time" required/>
       </mat-form-field>
       <br>
       <br><br>

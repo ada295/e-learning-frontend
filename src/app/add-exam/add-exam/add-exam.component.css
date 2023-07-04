@@ -52,9 +52,7 @@ textarea {
   margin: 40px auto auto;
   min-height: 80px;
   border-radius: 5px;
-  border-color: rgba(91, 91, 96, 0.85);
-  border-top: 2px solid rgba(91, 91, 96, 0.85);
-  border-left: 2px solid rgba(91, 91, 96, 0.85);
+  border: 2px solid rgba(91, 91, 96, 0.85);
 }
 
 textarea:focus {
@@ -79,7 +77,7 @@ textarea:focus {
 }
 
 .create-button:hover {
-  box-shadow: 0 0 5px #e3bf32;
+  /*box-shadow: 0 0 5px #e3bf32;*/
   /*box-shadow: 0 0 10px #ffd740;*/
 }
 
