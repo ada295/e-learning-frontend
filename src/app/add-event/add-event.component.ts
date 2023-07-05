@@ -28,6 +28,19 @@ export class AddEventComponent implements OnInit{
 
   ngOnInit(): void {
   }
+
+  selectedDateAsString() {
+    if (this.selected != null && this.selected instanceof Date) {
+      if (this.selected.getDate() < 10 && this.selected.getMonth()+1 < 10) {
+        return "0" + this.selected.getDate() + "-" + "0" +(this.selected.getMonth()+1) + "-" + this.selected.getFullYear();
+      } else if (this.selected.getDate() < 10) {
+        return "0" + this.selected.getDate() + "-" +(this.selected.getMonth()+1) + "-" + this.selected.getFullYear();
+      } else if (this.selected.getMonth()+1 < 10) {
+        return this.selected.getDate() + "-" + "0" +(this.selected.getMonth()+1) + "-" + this.selected.getFullYear();
+      } else return this.selected.getDate() + "-" + (this.selected.getMonth()+1) + "-" + this.selected.getFullYear();
+    }
+    return "";
+  }
 }
 
 
