@@ -4,7 +4,7 @@
             routerLink="/dodaj-wydarzenie/{{selectedDateAsString()}}" (click)="addEvent()">Dodaj wydarzenie</button>
   </div>
   <div class="col-md-5">
-    <mat-card class="demo-inline-calendar-card">
+    <mat-card class="demo-inline-calendar-card" *ngIf="eventsLoaded">
       <mat-calendar [dateClass]="getDateClass" [(selected)]="selected"></mat-calendar>
     </mat-card>
   </div>

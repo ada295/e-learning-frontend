@@ -24,6 +24,7 @@ export class CalendarEvent {
 export class CalendarComponent implements OnInit {
 
   events: CalendarEvent[] = [];
+  eventsLoaded = false;
   selected: Date | DateRange<Date> | null = new Date();
 
   constructor(private httpClient: HttpClient, public sessionService: SessionService) {
@@ -33,6 +34,7 @@ export class CalendarComponent implements OnInit {
     this.httpClient.get<CalendarEvent[]>("http://localhost:8080/calendar-events")
       .subscribe(events => {
         this.events = events;
+        this.eventsLoaded = true;
       })
 
   }
