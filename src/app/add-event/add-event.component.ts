@@ -27,6 +27,18 @@ export class AddEventComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    let date = this.route.snapshot.paramMap.get('date');
+    console.log(date);
+    //2023-5-23
+    //2023-10-20
+    let dateParts = date?.split("-");
+    if (this.selected != null && this.selected instanceof Date) {
+      if (dateParts != undefined) {
+        this.selected.setFullYear(parseInt(dateParts[0]));
+        this.selected.setMonth(parseInt(dateParts[1]) - 1);
+        this.selected.setDate(parseInt(dateParts[2]))
+      }
+    }
   }
 
   selectedDateAsString() {
