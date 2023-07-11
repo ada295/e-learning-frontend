@@ -1,13 +1,55 @@
 .lesson-container {
-  width: 80%;
+  width: 40%;
   margin: 20px 10%;
 }
 
-.right-button:hover {
-  background-color: darkorange;
+.course-name-container {
+  width: 80%;
+  margin: 20px 10%;
+  background-color: rgb(103, 58, 183);
+  color: white;
 }
 
-button:hover{
-  text-underline: rgba(103, 58, 183, 0.5);
+.mat-expansion-panel-header-title {
+  color: white;
 }
 
+.name-lesson {
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(103, 58, 183);
+  color: white !important;
+}
+
+.mat-mdc-button.mat-unthemed {
+  --mdc-text-button-label-text-color: white;
+}
+
+.options-lesson {
+  border-radius: 0 0 5px 5px;
+  background-color: rgb(103, 58, 183);
+  color: white !important;
+}
+
+.course-name {
+  font-size: xx-large;
+  color: white;
+  height: 500px;
+}
+
+
+
+/*.mat-expansion-panel-header-description, .mat-expansion-indicator::after {*/
+/*   color: rgb(255, 255, 255) !important;*/
+/*}*/
+
+/deep/ .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+  color: white;
+}
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.mat-icon {
+  color: white !important;
+}

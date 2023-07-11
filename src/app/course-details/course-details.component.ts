@@ -9,7 +9,11 @@ import {Course, CourseDetails, Lesson} from "../api-models";
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.css']
 })
+
+
 export class CourseDetailsComponent implements OnInit {
+
+  panelOpenState = false;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
   }
