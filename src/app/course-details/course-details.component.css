@@ -36,12 +36,6 @@
   height: 500px;
 }
 
-
-
-/*.mat-expansion-panel-header-description, .mat-expansion-indicator::after {*/
-/*   color: rgb(255, 255, 255) !important;*/
-/*}*/
-
 /deep/ .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
   color: white;
 }
