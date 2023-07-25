@@ -1,7 +1,19 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
 .bottom-nav {
+  /*position: fixed;*/
+  /*left: 0;*/
+  /*top: 64px;*/
+  /*z-index: 100;*/
   box-sizing: border-box;
   margin-bottom: 25px;
   width: 100%;

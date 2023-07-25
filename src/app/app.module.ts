@@ -44,7 +44,6 @@ import { TasksComponent } from './tasks/tasks.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { AddEventComponent } from './add-event/add-event.component';
-import { GradebookComponent } from './gradebook/gradebook.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
@@ -69,8 +68,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MaterialComponent,
     TasksComponent,
     AnnouncementsComponent,
-    AddEventComponent,
-    GradebookComponent
+    AddEventComponent
   ],
   imports: [
     BrowserModule,

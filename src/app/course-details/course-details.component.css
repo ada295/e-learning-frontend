@@ -1,23 +1,34 @@
 .lesson-container {
-  width: 40%;
+  /*width: 40%;*/
+  /*margin: 20px 10%;*/
+}
+
+.lessons-container {
+  width: 80%;
   margin: 20px 10%;
 }
 
 .course-name-container {
-  width: 80%;
-  margin: 20px 10%;
+  width: 74.5%;
+  /*margin: 20px 13%;*/
+  margin: auto;
   background-color: rgb(103, 58, 183);
   color: white;
 }
 
-.mat-expansion-panel-header-title {
-  color: white;
+mat-expansion-panel-header {
+  background-color: rgb(103, 58, 183) !important;
 }
 
 .name-lesson {
   border-radius: 5px 5px 0 0;
   background-color: rgb(103, 58, 183);
   color: white !important;
+  text-align: center;
+  font-size:large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 15px;
 }
 
 
@@ -50,8 +61,30 @@
   color: white !important;
 }
 
+/deep/ .material-icons {
+  font-size: 40px !important;
+  height: 50px;
+  width: 50px;
+}
+
+.icon-container {
+  height: 80px;
+  width: 150px;
+  padding-top: 10px;
+}
+
+.option-name {
+  padding-top: 50px;
+  font-size: large;
+}
+
 .button-option {
   width: 150px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+mat-grid-tile {
 }
 
 
