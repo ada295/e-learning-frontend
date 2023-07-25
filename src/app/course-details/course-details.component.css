@@ -1,16 +1,16 @@
-.lesson-container {
-  /*width: 40%;*/
-  /*margin: 20px 10%;*/
-}
-
 .lessons-container {
   width: 80%;
   margin: 20px 10%;
 }
 
-.course-name-container {
+.course-name-and-announcement {
   width: 74.5%;
-  /*margin: 20px 13%;*/
+  height: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+.course-name-container {
   margin: auto;
   background-color: rgb(103, 58, 183);
   color: white;
@@ -78,13 +78,15 @@ mat-expansion-panel-header {
   font-size: large;
 }
 
-.button-option {
-  width: 150px;
-  height: 100px;
-  margin-bottom: 10px;
+.button-announcement {
+  padding-top: 20px !important;
 }
 
-mat-grid-tile {
+.button-option {
+  width: 150px;
+  height: 112.5px;
+  margin-bottom: 10px;
+  background-color: rgb(103, 58, 183);;
 }
 
 

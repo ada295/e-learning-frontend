@@ -52,7 +52,7 @@ textarea:focus {
   background-color: #e3bf32;
   display: block;
   /*margin-left: 29%;*/
-  margin: auto;
+  margin: auto auto 20px;
   color: white;
   text-align: center;
 }
