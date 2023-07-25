@@ -45,6 +45,7 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { AddEventComponent } from './add-event/add-event.component';
 import { GradebookComponent } from './gradebook/gradebook.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { GradebookComponent } from './gradebook/gradebook.component';
     MatDatepickerModule,
     MatTooltipModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
   bootstrap: [AppComponent]

@@ -2,12 +2,14 @@ import {Component, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Course, CourseDetails, Lesson} from "../api-models";
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
-  styleUrls: ['./course-details.component.css']
+  styleUrls: ['./course-details.component.css'],
 })
 
 

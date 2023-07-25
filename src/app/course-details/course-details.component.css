@@ -20,6 +20,7 @@
   color: white !important;
 }
 
+
 .mat-mdc-button.mat-unthemed {
   --mdc-text-button-label-text-color: white;
 }
@@ -36,6 +37,7 @@
   height: 500px;
 }
 
+
 /deep/ .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
   color: white;
 }
@@ -47,3 +49,9 @@
 .mat-icon {
   color: white !important;
 }
+
+.button-option {
+  width: 150px;
+}
+
+
