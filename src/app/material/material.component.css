@@ -32,3 +32,37 @@
   text-align: center;
   float: right;
 }
+
+.material-icons {
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.option-name {
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+
+.material-container {
+  background-color: rgb(103, 58, 183);
+  color: white;
+}
+
+.mat-grid-tile {
+  background-color: rgb(103, 58, 183);
+  border-radius: 10px;
+  /*width: 40% !important;*/
+
+}
+
+.materials-container {
+  /*width: 70%;*/
+  /*margin: auto;*/
+}
+
+.ab {
+  /*padding-top: 24px !important;*/
+}
+
+
