@@ -1,10 +1,28 @@
-<div>
-  <div class="header-container">
-    <div class="course-name">FIZYKA</div>
-    <div class="lesson-number">Lekcja 1</div>
+<div class="header-container row">
+  <div class="course-name col-md-4">FIZYKA</div>
+  <div class="lesson-number col-md-3">Lekcja 79</div>
+  <div class="buttons-container col-md-5">
+    <button class="button-option" mat-button routerLink="/lekcaja/1/test/">
+      <div class="option-name">Test</div>
+      <div class="icon-container">
+        <mat-icon>school</mat-icon>
+      </div>
+    </button>
+    <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+      <div class="option-name">Materiały</div>
+      <div class="icon-container">
+        <mat-icon>perm_media</mat-icon>
+      </div>
+    </button>
+    <button class="button-option" mat-button routerLink="/zadania">
+      <div class="option-name">Zadania</div>
+      <div class="icon-container">
+        <mat-icon>library_books</mat-icon>
+      </div>
+    </button>
+
+
   </div>
-  <div class="option">Zadania</div>
-  <div class="option">Materiały</div>
 </div>
 
 

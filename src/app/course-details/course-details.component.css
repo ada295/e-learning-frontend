@@ -86,7 +86,22 @@ mat-expansion-panel-header {
   width: 150px;
   height: 112.5px;
   margin-bottom: 10px;
-  background-color: rgb(103, 58, 183);;
+  background-color: rgb(103, 58, 183);
+}
+
+.description-lesson {
+  display: none;
+}
+
+.name-lesson:hover + .description-lesson {
+  display: block;
+  background-color: rgb(103, 58, 183);
+  color: white;
+  text-align: center;
+  font-size:large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 15px;
 }
 
 

@@ -1,38 +1,34 @@
 .header-container {
-  margin-top: 25px;
-  margin-left: 100px;
-  height: 100px;
-  width: 60%;
+  margin-top: 0;
+  margin-left: 50px;
+  margin-right: 75px;
+  height: 150px;
   text-align: center;
-  float: left;
+  justify-content: center;
+  align-items: center;
 }
 
-.course-name {
+.course-name{
   font-size: 45px;
   font-weight: bold;
-  color: #5e239d;
-  float: left;
-  width: 50%;
-  display:table-cell;
-  vertical-align:middle;
+  color: rgb(103, 58, 183);
 }
 
 .lesson-number {
   font-size: 45px;
   font-weight: bold;
-  color: #5e239d;
-  float: left;
-  width: 30%;
+  color: rgb(103, 58, 183);
+  padding-left: 50px;
 }
 
-.option {
-  background-color: #5e239d;
+
+.button-option {
+  background-color: rgb(103, 58, 183);
   color: white;
-  margin-right: 20px;
+  width: 120px;
   height: 100px;
-  width: 100px;
-  float: left;
+  margin-bottom: 10px;
+  margin-right: 20px;
   text-align: center;
-  padding-top: 20px;
-  font-weight: normal;
+  float: right;
 }
