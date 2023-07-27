@@ -1,3 +1,5 @@
+<a target="_blank" href="https://icons8.com/icon/2290/txt">TXT</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 <div class="header-container row">
   <div class="course-name col-md-4">FIZYKA</div>
   <div class="lesson-number col-md-3">Lekcja 79</div>
@@ -24,27 +26,40 @@
 </div>
 
 <div class="materials-container">
-  <mat-grid-list cols="2" rowHeight="2:1" [gutterSize]="'65px'">
+  <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'65px'">
 
     <mat-grid-tile class="ab">
       <div class="material-container">
         <div class="material-name">Materiał 1</div>
+        <!--        <button mat-button>-->
+
         <div class="file-name">nazwaPliku.txt</div>
-        <div class="file-upload">LOAD</div>
+        <!--        </button>-->
+
+        <!--        <div class="file-upload">LOAD</div>-->
       </div>
     </mat-grid-tile>
     <mat-grid-tile class="ab">
       <div class="material-container">
         <div class="material-name">Materiał 2</div>
-        <div class="file-name">nazwaPliku.txt</div>
-        <div class="file-upload">LOAD</div>
+
+        <button class="button-download" mat-button routerLink="/zadania">
+
+          <span class="file-name">nazwaPliku.txt</span>
+          <mat-icon class="download-icon">cloud_download</mat-icon>
+        </button>
+
       </div>
     </mat-grid-tile>
     <mat-grid-tile class="ab">
       <div class="material-container">
-        <div class="material-name">Materiał 3</div>
-        <div class="file-name">nazwaPliku.txt</div>
-        <div class="file-upload">LOAD</div>
+        <mat-grid-tile-header class="material-name" style="text-align: center !important;">Materiał 3</mat-grid-tile-header>
+        <div><span><mat-icon class="download-icon">cloud_download</mat-icon></span></div>
+        <mat-grid-tile-footer class="file-name">
+
+          <button mat-button class="button-download">nazwaPliku.txt</button>
+        </mat-grid-tile-footer>
+<!--        <div class="file-upload">LOAD</div>-->
       </div>
     </mat-grid-tile>
     <mat-grid-tile class="ab">
