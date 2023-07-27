@@ -8,7 +8,7 @@
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+    <button class="button-option button-option-material" mat-button routerLink="/lekcja/1/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="materials-container">
-  <mat-grid-list cols="2" rowHeight="5:1">
+  <mat-grid-list cols="2" rowHeight="2:1"  [gutterSize]="'65px'">
 
     <mat-grid-tile class="ab">
       <div class="material-container">Materiał 1

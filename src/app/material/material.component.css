@@ -33,6 +33,15 @@
   float: right;
 }
 
+.button-option:hover {
+  background-color: rgb(72, 36, 134);
+
+}
+
+.button-option-material {
+  background-color: rgb(72, 36, 134) !important;
+}
+
 .material-icons {
   font-size: 30px;
   height: 50px;
@@ -57,8 +66,8 @@
 }
 
 .materials-container {
-  /*width: 70%;*/
-  /*margin: auto;*/
+  width: 75%;
+  margin: auto;
 }
 
 .ab {
