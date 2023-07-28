@@ -24,6 +24,15 @@ export class CourseDetails {
   // students: null,
 }
 
+export class Material {
+  id: number = 0;
+  name: string | undefined;
+  description: string | undefined;
+  fileType: string | undefined;
+  fileName: string | undefined;
+  lesson: Lesson | undefined;
+}
+
 export class ExamDetailsExamResponse {
   id: number = 0;
   name: string | undefined;

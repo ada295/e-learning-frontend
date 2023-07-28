@@ -29,104 +29,106 @@
   <div class="lessons-container">
     <mat-grid-list cols="3" rowHeight="2:1">
       <div>
-        <!--      <div *ngFor="let material of courseDetails?.lessons.materials">-->
-        <mat-grid-tile>
+        <div *ngFor="let material of materials">
+          <mat-grid-tile>
 
-          <div>
+            <div>
 
-<!--            <div class="material-name">{{material.name}}</div>-->
-            <div class="material-name">Materiał 1</div>
-            <div class="icon-container">
-              <button class="button-download" mat-button routerLink="/zadania">
-              <div class="option-name">nazwaPliku.txt</div>
+              <!--            <div class="material-name">{{material.name}}</div>-->
+              <div class="material-name">{{material.name}}</div>
               <div class="icon-container">
-                <mat-icon >cloud_download</mat-icon>
+                <button class="button-download" mat-button routerLink="/zadania">
+                  <div class="option-name">{{material.fileName}}</div>
+                  <div class="icon-container">
+                    <mat-icon>cloud_download</mat-icon>
+                  </div>
+                </button>
               </div>
-            </button>
+
+              <!--            <mat-card class="options-lesson">-->
+              <!--              <mat-card-actions>-->
+              <!--                <button class="button-option" mat-button routerLink="/zadania">-->
+              <!--                  <div class="option-name">Zadania</div>-->
+              <!--                  <div class="icon-container">-->
+              <!--                    <mat-icon>library_books</mat-icon>-->
+              <!--                  </div>-->
+              <!--                </button>-->
+              <!--                <button class="button-option" mat-button routerLink="/lekcja/1/materiały">-->
+              <!--                  <div class="option-name">Materiały</div>-->
+              <!--                  <div class="icon-container">-->
+              <!--                    <mat-icon>perm_media</mat-icon>-->
+              <!--                  </div>-->
+              <!--                </button>-->
+              <!--                <button class="button-option" mat-button routerLink="/lekcja/1/test/">-->
+              <!--                  <div class="option-name">Test</div>-->
+              <!--                  <div class="icon-container">-->
+              <!--                    <mat-icon>school</mat-icon>-->
+              <!--                  </div>-->
+              <!--                </button>-->
+              <!--                &lt;!&ndash;              <button class="button-option" mat-button>&ndash;&gt;-->
+              <!--                &lt;!&ndash;                <div class="option-name">Ogłoszenia</div>&ndash;&gt;-->
+              <!--                &lt;!&ndash;                <div class="icon-container"><mat-icon>people</mat-icon></div>&ndash;&gt;-->
+              <!--                &lt;!&ndash;              </button>&ndash;&gt;-->
+              <!--              </mat-card-actions>-->
+              <!--            </mat-card>-->
             </div>
 
-<!--            <mat-card class="options-lesson">-->
-<!--              <mat-card-actions>-->
-<!--                <button class="button-option" mat-button routerLink="/zadania">-->
-<!--                  <div class="option-name">Zadania</div>-->
-<!--                  <div class="icon-container">-->
-<!--                    <mat-icon>library_books</mat-icon>-->
-<!--                  </div>-->
-<!--                </button>-->
-<!--                <button class="button-option" mat-button routerLink="/lekcja/1/materiały">-->
-<!--                  <div class="option-name">Materiały</div>-->
-<!--                  <div class="icon-container">-->
-<!--                    <mat-icon>perm_media</mat-icon>-->
-<!--                  </div>-->
-<!--                </button>-->
-<!--                <button class="button-option" mat-button routerLink="/lekcja/1/test/">-->
-<!--                  <div class="option-name">Test</div>-->
-<!--                  <div class="icon-container">-->
-<!--                    <mat-icon>school</mat-icon>-->
-<!--                  </div>-->
-<!--                </button>-->
-<!--                &lt;!&ndash;              <button class="button-option" mat-button>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <div class="option-name">Ogłoszenia</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <div class="icon-container"><mat-icon>people</mat-icon></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;              </button>&ndash;&gt;-->
-<!--              </mat-card-actions>-->
-<!--            </mat-card>-->
-          </div>
 
+            <!--          <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'65px'">-->
 
-<!--          <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'65px'">-->
+            <!--            <mat-grid-tile class="ab">-->
+            <!--              <div class="material-container">-->
+            <!--                <div class="material-name">Materiał 1</div>-->
+            <!--                &lt;!&ndash;        <button mat-button>&ndash;&gt;-->
 
-<!--            <mat-grid-tile class="ab">-->
-<!--              <div class="material-container">-->
-<!--                <div class="material-name">Materiał 1</div>-->
-<!--                &lt;!&ndash;        <button mat-button>&ndash;&gt;-->
+            <!--                <div class="file-name">nazwaPliku.txt</div>-->
+            <!--                &lt;!&ndash;        </button>&ndash;&gt;-->
 
-<!--                <div class="file-name">nazwaPliku.txt</div>-->
-<!--                &lt;!&ndash;        </button>&ndash;&gt;-->
+            <!--                &lt;!&ndash;        <div class="file-upload">LOAD</div>&ndash;&gt;-->
+            <!--              </div>-->
+            <!--            </mat-grid-tile>-->
+            <!--            <mat-grid-tile class="ab">-->
+            <!--              <div class="material-container">-->
+            <!--                <div class="material-name">Materiał 2</div>-->
 
-<!--                &lt;!&ndash;        <div class="file-upload">LOAD</div>&ndash;&gt;-->
-<!--              </div>-->
-<!--            </mat-grid-tile>-->
-<!--            <mat-grid-tile class="ab">-->
-<!--              <div class="material-container">-->
-<!--                <div class="material-name">Materiał 2</div>-->
+            <!--                <button class="button-download" mat-button routerLink="/zadania">-->
 
-<!--                <button class="button-download" mat-button routerLink="/zadania">-->
+            <!--                  <span class="file-name">nazwaPliku.txt</span>-->
+            <!--                  <mat-icon class="download-icon">cloud_download</mat-icon>-->
+            <!--                </button>-->
 
-<!--                  <span class="file-name">nazwaPliku.txt</span>-->
-<!--                  <mat-icon class="download-icon">cloud_download</mat-icon>-->
-<!--                </button>-->
+            <!--              </div>-->
+            <!--            </mat-grid-tile>-->
+            <!--            <mat-grid-tile class="ab">-->
+            <!--              <div class="material-container">-->
+            <!--                <mat-grid-tile-header class="material-name" style="text-align: center !important;">Materiał 3-->
+            <!--                </mat-grid-tile-header>-->
+            <!--                <div><span><mat-icon class="download-icon">cloud_download</mat-icon></span></div>-->
+            <!--                <mat-grid-tile-footer class="file-name">-->
 
-<!--              </div>-->
-<!--            </mat-grid-tile>-->
-<!--            <mat-grid-tile class="ab">-->
-<!--              <div class="material-container">-->
-<!--                <mat-grid-tile-header class="material-name" style="text-align: center !important;">Materiał 3-->
-<!--                </mat-grid-tile-header>-->
-<!--                <div><span><mat-icon class="download-icon">cloud_download</mat-icon></span></div>-->
-<!--                <mat-grid-tile-footer class="file-name">-->
-
-<!--                  <button mat-button class="button-download">nazwaPliku.txt</button>-->
-<!--                </mat-grid-tile-footer>-->
-<!--                &lt;!&ndash;        <div class="file-upload">LOAD</div>&ndash;&gt;-->
-<!--              </div>-->
-<!--            </mat-grid-tile>-->
-<!--            <mat-grid-tile class="ab">-->
-<!--              <div class="material-container">-->
-<!--                <div class="material-name">Materiał 4</div>-->
-<!--                <div class="file-name">nazwaPliku.txt</div>-->
-<!--                <div class="file-upload">LOAD</div>-->
-<!--              </div>-->
-<!--            </mat-grid-tile>-->
-<!--            <mat-grid-tile class="ab">-->
-<!--              <div class="material-container">-->
-<!--                <div class="material-name">Materiał 5</div>-->
-<!--                <div class="file-name">nazwaPliku.txt</div>-->
-<!--                <div class="file-upload">LOAD</div>-->
-<!--              </div>-->
-            </mat-grid-tile>
+            <!--                  <button mat-button class="button-download">nazwaPliku.txt</button>-->
+            <!--                </mat-grid-tile-footer>-->
+            <!--                &lt;!&ndash;        <div class="file-upload">LOAD</div>&ndash;&gt;-->
+            <!--              </div>-->
+            <!--            </mat-grid-tile>-->
+            <!--            <mat-grid-tile class="ab">-->
+            <!--              <div class="material-container">-->
+            <!--                <div class="material-name">Materiał 4</div>-->
+            <!--                <div class="file-name">nazwaPliku.txt</div>-->
+            <!--                <div class="file-upload">LOAD</div>-->
+            <!--              </div>-->
+            <!--            </mat-grid-tile>-->
+            <!--            <mat-grid-tile class="ab">-->
+            <!--              <div class="material-container">-->
+            <!--                <div class="material-name">Materiał 5</div>-->
+            <!--                <div class="file-name">nazwaPliku.txt</div>-->
+            <!--                <div class="file-upload">LOAD</div>-->
+            <!--              </div>-->
+          </mat-grid-tile>
+        </div>
       </div>
-          </mat-grid-list>
+    </mat-grid-list>
+
 
   </div>
 </div>

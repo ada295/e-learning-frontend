@@ -33,17 +33,6 @@
     <div *ngFor="let lesson of courseDetails?.lessons">
       <mat-grid-tile>
         <div>
-          <!--          <mat-expansion-panel class="name-lesson" hideToggle>-->
-          <!--            <mat-expansion-panel-header>-->
-          <!--              <mat-panel-title>-->
-          <!--                <mat-card-content>-->
-          <!--                  {{lesson.name}}-->
-          <!--                </mat-card-content>-->
-          <!--              </mat-panel-title>-->
-          <!--            </mat-expansion-panel-header>-->
-          <!--            <p>{{lesson.name}}</p>-->
-          <!--          </mat-expansion-panel>-->
-
           <div class="name-lesson">{{lesson.name}}</div>
           <div class="description-lesson">Opis lekcji</div>
 
@@ -55,7 +44,7 @@
                   <mat-icon>library_books</mat-icon>
                 </div>
               </button>
-              <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+              <button class="button-option" mat-button routerLink="/lekcja/{{lesson.id}}/materiały">
                 <div class="option-name">Materiały</div>
                 <div class="icon-container">
                   <mat-icon>perm_media</mat-icon>
