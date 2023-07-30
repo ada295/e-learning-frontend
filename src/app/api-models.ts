@@ -29,7 +29,7 @@ export class Material {
   name: string | undefined;
   description: string | undefined;
   fileType: string | undefined;
-  fileName: string | undefined;
+  filename: string | undefined;
   lesson: Lesson | undefined;
 }
 

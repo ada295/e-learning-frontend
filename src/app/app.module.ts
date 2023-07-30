@@ -11,39 +11,38 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
-import { CoursesComponent } from './courses/courses.component';
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {CoursesComponent} from './courses/courses.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import { AllCoursesComponent } from './all-courses/all-courses.component';
-import { CourseLayoutComponent } from './course-layout/course-layout.component';
-import { ActualCoursesComponent } from './actual-courses/actual-courses.component';
-import { FinishedCoursesComponent } from './finished-courses/finished-courses.component';
-import { CourseDetailsComponent } from './course-details/course-details.component';
-import { LessonsComponent } from './lessons/lessons.component';
+import {AllCoursesComponent} from './all-courses/all-courses.component';
+import {CourseLayoutComponent} from './course-layout/course-layout.component';
+import {ActualCoursesComponent} from './actual-courses/actual-courses.component';
+import {FinishedCoursesComponent} from './finished-courses/finished-courses.component';
+import {CourseDetailsComponent} from './course-details/course-details.component';
+import {LessonsComponent} from './lessons/lessons.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
-import { ExamComponent } from './exam/exam.component';
+import {ExamComponent} from './exam/exam.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
-import { AddCourseComponent } from './add-course/add-course/add-course.component';
+import {AddCourseComponent} from './add-course/add-course/add-course.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import { AddTeacherComponent } from './add-teacher/add-teacher/add-teacher.component';
-import { TeachersComponent } from './teachers/teachers.component';
+import {AddTeacherComponent} from './add-teacher/add-teacher/add-teacher.component';
+import {TeachersComponent} from './teachers/teachers.component';
 import {MatLegacyTableModule} from "@angular/material/legacy-table";
-import { LoginComponent } from './login/login/login.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import {LoginComponent} from './login/login/login.component';
+import {CalendarComponent} from './calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import { JoinCourseComponent } from './join-course/join-course.component';
+import {JoinCourseComponent} from './join-course/join-course.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { AddExamComponent } from './add-exam/add-exam/add-exam.component';
+import {AddExamComponent} from './add-exam/add-exam/add-exam.component';
 import {MatSelectModule} from "@angular/material/select";
-import { MaterialComponent } from './material/material.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { AnnouncementsComponent } from './announcements/announcements.component';
-import {MAT_DATE_LOCALE} from '@angular/material/core';
-import { AddEventComponent } from './add-event/add-event.component';
+import {MaterialComponent} from './material/material.component';
+import {TasksComponent} from './tasks/tasks.component';
+import {AnnouncementsComponent} from './announcements/announcements.component';
+import {AddEventComponent} from './add-event/add-event.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
@@ -97,7 +96,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatSelectModule,
     MatGridListModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

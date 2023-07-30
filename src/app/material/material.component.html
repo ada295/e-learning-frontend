@@ -38,8 +38,8 @@
               <div class="material-name">{{material.name}}</div>
               <div class="icon-container">
                 <button class="button-download" mat-button routerLink="/zadania">
-                  <div class="option-name">{{material.fileName}}</div>
-                  <div class="icon-container">
+                  <div class="option-name">{{material.filename}}</div>
+                  <div class="icon-container" (click)="downloadMaterial(material)">
                     <mat-icon>cloud_download</mat-icon>
                   </div>
                 </button>
