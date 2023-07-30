@@ -18,6 +18,7 @@ import {MaterialComponent} from "./material/material.component";
 import {TasksComponent} from "./tasks/tasks.component";
 import {AnnouncementsComponent} from "./announcements/announcements.component";
 import {AddEventComponent} from "./add-event/add-event.component";
+import {AddMaterialComponent} from "./add-material/add-material.component";
 
 const routes: Routes = [
   {
@@ -123,6 +124,14 @@ const routes: Routes = [
   {
     path: 'dodaj-wydarzenie/:date',
     component: AddEventComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'dodaj-materiał',
+    component: AddMaterialComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER']

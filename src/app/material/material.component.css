@@ -66,7 +66,7 @@
 }
 
 .materials-container {
-  width: 75%;
+  width: 80%;
   margin: auto;
 }
 
@@ -99,6 +99,25 @@
 .option-name {
   padding-top: 50px;
   font-size: 15px;
+}
+
+.add-icon {
+  color: white;
+  font-size: 50px;
+  padding-bottom: 5px;
+}
+
+.add-button-name {
+  font-size: large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 20px;
+}
+
+.add-button {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+
 }
 
 

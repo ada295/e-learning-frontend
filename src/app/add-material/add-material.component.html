@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <form class="test-container" *ngIf="!materialInformation" [formGroup]="examGroup">
+      <h1 class="header">NOWY TEST</h1>
+      <br>
+      <h3 class="text">Podaj nazwę testu: </h3>
+      <input type="text" formControlName="name" required>
+      <br>
+      <h3 class="text">Podaj ilość pytań: </h3>
+      <input type="number" formControlName="amountOfQuestions" min="1" max="50">
+      <br>
+      <h3 class="text">Podaj opis testu: </h3>
+      <textarea formControlName="description"></textarea>
+      <br>
+      <br><br>
+      <div>
+        <button mat-button class="create-button" (click)="addExam()">Stwórz test</button>
+      </div>
+    </form>

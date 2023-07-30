@@ -3,6 +3,7 @@ import {Material} from "../api-models";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {saveAs} from 'file-saver';
+import {SessionService} from "../session.service";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {saveAs} from 'file-saver';
 })
 export class MaterialComponent {
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
   materials: Material [] | undefined;
