@@ -2,7 +2,7 @@
   <div class="course-name col-md-4">FIZYKA</div>
   <div class="lesson-number col-md-3">Lekcja 79</div>
   <div class="buttons-container col-md-5">
-    <button class="button-option" mat-button routerLink="/lekcaja/1/test/">
+    <button class="button-option" mat-button routerLink="/lekcja/1/test/">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
@@ -14,7 +14,7 @@
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/zadania">
+    <button class="button-option" mat-button routerLink="/lekcja/1/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>
@@ -34,10 +34,9 @@
 
             <div>
 
-              <!--            <div class="material-name">{{material.name}}</div>-->
               <div class="material-name">{{material.name}}</div>
               <div class="icon-container">
-                <button class="button-download" mat-button routerLink="/zadania">
+                <button class="button-download" mat-button>
                   <div class="option-name">{{material.filename}}</div>
                   <div class="icon-container" (click)="downloadMaterial(material)">
                     <mat-icon>cloud_download</mat-icon>

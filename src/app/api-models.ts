@@ -85,3 +85,12 @@ export class CalendarEvent {
   minutes: number = 0;
   lesson: Lesson | undefined;
 }
+
+export class Task {
+  id: number = 0;
+  name: String | undefined;
+  description: String | undefined;
+  status: String | undefined;
+  endDate: Date | undefined;
+  lesson: Lesson | undefined;
+}

@@ -1,1 +1,60 @@
-<p>tasks works!</p>
+<div class="header-container row">
+  <div class="course-name col-md-4">FIZYKA</div>
+  <div class="lesson-number col-md-3">Lekcja 79</div>
+  <div class="buttons-container col-md-5">
+    <button class="button-option" mat-button routerLink="/lekcja/1/test/">
+      <div class="option-name">Test</div>
+      <div class="icon-container">
+        <mat-icon>school</mat-icon>
+      </div>
+    </button>
+    <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+      <div class="option-name">Materiały</div>
+      <div class="icon-container">
+        <mat-icon>perm_media</mat-icon>
+      </div>
+    </button>
+    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/1/zadania">
+      <div class="option-name">Zadania</div>
+      <div class="icon-container">
+        <mat-icon>library_books</mat-icon>
+      </div>
+    </button>
+  </div>
+</div>
+
+<div class="materials-container">
+
+
+  <div class="lessons-container">
+    <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'40px'">
+      <div>
+        <div *ngFor="let task of tasks">
+          <mat-grid-tile>
+
+            <div>
+
+              <div class="material-name">{{task.name}}</div>
+              <div class="icon-container">
+                <button class="button-download" mat-button>
+                  <div class="option-name">{{task.status}} routerLink="/lekcja/1/zadania/{{task.id}}"</div>
+                  <div class="icon-container" >
+                    <mat-icon>cloud_download</mat-icon>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </mat-grid-tile>
+        </div>
+      </div>
+      <mat-grid-tile>
+        <span *ngIf="sessionService.isTeacher()">
+        <button class="button-download add-button" mat-button routerLink="/dodaj-materiał">
+          <div class="add-button-name">Dodaj nowy materiał</div>
+          <div><mat-icon class="add-icon">add</mat-icon></div>
+        </button>
+        </span>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

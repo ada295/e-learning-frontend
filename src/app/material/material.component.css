@@ -50,8 +50,10 @@
 
 .option-name {
   padding-bottom: 5px;
-  padding-top: 15px;
+  padding-top: 50px;
+  font-size: 15px;
 }
+
 
 .material-container {
   background-color: rgb(103, 58, 183);
@@ -96,10 +98,7 @@
 .button-download:hover {
   background-color: rgb(72, 36, 134);}
 
-.option-name {
-  padding-top: 50px;
-  font-size: 15px;
-}
+
 
 .add-icon {
   color: white;
