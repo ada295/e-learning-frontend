@@ -89,13 +89,32 @@
 }
 
 .button-download:hover {
-  background-color: rgb(72, 36, 134);}
+  background-color: rgb(72, 36, 134);
+}
+
+.add-button {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.add-button-name {
+  font-size: large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 20px;
+}
+
+.add-icon {
+  font-size: 50px;
+  padding-bottom: 5px;
+}
 
 .option-name {
   padding-top: 50px;
   padding-bottom: 5px;
   font-size: 15px;
 }
+
 
 
 
