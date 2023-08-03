@@ -78,25 +78,27 @@
   margin-bottom: 40px;
 }
 
-.mat-expansion-panel {
+/deep/ .mat-expansion-panel {
   background-color: rgb(103, 58, 183) !important;
   box-shadow: none !important;
   height: 100px !important;
-
 }
 
 .mat-expansion-panel-header {
   padding: 0 !important;
   color: white !important;
-  font-size: 35px;
+  font-size: 30px;
+  font-weight: normal !important;
+  height: 100px;
 }
 
-.mat-expansion-panel-header-description, .mat-expansion-indicator::after {
-  color: white !important;
+mat-panel-title.mat-expansion-panel-header {
+  height: 100px !important;
 }
 
 /deep/ .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
   color: white;
+  margin-right: 20px;
 }
 
 .mat-expansion-panel-header-title {
