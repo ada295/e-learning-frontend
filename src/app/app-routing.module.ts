@@ -19,6 +19,7 @@ import {TasksComponent} from "./tasks/tasks.component";
 import {AnnouncementsComponent} from "./announcements/announcements.component";
 import {AddEventComponent} from "./add-event/add-event.component";
 import {AddMaterialComponent} from "./add-material/add-material.component";
+import {TaskDetailsComponent} from "./task-details/task-details.component";
 
 const routes: Routes = [
   {
@@ -135,6 +136,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'zadania/:id',
+    component: TaskDetailsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
     }
   }
 ];
