@@ -35,7 +35,6 @@
 
 .button-option:hover {
   background-color: rgb(72, 36, 134);
-
 }
 
 .button-option-tasks {
@@ -64,5 +63,17 @@
   height: 500px;
   background-color: rgb(103, 58, 183);
   border-radius: 10px;
+  padding: 80px;
+  color: white;
 }
 
+.task-name {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 70px;
+}
+
+.task-details {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
