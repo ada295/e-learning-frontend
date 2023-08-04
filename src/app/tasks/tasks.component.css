@@ -115,6 +115,11 @@
   font-size: 15px;
 }
 
+.task-tile:hover {
+  cursor: pointer;
+  background-color: rgb(72, 36, 134);
+}
+
 
 
 

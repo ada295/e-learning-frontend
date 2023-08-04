@@ -1,7 +1,7 @@
-<div class="header-container row">
-  <div class="course-name col-md-4">FIZYKA</div>
-  <div class="lesson-number col-md-3">Lekcja 79</div>
-  <div class="buttons-container col-md-5">
+<mat-grid-list class="header-container" cols="{{getHeaderAmountOfColumnsInGrid()}}" rowHeight="{{getHeaderRowHeightInGrid()}}">
+  <mat-grid-tile class="course-name tile" [style.background-color]="'transparent'">FIZYKA</mat-grid-tile>
+  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">Lekcja 79</mat-grid-tile>
+  <mat-grid-tile class="buttons-container tile" [style.background-color]="'transparent'">
     <button class="button-option" mat-button routerLink="/lekcja/1/test/">
       <div class="option-name">Test</div>
       <div class="icon-container">
@@ -20,73 +20,30 @@
         <mat-icon>library_books</mat-icon>
       </div>
     </button>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <div class="materials-container">
 
 
   <div class="lessons-container">
-    <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'40px'">
+    <mat-grid-list cols="{{desired_columns}}" rowHeight="{{desired_row_height}}" [gutterSize]="'40px'">
       <div>
-        <div *ngFor="let task of tasks">
-          <mat-grid-tile>
-
-            <div>
-              <div class="material-name">{{task.name}}</div>
-              <div class="icon-container">
-                <button class="button-download" mat-button>
-                  <div class="option-name">{{task.status}} routerLink="/lekcja/1/zadania/{{task.id}}"</div>
-                  <div class="icon-container" >
-                    <mat-icon>cloud_download</mat-icon>
-                  </div>
-                </button>
-              </div>
+        <!--        <div *ngFor="let task of tasks">-->
+        <mat-grid-tile>
+          <div>
+            <div class="material-name">Zadanie 1</div>
+            <div class="icon-container">
+              <button class="button-download" mat-button routerLink="/zadania/1">
+                <div class="option-name">Wykonane</div>
+                <div class="icon-container">
+                  <mat-icon>done</mat-icon>
+                </div>
+              </button>
             </div>
-          </mat-grid-tile>
-        </div>
+          </div>
+        </mat-grid-tile>
       </div>
-    </mat-grid-list>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="materials-container">
-
-
-  <div class="lessons-container">
-    <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'40px'">
-      <div>
-<!--        <div *ngFor="let task of tasks">-->
-          <mat-grid-tile>
-            <div>
-              <div class="material-name">Zadanie 1</div>
-              <div class="icon-container">
-                <button class="button-download" mat-button routerLink="/zadania/1">
-                  <div class="option-name">Wykonane</div>
-                  <div class="icon-container" >
-                    <mat-icon>done</mat-icon>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </mat-grid-tile>
-        </div>
 
       <mat-grid-tile>
         <div>
@@ -94,7 +51,7 @@
           <div class="icon-container">
             <button class="button-download" mat-button>
               <div class="option-name">Niewykonane</div>
-              <div class="icon-container" >
+              <div class="icon-container">
                 <mat-icon>close</mat-icon>
               </div>
             </button>
@@ -108,7 +65,7 @@
           <div class="icon-container">
             <button class="button-download" mat-button>
               <div class="option-name">Aktywne do: 12.12.2023</div>
-              <div class="icon-container" >
+              <div class="icon-container">
                 <mat-icon>alarm</mat-icon>
               </div>
             </button>
@@ -122,7 +79,7 @@
           <div class="icon-container">
             <button class="button-download" mat-button>
               <div class="option-name">Ocenione</div>
-              <div class="icon-container" >
+              <div class="icon-container">
                 <mat-icon>star</mat-icon>
               </div>
             </button>
@@ -131,7 +88,7 @@
       </mat-grid-tile>
 
 
-<!--      </div>-->
+      <!--      </div>-->
       <mat-grid-tile>
         <span *ngIf="sessionService.isTeacher()">
         <button class="button-download add-button" mat-button routerLink="/dodaj-zadanie">
