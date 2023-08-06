@@ -29,6 +29,9 @@ mat-expansion-panel-header {
   font-weight:500;
   letter-spacing: 1px;
   padding-top: 15px;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 
@@ -40,12 +43,16 @@ mat-expansion-panel-header {
   border-radius: 0 0 5px 5px;
   background-color: rgb(103, 58, 183);
   color: white !important;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .course-name {
-  font-size: xx-large;
-  color: white;
+  font-size: 50px;
+  color: rgb(103, 58, 183);
   height: 500px;
+  text-align: left;
+  margin-top: 30px;
 }
 
 

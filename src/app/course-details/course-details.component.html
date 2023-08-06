@@ -1,18 +1,18 @@
 <div class="course-details">
 
   <div class="course-name-and-announcement row g-0">
-    <div class="col-md-10">
-      <mat-accordion>
-        <mat-expansion-panel class="course-name-container" (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title class="course-name">
-              {{courseDetails?.course?.name}}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>{{courseDetails?.course?.description}}</p>
-        </mat-expansion-panel>
-      </mat-accordion>
+    <div class="col-md-10 course-name"> {{courseDetails?.course?.name}}
+<!--      <mat-accordion>-->
+<!--        <mat-expansion-panel class="course-name-container" (opened)="panelOpenState = true"-->
+<!--                             (closed)="panelOpenState = false">-->
+<!--          <mat-expansion-panel-header>-->
+<!--            <mat-panel-title class="course-name">-->
+<!--              {{courseDetails?.course?.name}}-->
+<!--            </mat-panel-title>-->
+<!--          </mat-expansion-panel-header>-->
+<!--          <p>{{courseDetails?.course?.description}}</p>-->
+<!--        </mat-expansion-panel>-->
+<!--      </mat-accordion>-->
     </div>
 
     <div class="col-md-2">
@@ -34,7 +34,7 @@
       <mat-grid-tile>
         <div>
           <div class="name-lesson">{{lesson.name}}</div>
-          <div class="description-lesson">Opis lekcji</div>
+<!--          <div class="description-lesson">Opis lekcji</div>-->
 
           <mat-card class="options-lesson">
             <mat-card-actions>
