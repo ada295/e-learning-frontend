@@ -60,7 +60,7 @@
 .task-container {
   width: 75%;
   margin: auto;
-  min-height: 500px;
+  min-height: 550px;
   background-color: rgb(103, 58, 183);
   border-radius: 10px;
   padding: 80px;
@@ -106,6 +106,47 @@ mat-panel-title.mat-expansion-panel-header-title {
 /deep/ .mat-expansion-panel-content {
   height: auto;
 }
+
+/deep/ .task-description {
+  line-height: 1.2;
+}
+
+.file-attachment {
+  margin-top: 10px;
+  width: 245px;
+  float: left;
+}
+
+.file-name {
+  float: left;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-left: 0 !important;
+}
+
+.task-option-container {
+  clear: both;
+  text-align: center;
+  margin: 100px auto auto;
+}
+
+.button-edit-task {
+  background-color: #e3bf32;
+  color: white;
+  width: 100px;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.button-delete-task {
+  background-color: #be2424;
+  color: white;
+  width: 100px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+
 
 
 

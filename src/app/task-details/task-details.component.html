@@ -33,17 +33,6 @@
   </div>
 
   <mat-accordion>
-<!--    <mat-expansion-panel hideToggle>-->
-<!--      <mat-expansion-panel-header>-->
-<!--        <mat-panel-title>-->
-<!--          This is the expansion title-->
-<!--        </mat-panel-title>-->
-<!--        <mat-panel-description>-->
-<!--          This is a summary of the content-->
-<!--        </mat-panel-description>-->
-<!--      </mat-expansion-panel-header>-->
-<!--      <p>This is the primary content of the panel.</p>-->
-<!--    </mat-expansion-panel>-->
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -51,8 +40,23 @@
           Treść zadania
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania
-        Opis zadania Opis zadania Opis zadania  </p>
+      <div class="task-description">Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis
+        zadania Opis zadania
+        Opis zadania Opis zadania Opis zadania
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
+  <div class="task-details file-attachment">
+    Przesłane pliki:
+  </div>
+  <div style="float: left">
+    <mat-icon> attach_file</mat-icon>
+  </div>
+  <div class="file-name">
+    nazwaRozwiazania.txt
+  </div>
+  <div class="task-option-container">
+    <button mat-button class="button-edit-task">Edytuj</button>
+    <button mat-button class="button-delete-task">Usuń</button>
+  </div>
 </div>
