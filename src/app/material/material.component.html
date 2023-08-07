@@ -40,13 +40,16 @@
                     <mat-icon>cloud_download</mat-icon>
                   </div>
                 </button>
+                  <button *ngIf="sessionService.isTeacher()" mat-button class="button-delete"><mat-icon>delete_forever</mat-icon></button>
+
               </div>
+
             </div>
           </mat-grid-tile>
         </div>
       </div>
-      <mat-grid-tile>
-        <span *ngIf="sessionService.isTeacher()">
+      <mat-grid-tile *ngIf="sessionService.isTeacher()">
+        <span>
         <button class="button-download add-button" mat-button routerLink="/dodaj-materiał">
           <div class="add-button-name">Dodaj nowy materiał</div>
           <div><mat-icon class="add-icon">add</mat-icon></div>

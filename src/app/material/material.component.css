@@ -91,6 +91,8 @@
   height: 90px;
   background-color: rgb(103, 58, 183);
   color: white !important;
+  text-align: center;
+  /*float: right;*/
 }
 
 .button-download:hover {
@@ -112,6 +114,32 @@
   margin-top: auto !important;
   margin-bottom: auto !important;
 }
+
+.button-delete {
+  color: white;
+  padding-top: 20px;
+  margin-top: 50px;
+  width: 50px !important;
+  height: 50px !important;
+  float: right;
+  margin-left: 4em;
+}
+
+.button-delete:hover {
+  background-color: darkred !important;
+}
+
+/*/deep/ .mat-mdc-focus-indicator {*/
+/*  width: 50px !important;*/
+/*  height: 50px !important;*/
+/*  float: right;*/
+/*}*/
+
+/*/deep/ .mat-mdc-button-touch-target {*/
+/*  width: 40px !important;*/
+/*  height: 40px !important;*/
+/*  float: right;*/
+/*}*/
 
 
 

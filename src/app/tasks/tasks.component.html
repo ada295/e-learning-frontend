@@ -88,9 +88,8 @@
       </mat-grid-tile>
 
 
-      <!--      </div>-->
-      <mat-grid-tile>
-        <span *ngIf="sessionService.isTeacher()">
+      <mat-grid-tile *ngIf="sessionService.isTeacher()">
+        <span>
         <button class="button-download add-button" mat-button routerLink="/dodaj-zadanie">
           <div class="add-button-name">Dodaj zadanie</div>
           <div><mat-icon class="add-icon">add</mat-icon></div>
