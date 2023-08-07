@@ -20,6 +20,7 @@ import {AnnouncementsComponent} from "./announcements/announcements.component";
 import {AddEventComponent} from "./add-event/add-event.component";
 import {AddMaterialComponent} from "./add-material/add-material.component";
 import {TaskDetailsComponent} from "./task-details/task-details.component";
+import {AddLessonComponent} from "./add-lesson/add-lesson.component";
 
 const routes: Routes = [
   {
@@ -144,6 +145,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'dodaj-lekcję',
+    component: AddLessonComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
     }
   }
 ];

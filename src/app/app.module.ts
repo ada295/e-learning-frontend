@@ -46,6 +46,7 @@ import {AddEventComponent} from './add-event/add-event.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { AddMaterialComponent } from './add-material/add-material.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { AddLessonComponent } from './add-lesson/add-lesson.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
     AnnouncementsComponent,
     AddEventComponent,
     AddMaterialComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    AddLessonComponent
   ],
   imports: [
     BrowserModule,
