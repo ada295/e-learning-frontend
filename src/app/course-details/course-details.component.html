@@ -26,10 +26,10 @@
 <div class="lessons-container">
   <mat-grid-list cols="2" rowHeight="2.5:1">
 
-    <div *ngFor="let lesson of courseDetails?.lessons">
+    <div *ngFor="let lesson of courseDetails?.lessons; let i = index">
       <mat-grid-tile>
         <div>
-          <div class="name-lesson">{{lesson.name}}</div>
+          <div class="name-lesson" matTooltip="{{lesson.name}}" matTooltipPosition="above">Lekcja {{lessonsSize - i}}</div>
 
           <mat-card class="options-lesson">
             <mat-card-actions>

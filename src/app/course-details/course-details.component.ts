@@ -14,6 +14,7 @@ import {Course, CourseDetails, Lesson} from "../api-models";
 export class CourseDetailsComponent implements OnInit {
 
   panelOpenState = false;
+  lessonsSize = 0;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
   }
@@ -27,8 +28,11 @@ export class CourseDetailsComponent implements OnInit {
     //pobranie wartości z adrmMap.geesu URL /kursy/:id
     let id = this.route.snapshot.paramMap.get('id');
 
-    this.httpClient.get<CourseDetails>("http://localhost:8080/courses/" + id).subscribe(course => this.courseDetails = course)
-
+    this.httpClient.get<CourseDetails>("http://localhost:8080/courses/" + id)
+      .subscribe(course => {
+        this.courseDetails = course;
+        this.lessonsSize = course.lessons.length;
+      })
     // this.httpClient.get<Course>("http://localhost:8080/courses/"+id).subscribe(course => this.courseDetails = course)
     //
     // this.httpClient.get<Lesson[]>("http://localhost:8080/lessons?courseId="+id).subscribe(lessons => this.lessons = lessons)

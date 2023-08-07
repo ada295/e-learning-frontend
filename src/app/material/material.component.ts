@@ -19,6 +19,11 @@ export class MaterialComponent {
   materials: Material [] | undefined;
 
   ngOnInit(){
+
+    this.loadMaterials();
+  }
+
+  private loadMaterials() {
     let id = this.route.snapshot.paramMap.get('id');
 
     this.httpClient.get<Material []>("http://localhost:8080/lessons/" + id + "/materials").subscribe(material => this.materials = material)
@@ -32,4 +37,7 @@ export class MaterialComponent {
   }
 
 
+  deleteMaterial(id: number) {
+    this.httpClient.delete("http://localhost:8080/materials/" + id + "/delete").subscribe(()=> this.loadMaterials());
+  }
 }

@@ -40,7 +40,9 @@
                     <mat-icon>cloud_download</mat-icon>
                   </div>
                 </button>
-                  <button *ngIf="sessionService.isTeacher()" mat-button class="button-delete"><mat-icon>delete_forever</mat-icon></button>
+<!--                  <button *ngIf="sessionService.isTeacher()" mat-button class="button-delete">-->
+                    <mat-icon (click)= "deleteMaterial(material.id)" class="trash button-delete">delete_forever</mat-icon>
+<!--                  </button>-->
 
               </div>
 

@@ -125,8 +125,9 @@
   margin-left: 4em;
 }
 
-.button-delete:hover {
-  background-color: darkred !important;
+.trash:hover{
+  color: red;
+  cursor: pointer;
 }
 
 /*/deep/ .mat-mdc-focus-indicator {*/
