@@ -85,6 +85,10 @@
   min-height: 100px !important;
 }
 
+.mat-expansion-panel-header:hover {
+  background: none !important;
+}
+
 mat-panel-title.mat-expansion-panel-header-title {
   height: 100px !important;
   color: white;
