@@ -132,7 +132,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-materiał',
+    path: 'lekcja/:id/dodaj-materiał',
     component: AddMaterialComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {

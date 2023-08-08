@@ -16,6 +16,8 @@ export class MaterialComponent {
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
+  lessonId: string | null = '0';
+
   materials: Material [] | undefined;
 
   ngOnInit(){
@@ -25,6 +27,7 @@ export class MaterialComponent {
 
   private loadMaterials() {
     let id = this.route.snapshot.paramMap.get('id');
+    this.lessonId = id;
 
     this.httpClient.get<Material []>("http://localhost:8080/lessons/" + id + "/materials").subscribe(material => this.materials = material)
   }

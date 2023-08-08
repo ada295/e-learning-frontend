@@ -20,7 +20,7 @@
       <br>
       <br><br>
       <div>
-        <button mat-button class="create-button" (click)="addMaterial()">Dodaj materiał</button>
+        <button mat-button class="create-button" (click)="uploadFile()" [disabled]="formData.get('file') == null" >Dodaj materiał</button>
       </div>
     </form>
   </div>

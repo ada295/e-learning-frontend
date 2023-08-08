@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {Material} from "../api-models";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-material',
@@ -15,35 +17,44 @@ export class AddMaterialComponent {
     // file: [File, Validators.required]
     // description: ['', Validators.required],
   })
-
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
-  }
-
-  addMaterial() {
-    if (this.examGroup.valid) {
-      this.materialInformation = true;
-    }
-  }
-
-
   fileName = '';
+  formData = new FormData();
+
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute, private router: Router) {
+  }
 
   onFileSelected(event: any) {
 
-    const file:File = event.target.files[0];
+    const file: File = event.target.files[0];
 
     if (file) {
 
       this.fileName = file.name;
 
-      const formData = new FormData();
-
-      formData.append("thumbnail", file);
-
-      const upload$ = this.httpClient.post("/api/thumbnail-upload", formData);
-
-      upload$.subscribe();
+      this.formData.append("file", file);
     }
   }
 
+  uploadFile() {
+
+    if (this.formData.get('file')) {
+
+      let material = {
+        "name": "Zadankaaaaa",
+        "description": "Prosze zrob te zadanaka",
+        "type": "PDF",
+        "filename": "zadania.pdf"
+      }
+      let lessonId = this.route.snapshot.paramMap.get('id');
+      this.httpClient.post<Material>(`http://localhost:8080/lessons/${lessonId}/materials`, material)
+        .subscribe(e => {
+          const upload$ = this.httpClient.post(`http://localhost:8080/materials/${e.id}/upload`, this.formData);
+
+          upload$.subscribe(() => {
+            this.router.navigate([`/lekcja/${lessonId}/materiały`]);
+          });
+        });
+    }
+
+  }
 }

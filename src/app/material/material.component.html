@@ -2,19 +2,19 @@
   <div class="course-name col-md-4">FIZYKA</div>
   <div class="lesson-number col-md-3">Lekcja 79</div>
   <div class="buttons-container col-md-5">
-    <button class="button-option" mat-button routerLink="/lekcja/1/test/">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test/">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option button-option-material" mat-button routerLink="/lekcja/1/materiały">
+    <button class="button-option button-option-material" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/1/zadania">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>
@@ -52,7 +52,7 @@
       </div>
       <mat-grid-tile *ngIf="sessionService.isTeacher()">
         <span>
-        <button class="button-download add-button" mat-button routerLink="/dodaj-materiał">
+        <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-materiał">
           <div class="add-button-name">Dodaj nowy materiał</div>
           <div><mat-icon class="add-icon">add</mat-icon></div>
         </button>
