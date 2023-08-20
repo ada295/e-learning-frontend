@@ -2,7 +2,7 @@ import {Component, HostListener} from '@angular/core';
 import {SessionService} from "../session.service";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Task} from "../api-models";
+import {Task, TaskToDo} from "../api-models";
 
 @Component({
   selector: 'app-tasks',
@@ -11,6 +11,7 @@ import {Task} from "../api-models";
 })
 export class TasksComponent {
   tasks: Task [] | undefined;
+  tasksStudent: TaskToDo[] | undefined;
   desired_columns = 3;
   desired_row_height = '2:1';
 
@@ -25,8 +26,10 @@ export class TasksComponent {
   ngOnInit() {
     this.setAmountOfColumns(window.innerWidth);
     let id = this.route.snapshot.paramMap.get('id');
-
-    this.httpClient.get<Task []>("http://localhost:8080/lessons/" + id + "/tasks").subscribe(tasks => this.tasks = tasks)
+    if(this.sessionService.isTeacher())
+      this.httpClient.get<Task []>("http://localhost:8080/lessons/" + id + "/tasks").subscribe(tasks => this.tasks = tasks)
+    else if (this.sessionService.isStudent())
+      this.httpClient.get<TaskToDo []>("http://localhost:8080/lessons/" + id + "/student-tasks").subscribe(tasks => this.tasksStudent = tasks)
   }
 
   getHeaderAmountOfColumnsInGrid() {

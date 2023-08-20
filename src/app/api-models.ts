@@ -14,7 +14,7 @@ export class Teacher {
 
 export class Lesson {
   id: number = 0;
-  name: string = "";
+  name: string | undefined;
   course: Course | undefined;
 }
 
@@ -93,4 +93,29 @@ export class Task {
   status: String | undefined;
   endDate: Date | undefined;
   lesson: Lesson | undefined;
+}
+
+export class TaskToDo {
+  task: Task | undefined;
+  taskStudent: TaskStudent |undefined;
+  status: string |undefined;
+  icon: string | undefined;
+}
+
+export class TaskStudent {
+  id: number = 0;
+  status: string | undefined;
+  task: Task | undefined;
+  student: Student | undefined;
+  points: number = 0;
+}
+
+
+export class Student {
+  id: number = 0;
+  name: string | undefined;
+  surname: string | undefined;
+  email: string | undefined;
+  pesel: string | undefined;
+  tasksStudent: TaskStudent[] = [];
 }

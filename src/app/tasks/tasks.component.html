@@ -26,66 +26,30 @@
 <div class="materials-container">
 
 
-  <div class="lessons-container">
+  <div class="lesson-container">
     <mat-grid-list cols="{{desired_columns}}" rowHeight="{{desired_row_height}}" [gutterSize]="'40px'">
-      <div>
-        <!--        <div *ngFor="let task of tasks">-->
-        <mat-grid-tile>
+      <div *ngIf="sessionService.isStudent()">
+        <mat-grid-tile *ngFor="let taskStudent of tasksStudent; let i=index ">
           <div>
-            <div class="material-name">Zadanie 1</div>
+            <div class="material-name">Zadanie {{i+1}}</div>
             <div class="icon-container">
-              <button class="button-download" mat-button routerLink="/zadania/1">
-                <div class="option-name">Wykonane</div>
+              <button class="button-download" mat-button routerLink="/zadania/{{taskStudent.task?.id}}">
+                <div *ngIf="taskStudent.status == 'AKTYWNE'" class="option-name">
+                  {{taskStudent.status}} DO: {{taskStudent.task?.endDate | date: 'dd.MM.YYYY'}}
+                </div>
+                <div *ngIf="taskStudent.status != 'AKTYWNE'" class="option-name">
+                  {{taskStudent.status}}
+                </div>
                 <div class="icon-container">
-                  <mat-icon>done</mat-icon>
+                  <mat-icon>{{taskStudent.icon}}</mat-icon>
                 </div>
               </button>
             </div>
           </div>
         </mat-grid-tile>
       </div>
-
-      <mat-grid-tile>
-        <div>
-          <div class="material-name">Zadanie 2</div>
-          <div class="icon-container">
-            <button class="button-download" mat-button>
-              <div class="option-name">Niewykonane</div>
-              <div class="icon-container">
-                <mat-icon>close</mat-icon>
-              </div>
-            </button>
-          </div>
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div>
-          <div class="material-name">Zadanie 3</div>
-          <div class="icon-container">
-            <button class="button-download" mat-button>
-              <div class="option-name">Aktywne do: 12.12.2023</div>
-              <div class="icon-container">
-                <mat-icon>alarm</mat-icon>
-              </div>
-            </button>
-          </div>
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div>
-          <div class="material-name">Zadanie 4</div>
-          <div class="icon-container">
-            <button class="button-download" mat-button>
-              <div class="option-name">Ocenione</div>
-              <div class="icon-container">
-                <mat-icon>star</mat-icon>
-              </div>
-            </button>
-          </div>
-        </div>
-      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 
 
       <mat-grid-tile *ngIf="sessionService.isTeacher()">
@@ -96,7 +60,3 @@
         </button>
         </span>
       </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-
-</div>
