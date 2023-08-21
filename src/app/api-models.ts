@@ -108,6 +108,8 @@ export class TaskStudent {
   task: Task | undefined;
   student: Student | undefined;
   points: number = 0;
+  filename: string | undefined;
+  comment: string | undefined;
 }
 
 

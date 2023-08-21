@@ -76,7 +76,7 @@
 .task-details {
   font-size: 30px;
   margin-bottom: 40px;
-  padding-left: 20px;
+  padding-left: 25px;
 }
 
 /deep/ .mat-expansion-panel {
@@ -121,11 +121,23 @@ mat-panel-title.mat-expansion-panel-header-title {
   float: left;
 }
 
+
 .file-name {
   float: left;
-  font-size: 15px;
-  margin-top: 15px;
+  font-size: 20px;
+  margin-top: 10px;
   margin-left: 0 !important;
+}
+
+.file-button {
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.file-button:hover{
+  color: #e3bf32;
 }
 
 .task-option-container {
@@ -148,6 +160,10 @@ mat-panel-title.mat-expansion-panel-header-title {
   width: 100px;
   margin-left: 10px;
   font-size: 20px;
+}
+
+.task-points {
+  float: right;
 }
 
 

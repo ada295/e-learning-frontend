@@ -24,12 +24,19 @@
 </div>
 
 <div class="task-container">
-  <p class="task-name">Zadanie 1</p>
-  <div class="task-details">
-    Status zadania: Wykonane
+  <p class="task-name">Zadanie</p>
+  <div *ngIf="task?.status != 'OCENIONE'" class="task-details">
+    Status zadania: {{task?.status}}
   </div>
+  <div *ngIf="task?.status == 'OCENIONE'" class="task-details">
+    Status zadania: {{task?.status}}
+    <div *ngIf="task?.status == 'OCENIONE'" class="task-details task-points">
+      Ocena: {{task?.taskStudent?.points}}
+    </div>
+  </div>
+
   <div class="task-details">
-    Termin oddania: 22.09.2023
+    Termin oddania: {{task?.task?.endDate  | date: 'dd.MM.YYYY'}}
   </div>
 
   <mat-accordion>
@@ -40,23 +47,49 @@
           Treść zadania
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <div class="task-description">Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis zadania Opis
-        zadania Opis zadania
-        Opis zadania Opis zadania Opis zadania
+      <div class="task-description">
+        {{task?.task?.description}}
       </div>
     </mat-expansion-panel>
   </mat-accordion>
+
+
+
   <div class="task-details file-attachment">
     Przesłane pliki:
   </div>
+  <button class="file-button">
   <div style="float: left">
     <mat-icon> attach_file</mat-icon>
   </div>
   <div class="file-name">
-    nazwaRozwiazania.txt
+    {{task?.taskStudent?.filename}}
   </div>
-  <div class="task-option-container">
+  </button>
+  <div *ngIf="task?.status=='WYKONANE'" class="task-option-container">
     <button mat-button class="button-edit-task">Edytuj</button>
     <button mat-button class="button-delete-task">Usuń</button>
   </div>
+
+  <div style="clear:both"></div>
+
+  <mat-accordion *ngIf="task?.status=='OCENIONE'">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Komentarz nauczyciela
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="task-description" *ngIf="task?.taskStudent?.comment != null">
+        {{task?.taskStudent?.comment}}
+      </div>
+      <div class="task-description" *ngIf="task?.taskStudent?.comment == null">
+        Brak komentarza
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+
 </div>
