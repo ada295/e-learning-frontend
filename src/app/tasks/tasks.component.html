@@ -1,4 +1,5 @@
-<mat-grid-list class="header-container" cols="{{getHeaderAmountOfColumnsInGrid()}}" rowHeight="{{getHeaderRowHeightInGrid()}}">
+<mat-grid-list class="header-container" cols="{{getHeaderAmountOfColumnsInGrid()}}"
+               rowHeight="{{getHeaderRowHeightInGrid()}}">
   <mat-grid-tile class="course-name tile" [style.background-color]="'transparent'">FIZYKA</mat-grid-tile>
   <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">Lekcja 79</mat-grid-tile>
   <mat-grid-tile class="buttons-container tile" [style.background-color]="'transparent'">
@@ -26,12 +27,15 @@
 <div class="materials-container">
 
 
+
+
+
   <div class="lesson-container">
     <mat-grid-list cols="{{desired_columns}}" rowHeight="{{desired_row_height}}" [gutterSize]="'40px'">
       <div *ngIf="sessionService.isStudent()">
         <mat-grid-tile *ngFor="let taskStudent of tasksStudent; let i=index ">
           <div>
-            <div class="material-name">Zadanie {{i+1}}</div>
+            <div class="material-name">Zadanie {{i + 1}}</div>
             <div class="icon-container">
               <button class="button-download" mat-button routerLink="/zadania/{{taskStudent.task?.id}}">
                 <div *ngIf="taskStudent.status == 'AKTYWNE'" class="option-name">
@@ -47,16 +51,19 @@
             </div>
           </div>
         </mat-grid-tile>
+
       </div>
     </mat-grid-list>
   </div>
 
-
-      <mat-grid-tile *ngIf="sessionService.isTeacher()">
+  <mat-grid-tile *ngIf="sessionService.isTeacher()">
         <span>
         <button class="button-download add-button" mat-button routerLink="/dodaj-zadanie">
           <div class="add-button-name">Dodaj zadanie</div>
           <div><mat-icon class="add-icon">add</mat-icon></div>
         </button>
         </span>
-      </mat-grid-tile>
+  </mat-grid-tile>
+
+
+</div>

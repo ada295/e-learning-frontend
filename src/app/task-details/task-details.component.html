@@ -53,12 +53,21 @@
     </mat-expansion-panel>
   </mat-accordion>
 
+  <div *ngIf="task?.taskStudent?.status == 'AKTYWNE'"  class="task-details file-attachment">
+    Dodaj rozwiązanie:
+  </div>
+  <button *ngIf="task?.taskStudent?.status == 'AKTYWNE'" class="file-button">
+    <div style="float: left">
+      <mat-icon> note-add</mat-icon>
+    </div>
+  </button>
 
 
-  <div class="task-details file-attachment">
+
+  <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
     Przesłane pliki:
   </div>
-  <button class="file-button">
+  <button *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'" class="file-button">
   <div style="float: left">
     <mat-icon> attach_file</mat-icon>
   </div>
@@ -66,9 +75,8 @@
     {{task?.taskStudent?.filename}}
   </div>
   </button>
-  <div *ngIf="task?.status=='WYKONANE'" class="task-option-container">
-    <button mat-button class="button-edit-task">Edytuj</button>
-    <button mat-button class="button-delete-task">Usuń</button>
+  <div *ngIf="task?.status=='WYKONANE' && checkDate(task)" class="task-option-container">
+    <button mat-button class="button-delete-task" (click)="deleteTask()">Usuń pliki</button>
   </div>
 
   <div style="clear:both"></div>

@@ -3,8 +3,10 @@
     <form class="test-container" [formGroup]="lessonGroup">
       <h1 class="header">NOWA LEKCJA</h1>
       <br>
-      <h3 class="text">Podaj nazwę lekcji: </h3>
+      <div>
+      <div><h3 class="text">Podaj nazwę lekcji: </h3></div>
       <input type="text" formControlName="name" required>
+      </div>
       <br><br>
       <div>
         <button mat-button class="create-button" (click)="addLesson()">Stwórz lekcję</button>
