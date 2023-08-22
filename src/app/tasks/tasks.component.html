@@ -51,19 +51,35 @@
             </div>
           </div>
         </mat-grid-tile>
-
       </div>
-    </mat-grid-list>
-  </div>
 
-  <mat-grid-tile *ngIf="sessionService.isTeacher()">
+      <div *ngIf="sessionService.isTeacher()">
+        <mat-grid-tile *ngFor="let task of tasks; let i=index ">
+          <div>
+            <div class="material-name">Zadanie {{i + 1}}</div>
+            <div class="icon-container">
+              <button class="button-download" mat-button routerLink="/zadania/{{task?.id}}">
+                <div class="option-name">
+                  AKTYWNE DO: {{task?.endDate | date: 'dd.MM.YYYY'}}
+                </div>
+                <div class="icon-container">
+                  <mat-icon>alert</mat-icon>
+                </div>
+              </button>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </div>
+
+      <mat-grid-tile *ngIf="sessionService.isTeacher()">
         <span>
-        <button class="button-download add-button" mat-button routerLink="/dodaj-zadanie">
+        <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-zadanie">
           <div class="add-button-name">Dodaj zadanie</div>
           <div><mat-icon class="add-icon">add</mat-icon></div>
         </button>
         </span>
-  </mat-grid-tile>
-
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 
 </div>

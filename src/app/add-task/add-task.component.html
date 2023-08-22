@@ -4,9 +4,23 @@
       <h1 class="header">NOWE ZADANIE</h1>
       <br>
       <h3 class="text">Podaj treść zadania: </h3>
-      <textarea formControlName="name" required></textarea>
+      <textarea formControlName="description" required></textarea>
       <div style="clear: both;"></div>
       <br><br>
+
+
+      <div class="row g-0 end-date-container">
+        <div class="col-md-3">
+          <mat-card class="demo-inline-calendar-card">
+            <mat-calendar [(selected)]="selected"></mat-calendar>
+          </mat-card>
+        </div>
+        <div class="col-md-9 new-event" style="font-size: 20px">
+            <span class="text">Zadanie aktywne do:</span>
+            <span style="margin-left: 10px">{{selectedDateAsString()}}</span>
+            <br><br>
+        </div>
+      </div>
       <div>
         <button mat-button class="create-button" (click)="addTask()">Stwórz zadanie</button>
       </div>

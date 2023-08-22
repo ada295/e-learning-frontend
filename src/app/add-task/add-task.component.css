@@ -17,6 +17,7 @@
 .lesson-container {
   align-self: center;
   margin: 0 15%;
+  text-align: center;
 }
 
 .header {
@@ -75,6 +76,19 @@ textarea {
 textarea:focus {
   outline: none !important;
   border: 2px solid rgba(103, 58, 183, 1);
+}
+
+.end-date-container {
+  width: 90%;
+  height: 400px;
+  margin-left: 5%;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin-left: 5%;
+  color: rgba(91, 91, 96, 0.85);
+  box-sizing: border-box;
 }
 
 

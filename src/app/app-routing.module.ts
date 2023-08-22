@@ -157,7 +157,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-zadanie',
+    path: 'lekcja/:id/dodaj-zadanie',
     component: AddTaskComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
