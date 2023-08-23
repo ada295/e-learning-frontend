@@ -2,6 +2,7 @@ import {Component, OnInit, Optional} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Course, CourseDetails, Lesson} from "../api-models";
+import {SessionService} from "../session.service";
 
 
 @Component({
@@ -16,12 +17,13 @@ export class CourseDetailsComponent implements OnInit {
   panelOpenState = false;
   lessonsSize = 0;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
   courseDetails: CourseDetails | undefined;
 
   // lessons: Lesson[] = [];
+
 
 
   ngOnInit() {

@@ -13,8 +13,22 @@ export class TaskDetailsComponent implements OnInit {
 
   panelOpenState = false;
   task: TaskToDo | undefined;
+  fileName = '';
+  formData = new FormData();
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
+  }
+
+  onFileSelected(event: any) {
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+
+      this.fileName = file.name;
+
+      this.formData.append("file", file);
+    }
   }
 
 

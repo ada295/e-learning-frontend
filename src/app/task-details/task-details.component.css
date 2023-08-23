@@ -117,7 +117,7 @@ mat-panel-title.mat-expansion-panel-header-title {
 
 .file-attachment {
   margin-top: 10px;
-  width: 245px;
+  width: 35%;
   float: left;
 }
 
@@ -131,7 +131,6 @@ mat-panel-title.mat-expansion-panel-header-title {
 
 .file-button {
   color: white;
-  text-align: center;
   background-color: transparent;
   border-color: transparent;
 }
@@ -164,6 +163,17 @@ mat-panel-title.mat-expansion-panel-header-title {
 
 .task-points {
   float: right;
+}
+
+.file-input {
+  display: none;
+}
+
+input#file-upload-button  {
+  background-color: #e3bf32;
+  display: block;
+  margin: 0 auto;
+  color: white !important;
 }
 
 

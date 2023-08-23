@@ -1,21 +1,21 @@
 <mat-grid-list class="header-container" cols="{{getHeaderAmountOfColumnsInGrid()}}"
                rowHeight="{{getHeaderRowHeightInGrid()}}">
   <mat-grid-tile class="course-name tile" [style.background-color]="'transparent'">FIZYKA</mat-grid-tile>
-  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">Lekcja 79</mat-grid-tile>
+  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">Lekcja {{lessonId}}</mat-grid-tile>
   <mat-grid-tile class="buttons-container tile" [style.background-color]="'transparent'">
-    <button class="button-option" mat-button routerLink="/lekcja/1/test/">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test/">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/1/zadania">
+    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>

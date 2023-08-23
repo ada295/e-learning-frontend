@@ -53,14 +53,38 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <div *ngIf="task?.taskStudent?.status == 'AKTYWNE'"  class="task-details file-attachment">
+  <div *ngIf="task?.status == 'AKTYWNE'"  class="task-details file-attachment">
     Dodaj rozwiązanie:
   </div>
-  <button *ngIf="task?.taskStudent?.status == 'AKTYWNE'" class="file-button">
-    <div style="float: left">
-      <mat-icon> note-add</mat-icon>
-    </div>
-  </button>
+  <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
+
+
+
+<!--    <button *ngIf="task?.status == 'AKTYWNE'"  class="file-button" (click)="fileUpload.click()">-->
+    <button *ngIf="task?.status == 'AKTYWNE'" class="upload-btn" (click)="fileUpload.click()">
+
+
+      <!--    <button *ngIf="task?.status == 'AKTYWNE'" class="file-button" color="primary" class="upload-btn" (click)="fileUpload.click()">-->
+      <!--      <div style="float: left">-->
+      <mat-icon>note_add</mat-icon>
+      <!--      </div>-->
+    </button>
+
+    <input type="file" class="file-input"
+           (change)="onFileSelected($event)" #fileUpload>
+
+    {{fileName || ""}}
+
+
+  </div>
+
+
+
+<!--  <button *ngIf="task?.status == 'AKTYWNE'" class="file-button">-->
+<!--    <div style="float: left">-->
+<!--      <mat-icon>note_add</mat-icon>-->
+<!--    </div>-->
+<!--  </button>-->
 
 
 
