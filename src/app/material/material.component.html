@@ -1,5 +1,7 @@
 <div class="header-container row">
-  <div class="course-name col-md-4">FIZYKA</div>
+  <button class="course-button course-name col-md-4" routerLink="/kursy/{{lesson?.course?.id}}">
+    {{lesson?.course?.name}}
+  </button>
   <div class="lesson-number col-md-3">Lekcja {{lessonId}}</div>
   <div class="buttons-container col-md-5">
     <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test/">
@@ -40,9 +42,9 @@
                     <mat-icon>cloud_download</mat-icon>
                   </div>
                 </button>
-<!--                  <button *ngIf="sessionService.isTeacher()" mat-button class="button-delete">-->
-                    <mat-icon (click)= "deleteMaterial(material.id)" class="trash button-delete">delete_forever</mat-icon>
-<!--                  </button>-->
+                <!--                  <button *ngIf="sessionService.isTeacher()" mat-button class="button-delete">-->
+                <mat-icon (click)="deleteMaterial(material.id)" class="trash button-delete">delete_forever</mat-icon>
+                <!--                  </button>-->
 
               </div>
 

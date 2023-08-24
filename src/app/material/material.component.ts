@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Material} from "../api-models";
+import {Lesson, Material} from "../api-models";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {saveAs} from 'file-saver';
@@ -17,6 +17,7 @@ export class MaterialComponent {
   }
 
   lessonId: string | null = '0';
+  lesson: Lesson | undefined;
 
   materials: Material [] | undefined;
 
@@ -29,6 +30,7 @@ export class MaterialComponent {
     let id = this.route.snapshot.paramMap.get('id');
     this.lessonId = id;
 
+    this.httpClient.get<Lesson>("http://localhost:8080/lessons/" + id).subscribe(lesson => this.lesson = lesson);
     this.httpClient.get<Material []>("http://localhost:8080/lessons/" + id + "/materials").subscribe(material => this.materials = material)
   }
 

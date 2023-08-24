@@ -130,6 +130,11 @@
   cursor: pointer;
 }
 
+.course-button {
+  border-color: transparent;
+  background-color: transparent;
+}
+
 /*/deep/ .mat-mdc-focus-indicator {*/
 /*  width: 50px !important;*/
 /*  height: 50px !important;*/
