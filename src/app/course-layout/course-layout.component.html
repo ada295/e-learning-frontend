@@ -6,10 +6,14 @@ przykladowe courses - jest to tablica kursow
 pętla tworzy 2 przyciski, najpierw dla 1 elemenetu, potem dla drugiego:
   <button mat-button routerLink="/kursy/1" class="course">Fizyka</button>
   <button mat-button routerLink="/kursy/2" class="course">Matematyka</button>
+
+ /kursy/{{course.id}}
 -->
 
 <div class="course-container" *ngFor="let course of courses">
-  <button mat-button routerLink="/kursy/{{course.id}}" class="course">{{course.name}}</button>
+  <button mat-button style="width: 100%" routerLink="{{course.customLink}}" class="course">
+    {{course.name}} <span style="width: 50%;text-align: right">{{course.customLabel}}</span>
+  </button>
 </div>
 
 

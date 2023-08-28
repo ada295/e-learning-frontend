@@ -19,6 +19,9 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get<Course[]>("http://localhost:8080/courses")
       .subscribe(courses => {
+        for (let i = 0; i < courses.length; i++) {
+          courses[i].customLink = '/kursy/' + courses[i].id;
+        }
         this.allCourses = courses;
       });
 

@@ -2,7 +2,7 @@ import {Component, HostListener} from '@angular/core';
 import {SessionService} from "../session.service";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Task, TaskToDo} from "../api-models";
+import {Lesson, Task, TaskToDo} from "../api-models";
 
 @Component({
   selector: 'app-tasks',
@@ -15,7 +15,7 @@ export class TasksComponent {
   desired_columns = 3;
   desired_row_height = '2:1';
   lessonId: string | null | undefined;
-
+  lesson: Lesson | undefined;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
@@ -28,6 +28,7 @@ export class TasksComponent {
   ngOnInit() {
     this.setAmountOfColumns(window.innerWidth);
     this.lessonId = this.route.snapshot.paramMap.get('id');
+    this.httpClient.get<Lesson>("http://localhost:8080/lessons/" + this.lessonId).subscribe(lesson => this.lesson = lesson);
     if(this.sessionService.isTeacher())
       this.httpClient.get<Task []>("http://localhost:8080/lessons/" + this.lessonId + "/tasks").subscribe(tasks => this.tasks = tasks)
     else if (this.sessionService.isStudent())

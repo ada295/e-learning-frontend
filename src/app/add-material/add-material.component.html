@@ -1,26 +1,35 @@
 <div class="container">
   <div>
-    <form class="test-container" *ngIf="!materialInformation" [formGroup]="examGroup">
+    <form class="material-container" *ngIf="!materialInformation" [formGroup]="examGroup">
       <h1 class="header">NOWY MATERIAŁ</h1>
       <br>
-        <div class="file-upload">
+      <div class="file-upload">
 
-          <input type="file" class="file-input"
-                 (change)="onFileSelected($event)" #fileUpload>
+        <input type="file" class="file-input"
+               (change)="onFileSelected($event)" #fileUpload>
 
-          {{fileName || ""}}
+        {{fileName || ""}}
 
-          <button mat-mini-fab color="primary" class="upload-btn"
-                  (click)="fileUpload.click()">
-            <mat-icon>attach_file</mat-icon>
-          </button>
+        <button mat-mini-fab color="primary" class="upload-btn"
+                (click)="fileUpload.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
 
-          <h3 class="text" style="margin-top: 20px">Przeciągnij i upuść plik tutaj</h3>
+        <div class="text" style="margin-top: 20px">
+          <h3 >Dodaj plik z materiałem</h3>
         </div>
+      </div>
+      <br><br>
+      <div>
+        <div><h3 class="text" style="margin-bottom: 10px !important; text-align: left">Podaj nazwę dla pliku z materiałem: </h3></div>
+        <input type="text" style="width: 100%" formControlName="name" required>
+      </div>
       <br>
       <br><br>
       <div>
-        <button mat-button class="create-button" (click)="uploadFile()" [disabled]="formData.get('file') == null" >Dodaj materiał</button>
+        <button mat-button class="create-button" (click)="uploadFile()" [disabled]="formData.get('file') == null">Dodaj
+          materiał
+        </button>
       </div>
     </form>
   </div>

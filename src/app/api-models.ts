@@ -3,6 +3,8 @@ export class Course {
   name: string = "";
   description: string = "";
   finished: boolean = false;
+  customLink: string = "";
+  customLabel: string = "";
 }
 
 export class Teacher {

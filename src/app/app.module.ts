@@ -48,6 +48,7 @@ import { AddMaterialComponent } from './add-material/add-material.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import {GradebookComponent} from "./gradebook/gradebook.component";
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
     AddMaterialComponent,
     TaskDetailsComponent,
     AddLessonComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    GradebookComponent
   ],
   imports: [
     BrowserModule,
