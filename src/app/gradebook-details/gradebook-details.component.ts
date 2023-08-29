@@ -3,33 +3,34 @@ import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
 import {Course} from "../api-models";
 import {ActivatedRoute} from "@angular/router";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
-
-// @ts-ignore
-// @ts-ignore
 @Component({
   selector: 'app-gradebook-details',
   templateUrl: './gradebook-details.component.html',
   styleUrls: ['./gradebook-details.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
-export class GradebookDetailsComponent implements OnInit{
+export class GradebookDetailsComponent implements OnInit {
   courseName: string | null | undefined;
+  dataSource = ELEMENT_DATA;
+  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  expandedElement: PeriodicElement | null | undefined;
 
-  constructor(private httpClient:HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
+  constructor(private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.courseName = this.route.snapshot.paramMap.get('courseName');
     this.httpClient.get<Course[]>("http://localhost:8080/courses")
   }
-
-
-
-
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: PeriodicElement | null | undefined;
 }
 
 export interface PeriodicElement {

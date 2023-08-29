@@ -31,7 +31,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {AddTeacherComponent} from './add-teacher/add-teacher/add-teacher.component';
 import {TeachersComponent} from './teachers/teachers.component';
-import {MatLegacyTableModule} from "@angular/material/legacy-table";
 import {LoginComponent} from './login/login/login.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -44,12 +43,13 @@ import {TasksComponent} from './tasks/tasks.component';
 import {AnnouncementsComponent} from './announcements/announcements.component';
 import {AddEventComponent} from './add-event/add-event.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import { AddMaterialComponent } from './add-material/add-material.component';
-import { TaskDetailsComponent } from './task-details/task-details.component';
-import { AddLessonComponent } from './add-lesson/add-lesson.component';
-import { AddTaskComponent } from './add-task/add-task.component';
+import {AddMaterialComponent} from './add-material/add-material.component';
+import {TaskDetailsComponent} from './task-details/task-details.component';
+import {AddLessonComponent} from './add-lesson/add-lesson.component';
+import {AddTaskComponent} from './add-task/add-task.component';
 import {GradebookComponent} from "./gradebook/gradebook.component";
-import { GradebookDetailsComponent } from './gradebook-details/gradebook-details.component';
+import {GradebookDetailsComponent} from './gradebook-details/gradebook-details.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -101,12 +101,14 @@ import { GradebookDetailsComponent } from './gradebook-details/gradebook-details
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatLegacyTableModule,
     MatDatepickerModule,
     MatTooltipModule,
     MatOptionModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
   bootstrap: [AppComponent]
