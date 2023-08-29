@@ -1,0 +1,75 @@
+.gradebook-container {
+  width: 70%;
+  /*background-color: #481979;*/
+  /*height: 100px;*/
+  margin: auto;
+}
+
+.gradebook-header {
+  font-size: 50px;
+  color: rgb(103, 58, 183);
+  /*text-align: left;*/
+  margin-top: auto;
+  line-height: 50px;
+  padding-bottom: 50px;
+}
+
+.grades-container {
+  background-color: rgba(103, 58, 183, 1);
+  color: white;
+  font-size: 30px;
+  padding: 20px;
+}
+
+
+
+
+
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}

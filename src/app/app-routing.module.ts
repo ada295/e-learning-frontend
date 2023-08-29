@@ -23,6 +23,7 @@ import {TaskDetailsComponent} from "./task-details/task-details.component";
 import {AddLessonComponent} from "./add-lesson/add-lesson.component";
 import {AddTaskComponent} from "./add-task/add-task.component";
 import {GradebookComponent} from "./gradebook/gradebook.component";
+import {GradebookDetailsComponent} from "./gradebook-details/gradebook-details.component";
 
 const routes: Routes = [
   {
@@ -41,10 +42,16 @@ const routes: Routes = [
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
     }
   },
-  // {
-  //   path: 'dziennik/:courseName/:id',
-  //
-  // },
+  {
+    path: 'dziennik/:courseName/:id',
+    component: GradebookDetailsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+
+
+  },
   {
     path: 'login',
     component: LoginComponent

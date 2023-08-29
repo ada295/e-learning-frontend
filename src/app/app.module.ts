@@ -49,6 +49,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import {GradebookComponent} from "./gradebook/gradebook.component";
+import { GradebookDetailsComponent } from './gradebook-details/gradebook-details.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import {GradebookComponent} from "./gradebook/gradebook.component";
     TaskDetailsComponent,
     AddLessonComponent,
     AddTaskComponent,
-    GradebookComponent
+    GradebookComponent,
+    GradebookDetailsComponent
   ],
   imports: [
     BrowserModule,

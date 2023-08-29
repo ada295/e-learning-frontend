@@ -11,8 +11,16 @@ pętla tworzy 2 przyciski, najpierw dla 1 elemenetu, potem dla drugiego:
 -->
 
 <div class="course-container" *ngFor="let course of courses">
-  <button mat-button style="width: 100%" routerLink="{{course.customLink}}" class="course">
-    {{course.name}} <span style="width: 50%;text-align: right">{{course.customLabel}}</span>
+  <button mat-button *ngIf='course.customLabel && course.customLabel.length > 0' style="width: 100%"
+          routerLink="{{course.customLink}}"
+          class="course">
+    <span style="width: 50%; display: inline-block; text-align: center">{{course.name}}</span>
+    <span style="width: 50%;display:inline-block;text-align: center">{{course.customLabel}}</span>
+  </button>
+
+  <button mat-button style="width: 100%" *ngIf='course.customLabel == undefined || course.customLabel.length == 0'
+          routerLink="{{course.customLink}}"
+          class="course">{{course.name}}
   </button>
 </div>
 
