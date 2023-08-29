@@ -177,6 +177,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'kursy/:id/ogloszenia',
+    component: AnnouncementsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
     path: 'lekcja/:id/dodaj-zadanie',
     component: AddTaskComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],

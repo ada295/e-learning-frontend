@@ -41,16 +41,14 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    grade: 1,
+    grade: 4,
     name: 'Odpowiedź ustna',
     description: `Odpowieź ustna z wiedzy dotyczącej świata roślin i zwierząt`,
   },
   {
-    grade: 2,
+    grade: 5,
     name: 'Aktywność',
     description: `Praca nad wybranym projektem w grupach. Praca grupy objawiająca się licznymi pomysłami, komunikatywnością i dobrym podziełem pracy.`,
-
-
   },
 ];
 
