@@ -20,6 +20,13 @@ export class Lesson {
   course: Course | undefined;
 }
 
+export class Announcement {
+  id: number = 0;
+  name: string | undefined;
+  description: string | undefined;
+  course: Course | undefined;
+}
+
 export class CourseDetails {
   course: Course | undefined;
   lessons: Lesson[] = [];
@@ -103,14 +110,20 @@ export class TaskToDo {
   icon: string | undefined;
 }
 
+export class Grade {
+  id: number = 0;
+  category: string | undefined;
+  comment: string | undefined;
+  value: number | undefined;
+}
+
 export class TaskStudent {
   id: number = 0;
   status: string | undefined;
   task: Task | undefined;
   student: Student | undefined;
-  points: number = 0;
   filename: string | undefined;
-  comment: string | undefined;
+  grade: Grade | undefined;
 }
 
 

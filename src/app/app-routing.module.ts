@@ -24,6 +24,7 @@ import {AddLessonComponent} from "./add-lesson/add-lesson.component";
 import {AddTaskComponent} from "./add-task/add-task.component";
 import {GradebookComponent} from "./gradebook/gradebook.component";
 import {GradebookDetailsComponent} from "./gradebook-details/gradebook-details.component";
+import {AddAnnouncementComponent} from "./add-announcement/add-announcement.component";
 
 const routes: Routes = [
   {
@@ -171,6 +172,14 @@ const routes: Routes = [
   {
     path: 'dodaj-lekcję',
     component: AddLessonComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'dodaj-ogloszenie',
+    component: AddAnnouncementComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER']

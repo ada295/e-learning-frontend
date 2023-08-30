@@ -29,9 +29,9 @@
     Status zadania: {{task?.status}}
   </div>
   <div *ngIf="task?.status == 'OCENIONE'" class="task-details">
-    Status zadania: {{task?.status}}
+    Status zadania: <strong style="color: green">{{task?.status}}</strong>
     <div *ngIf="task?.status == 'OCENIONE'" class="task-details task-points">
-      Ocena: {{task?.taskStudent?.points}}
+      Ocena: {{task?.taskStudent?.grade?.value}}
     </div>
   </div>
 
@@ -113,10 +113,10 @@
           Komentarz nauczyciela
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <div class="task-description" *ngIf="task?.taskStudent?.comment != null">
-        {{task?.taskStudent?.comment}}
+      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment != null">
+        {{task?.taskStudent?.grade?.comment}}
       </div>
-      <div class="task-description" *ngIf="task?.taskStudent?.comment == null">
+      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment == null">
         Brak komentarza
       </div>
     </mat-expansion-panel>

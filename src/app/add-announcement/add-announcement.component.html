@@ -1,0 +1,20 @@
+<div class="container">
+  <div>
+    <form class="test-container" [formGroup]="announcementGroup">
+      <h1 class="header">NOWE OGŁOSZENIE</h1>
+      <br>
+      <div>
+        <div><h3 class="text">Podaj nazwę: </h3></div>
+        <input type="text" formControlName="name" required>
+      </div>
+      <div style="margin-top: 20px">
+        <div><h3 class="text">Podaj treść: </h3></div>
+        <textarea type="text" formControlName="name" required></textarea>
+      </div>
+      <br><br>
+      <div>
+        <button mat-button class="create-button" (click)="addAnnouncement()">Stwórz ogłoszenie</button>
+      </div>
+    </form>
+  </div>
+</div>

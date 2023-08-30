@@ -50,6 +50,7 @@ import {AddTaskComponent} from './add-task/add-task.component';
 import {GradebookComponent} from "./gradebook/gradebook.component";
 import {GradebookDetailsComponent} from './gradebook-details/gradebook-details.component';
 import {MatTableModule} from "@angular/material/table";
+import { AddAnnouncementComponent } from './add-announcement/add-announcement.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatTableModule} from "@angular/material/table";
     AddLessonComponent,
     AddTaskComponent,
     GradebookComponent,
-    GradebookDetailsComponent
+    GradebookDetailsComponent,
+    AddAnnouncementComponent
   ],
   imports: [
     BrowserModule,
