@@ -45,6 +45,9 @@ export class Material {
 export class ExamDetailsExamResponse {
   id: number = 0;
   name: string | undefined;
+  startDate: Date | undefined;
+  endDate: Date | undefined;
+  maxMinutes: number = 0;
 }
 
 export class ExamDetailsQuestionResponse {
