@@ -10,7 +10,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {CoursesComponent} from './courses/courses.component';
 import {MatTabsModule} from "@angular/material/tabs";
@@ -52,6 +52,7 @@ import {GradebookDetailsComponent} from './gradebook-details/gradebook-details.c
 import {MatTableModule} from "@angular/material/table";
 import { AddAnnouncementComponent } from './add-announcement/add-announcement.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
+import {AuthTokenInterceptor} from "./auth-token.interceptor";
 
 @NgModule({
   declarations: [
@@ -114,7 +115,14 @@ import { TestDetailsComponent } from './test-details/test-details.component';
     MatButtonModule,
     MatIconModule
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

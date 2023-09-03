@@ -1,12 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, throwError} from "rxjs";
+
+class Role {
+  authority: string | undefined;
+}
+
+class AuthResponse {
+  error: boolean | undefined;
+  token: string | undefined;
+  role: Role[] = [];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private httpClient: HttpClient) {
   }
 
 
@@ -19,20 +31,18 @@ export class SessionService {
 
   login(username: any, password: any) {
     //kiedy backend bedzie gotowy trzeba bedzie wyslac login i haslo
-    localStorage.setItem("isLogged", "true");
-    if (username == "teacher" && password == "teacher") {
-      localStorage.setItem("role", "ROLE_TEACHER");
-    } else if (username == "student" && password == "student") {
-      localStorage.setItem("role", "ROLE_STUDENT");
-    } else if (username == "admin" && password == "admin") {
-      localStorage.setItem("role", "ROLE_ADMIN");
-    } else {
-      alert("Błędne dane logowania!");
-      return;
-    }
-
-
-    this.router.navigateByUrl("/");
+    this.httpClient.post<AuthResponse>("http://localhost:8080/auth/login", {
+      email: username, password: password
+    }).pipe(catchError(this.handleError)
+    ).subscribe((response) => {
+      if (response.error == true) {
+      } else if (response.token && response.role[0].authority) {
+        localStorage.setItem("isLogged", "true");
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("role", "ROLE_" + response.role[0].authority);
+        this.router.navigateByUrl("/kursy");
+      }
+    });
   }
 
   isStudent() {
@@ -47,11 +57,16 @@ export class SessionService {
     return localStorage.getItem("role") == "ROLE_ADMIN";
   }
 
-
   logout() {
     localStorage.removeItem("isLogged");
     localStorage.removeItem("role");
+    localStorage.removeItem("token");
     this.router.navigateByUrl("/login");
 
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    alert("Błędne dane logowania!");
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }
