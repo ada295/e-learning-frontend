@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Course} from "../api-models";
+import {SessionService} from "../session.service";
 
 @Component({
   selector: 'app-course-layout',
@@ -9,5 +10,8 @@ import {Course} from "../api-models";
 export class CourseLayoutComponent {
   @Input()
   courses: Course[] = [];
+
+  constructor(public sessionService: SessionService) {
+  }
 
 }

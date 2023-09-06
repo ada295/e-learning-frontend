@@ -11,6 +11,7 @@ import {TaskToDo} from "../api-models";
 })
 export class TaskDetailsComponent implements OnInit {
 
+  lessonId: string | null = '0';
   panelOpenState = false;
   task: TaskToDo | undefined;
   fileName = '';
@@ -33,6 +34,8 @@ export class TaskDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.lessonId = id;
     this.loadTaskDetails();
   }
 

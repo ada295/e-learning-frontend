@@ -1,6 +1,6 @@
 <div class="announcements-container">
   <div class="row g-0">
-  <div class="announcement-header col-md-10">OGŁOSZENIA: <span style="margin-left: 4%">Nazwa przedmiotu</span></div>
+  <div class="announcement-header col-md-10">OGŁOSZENIA: <span style="margin-left: 4%">{{course?.course?.name}}</span></div>
   <div class="col-md-2"><button *ngIf="sessionService.isTeacher()" class="button-option" style="float: right" mat-button routerLink="/dodaj-ogloszenie">
     <div class="option-name button-announcement">Dodaj ogłoszenie</div>
     <div class="icon-container">

@@ -25,6 +25,7 @@ import {AddTaskComponent} from "./add-task/add-task.component";
 import {GradebookComponent} from "./gradebook/gradebook.component";
 import {GradebookDetailsComponent} from "./gradebook-details/gradebook-details.component";
 import {AddAnnouncementComponent} from "./add-announcement/add-announcement.component";
+import {TestDetailsComponent} from "./test-details/test-details.component";
 
 const routes: Routes = [
   {
@@ -106,8 +107,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'lekcja/:id/test',
-    component: ExamComponent,
+    path: 'lekcja/:id/test-opis',
+    component: TestDetailsComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']

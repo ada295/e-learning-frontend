@@ -2,19 +2,19 @@
   <div class="course-name col-md-4">FIZYKA</div>
   <div class="lesson-number col-md-3">Lekcja 79</div>
   <div class="buttons-container col-md-5">
-    <button class="button-option" mat-button routerLink="/lekcja/1/test/">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test-opis">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/1/materiały">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/1/zadania">
+    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>

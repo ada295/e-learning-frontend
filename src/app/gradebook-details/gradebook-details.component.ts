@@ -23,6 +23,7 @@ export class GradebookDetailsComponent implements OnInit {
   columnsToDisplay = ['name', 'grade'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: PeriodicElement | null | undefined;
+  expandedElementChild: PeriodicElement | null | undefined;
 
   constructor(private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
   }
@@ -37,6 +38,8 @@ export interface PeriodicElement {
   name: string;
   grade: number;
   description: string;
+  studentName: string;
+  studentSurname: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -44,11 +47,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
     grade: 4,
     name: 'Odpowiedź ustna',
     description: `Odpowieź ustna z wiedzy dotyczącej świata roślin i zwierząt`,
+    studentName: "Jan",
+    studentSurname: "Kowalski"
   },
   {
     grade: 5,
     name: 'Aktywność',
     description: `Praca nad wybranym projektem w grupach. Praca grupy objawiająca się licznymi pomysłami, komunikatywnością i dobrym podziełem pracy.`,
+    studentName: "Jan",
+    studentSurname: "Kowalski"
   },
 ];
 
