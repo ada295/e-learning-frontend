@@ -20,8 +20,10 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class GradebookDetailsComponent implements OnInit {
   courseName: string | null | undefined;
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'grade'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  columnsToDisplay1 = ['name', 'grade', 'delete'];
+  columnsToDisplay2 = ['name', 'grade', 'edit'];
+  columnsToDisplayWithExpand1 = [...this.columnsToDisplay1, 'expand'];
+  columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
   expandedElement: PeriodicElement | null | undefined;
   expandedElementChild: PeriodicElement | null | undefined;
 
@@ -32,6 +34,11 @@ export class GradebookDetailsComponent implements OnInit {
     this.courseName = this.route.snapshot.paramMap.get('courseName');
     this.httpClient.get<Course[]>("http://localhost:8080/courses")
   }
+
+  edit(element: PeriodicElement) {
+    alert(element);
+
+  }
 }
 
 export interface PeriodicElement {
@@ -40,6 +47,8 @@ export interface PeriodicElement {
   description: string;
   studentName: string;
   studentSurname: string;
+  delete: string;
+  edit: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -48,14 +57,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
     name: 'Odpowiedź ustna',
     description: `Odpowieź ustna z wiedzy dotyczącej świata roślin i zwierząt`,
     studentName: "Jan",
-    studentSurname: "Kowalski"
+    studentSurname: "Kowalski",
+    delete: "Usuń",
+    edit: "Edytuj"
   },
   {
     grade: 5,
     name: 'Aktywność',
     description: `Praca nad wybranym projektem w grupach. Praca grupy objawiająca się licznymi pomysłami, komunikatywnością i dobrym podziełem pracy.`,
     studentName: "Jan",
-    studentSurname: "Kowalski"
+    studentSurname: "Kowalski",
+    delete: "Usuń",
+    edit: "Edytuj"
   },
 ];
 
