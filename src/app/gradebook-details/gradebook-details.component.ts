@@ -20,8 +20,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class GradebookDetailsComponent implements OnInit {
   courseName: string | null | undefined;
   dataSource = ELEMENT_DATA;
-  columnsToDisplay1 = ['name', 'grade', 'delete'];
-  columnsToDisplay2 = ['name', 'grade', 'edit'];
+  columnsToDisplay1 = ['name', 'grade', 'add'];
+  columnsToDisplay2 = ['name', 'grade', 'edit', 'delete'];
   columnsToDisplayWithExpand1 = [...this.columnsToDisplay1, 'expand'];
   columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
   expandedElement: PeriodicElement | null | undefined;
@@ -41,14 +41,15 @@ export class GradebookDetailsComponent implements OnInit {
   }
 }
 
-export interface PeriodicElement {
-  name: string;
-  grade: number;
-  description: string;
-  studentName: string;
-  studentSurname: string;
-  delete: string;
-  edit: string;
+export class PeriodicElement {
+  name: string | undefined;
+  grade: number | undefined;
+  description: string | undefined;
+  studentName: string | undefined;
+  studentSurname: string | undefined;
+  delete = "Usuń";
+  edit = "Edytuj";
+  add = "Dodaj ocenę";
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -59,7 +60,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     studentName: "Jan",
     studentSurname: "Kowalski",
     delete: "Usuń",
-    edit: "Edytuj"
+    edit: "Edytuj",
+    add: "Dodaj ocenę"
   },
   {
     grade: 5,
@@ -68,7 +70,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     studentName: "Jan",
     studentSurname: "Kowalski",
     delete: "Usuń",
-    edit: "Edytuj"
+    edit: "Edytuj",
+    add: "Dodaj ocenę"
   },
 ];
 
