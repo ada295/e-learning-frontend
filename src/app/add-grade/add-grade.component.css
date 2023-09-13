@@ -14,7 +14,7 @@
   box-shadow: 3px 3px 10px rgba(91, 91, 96, 0.85);
 }
 
-.test-container {
+.grade-container {
   align-self: center;
   margin: 0 20%;
 }
@@ -49,7 +49,8 @@ input:focus {
 textarea {
   width: 90%;
   display: block;
-  margin: 40px auto auto;
+  /*margin: 40px auto auto;*/
+  margin: auto;
   min-height: 80px;
   border-radius: 5px;
   border: 2px solid rgba(91, 91, 96, 0.85);
@@ -61,37 +62,12 @@ textarea:focus {
 }
 
 
-.create-button {
+.add-button {
   /*background-color: #ffd740;*/
   background-color: #e3bf32;
   display: block;
   margin: 0 auto;
   color: white;
-}
-
-.create-question-button
-{
-  margin-top: 30px;
-  margin-bottom: 20px;
-  background-color: rgba(103, 58, 183, 1) !important;
-}
-
-.create-button:hover {
-  /*box-shadow: 0 0 5px #e3bf32;*/
-  /*box-shadow: 0 0 10px #ffd740;*/
-}
-
-.create-question-button:hover {
-  /*box-shadow: 0 0 5px rgba(103, 58, 183, 1) !important;*/
-  background-color: #5e239d !important;
-  box-shadow: 0 0 0 !important;
-}
-
-.exam-name
-{
-  margin: 20px 5%;
-  padding-left: 20px;
-  font-weight: normal;
 }
 
 .text {
@@ -101,17 +77,10 @@ textarea:focus {
 }
 
 h3 {
-  float: left;
+  /*float: left;*/
   width: 24%;
 }
 
-.question {
-  padding: 20px;
+.exam-radio-button {
+  margin-left: 5%;
 }
-
-.question-card {
-  align-self: center;
-  margin: 0 5%;
-}
-
-

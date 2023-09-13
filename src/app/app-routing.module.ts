@@ -26,6 +26,7 @@ import {GradebookComponent} from "./gradebook/gradebook.component";
 import {GradebookDetailsComponent} from "./gradebook-details/gradebook-details.component";
 import {AddAnnouncementComponent} from "./add-announcement/add-announcement.component";
 import {TestDetailsComponent} from "./test-details/test-details.component";
+import {AddGradeComponent} from "./add-grade/add-grade.component";
 
 const routes: Routes = [
   {
@@ -51,8 +52,14 @@ const routes: Routes = [
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
     }
-
-
+  },
+  {
+    path: 'dodaj-ocene/:courseName/:id/:studentId',
+    component: AddGradeComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
   },
   {
     path: 'login',

@@ -1,0 +1,64 @@
+<div class="container">
+  <div>
+    <form class="grade-container" [formGroup]="gradeGroup">
+      <h1 class="header">Jan Kowalski</h1>
+      <br>
+      <h3 class="text">Wybierz typ oceny: </h3>
+      <mat-radio-button class="exam-radio-button">
+        Sprawdzian
+      </mat-radio-button>
+      <br>
+      <mat-radio-button class="exam-radio-button">
+       Odpowiedź ustna
+      </mat-radio-button>
+      <br>
+      <mat-radio-button class="exam-radio-button">
+        Aktywność
+      </mat-radio-button>
+      <br>
+      <mat-radio-button class="exam-radio-button">
+        Kartkówka
+      </mat-radio-button>
+      <br>
+      <mat-radio-button class="exam-radio-button">
+        Praca domowa
+      </mat-radio-button>
+      <br>
+      <mat-radio-button class="exam-radio-button">
+        Projekt
+      </mat-radio-button>
+      <br>
+
+
+<!--      <mat-radio-button [value]="answer.id" class="exam-radio-button">-->
+<!--        {{answer.content}}-->
+<!--      </mat-radio-button>-->
+<!--      <input type="text" formControlName="type" required>-->
+      <br>
+      <h3 class="text">Podaj opis oceny: </h3>
+      <textarea formControlName="description"></textarea>
+      <br>
+      <br><br>
+      <div>
+        <button mat-button class="add-button" (click)="addGrade()">Dodaj ocenę</button>
+      </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

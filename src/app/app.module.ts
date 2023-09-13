@@ -53,6 +53,7 @@ import {MatTableModule} from "@angular/material/table";
 import { AddAnnouncementComponent } from './add-announcement/add-announcement.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import {AuthTokenInterceptor} from "./auth-token.interceptor";
+import { AddGradeComponent } from './add-grade/add-grade.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import {AuthTokenInterceptor} from "./auth-token.interceptor";
     GradebookComponent,
     GradebookDetailsComponent,
     AddAnnouncementComponent,
-    TestDetailsComponent
+    TestDetailsComponent,
+    AddGradeComponent
   ],
   imports: [
     BrowserModule,
