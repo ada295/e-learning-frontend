@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Teacher} from "../api-models";
+import {User} from "../api-models";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -9,25 +9,16 @@ import {HttpClient} from "@angular/common/http";
 })
 export class TeachersComponent implements OnInit {
 
-  teachers: Teacher[] = [
-    {"name": "Andrzej", "surname": "Ziomek", "email": "and@zio.pl", "id":2},
-    {"name": "Andrzej", "surname": "Ziomek1", "email": "and@zio.pl", "id":3},
-    {"name": "Andrzej", "surname": "Ziomek2", "email": "and@zio.pl", "id":4},
-    {"name": "Andrzej", "surname": "Ziomek3", "email": "and@zio.pl", "id":5},
-    {"name": "Andrzej1", "surname": "Ziomek4", "email": "and@zio.pl", "id":6},
-    {"name": "Andrzej1", "surname": "Ziomek5", "email": "and@zio.pl", "id":7},
-    {"name": "Andrzej1", "surname": "Ziomek6", "email": "and@zio.pl", "id":8},
-    {"name": "Andrzej1", "surname": "Ziomek7", "email": "and@zio.pl", "id":9},
-    {"name": "Andrzej1", "surname": "Ziomek8", "email": "and@zio.pl", "id":10}
-  ];
+  teachers: User[] = [];
 
-  displayedColumns: string[] = ['name', 'surname', 'email'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'email'];
 
   constructor(private httpClient: HttpClient) {
   }
 
   ngOnInit():void {
-    this.httpClient.get<Teacher[]>("http://localhost:8080/teachers")
+    this.httpClient.get<User[]>("http://localhost:8080/teachers")
+      //UWAGA!!!! NA BACKENDZIE POBRAĆ TYLKO UŻYTKOWNIKÓW Z ROLĄ TEACHER!!!
       .subscribe(teachers => this.teachers = teachers);
   }
 

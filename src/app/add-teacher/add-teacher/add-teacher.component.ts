@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import {Teacher} from "../../api-models";
+import {User} from "../../api-models";
 import {catchError, of} from "rxjs";
 
 
@@ -20,6 +20,9 @@ export class AddTeacherComponent {
   thirdFormGroup = this._formBuilder.group({
     email: ['', Validators.required],
   });
+  fourthFormGroup = this._formBuilder.group({
+    userRole: ['', Validators.required],
+  });
   isLinear: any;
 
   constructor(private _formBuilder: FormBuilder, private httpClient: HttpClient) {
@@ -29,13 +32,16 @@ export class AddTeacherComponent {
   addTeacher() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
 
-      let teacher = new Teacher();
-      teacher.name = this.firstFormGroup.value.name ? this.firstFormGroup.value.name : "";
-      teacher.surname = this.secondFormGroup.value.surname ? this.secondFormGroup.value.surname : "";
-      teacher.email = this.thirdFormGroup.value.email ? this.thirdFormGroup.value.email : "";
+      let user = new User();
+      user.firstName = this.firstFormGroup.value.name ? this.firstFormGroup.value.name : "";
+      user.lastName = this.secondFormGroup.value.surname ? this.secondFormGroup.value.surname : "";
+      user.email = this.thirdFormGroup.value.email ? this.thirdFormGroup.value.email : "";
+      user.roles = [this.fourthFormGroup.value.userRole ? this.fourthFormGroup.value.userRole: ""];
+
+      console.log(user);
 
 
-      this.httpClient.post<Teacher>("http://localhost:8080/teachers", teacher)
+      this.httpClient.post<any>("http://localhost:8080/auth/register", user)
         .pipe(
           catchError(error => {
             alert(error.error);
@@ -44,8 +50,10 @@ export class AddTeacherComponent {
         )
         .subscribe(value =>
           //kolko przestaje sie krecic
-          alert("Nauczyciel dodany!")
+          alert("Konto dodane: " + value.password)
         );
+    } else {
+      alert("Niepoprawne dane");
     }
   }
 

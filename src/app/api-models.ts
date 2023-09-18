@@ -7,11 +7,12 @@ export class Course {
   customLabel: string = "";
 }
 
-export class Teacher {
+export class User {
   id: number = 0;
-  name: string = "";
-  surname: string = "";
+  firstName: string = "";
+  lastName: string = "";
   email: string = "";
+  roles: string[] = [];
 }
 
 export class Lesson {

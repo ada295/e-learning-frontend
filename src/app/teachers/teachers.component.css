@@ -1,10 +1,7 @@
 mat-table{
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
   background-color: rgba(255, 255, 255, 0.62);
   border: 1px solid rgba(91, 91, 96, 0.85);
-  border-radius: 10px;
+  /*border-radius: 10px;*/
 }
 
 mat-header-cell{
@@ -35,4 +32,9 @@ mat-row:last-child{
 mat-row:last-child:hover{
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+
+.teachers-container {
+  width: 80%;
+  margin-left: 10%;
 }
