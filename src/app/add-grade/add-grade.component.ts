@@ -11,7 +11,8 @@ export class AddGradeComponent {
 
   gradeGroup = this.formBuilder.group({
     type: ['', Validators.required],
-    description: ['', Validators.required],
+    grade: ['', Validators.required],
+    description: ['', Validators.required]
   })
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
@@ -20,6 +21,14 @@ export class AddGradeComponent {
   addGrade() {
     if (this.gradeGroup.valid) {
 
+    }
+  }
+
+  updateValue(grade: HTMLInputElement) {
+    if(parseInt(grade.value) > 6) {
+      grade.value = "6";
+    } else if (parseInt(grade.value) < 1) {
+      grade.value = "1";
     }
   }
 }

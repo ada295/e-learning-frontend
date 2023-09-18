@@ -113,6 +113,7 @@ mat-panel-title.mat-expansion-panel-header-title {
 
 /deep/ .task-description {
   line-height: 1.2;
+  font-size: 25px !important;
 }
 
 .file-attachment {
@@ -174,6 +175,14 @@ input#file-upload-button  {
   display: block;
   margin: 0 auto;
   color: white !important;
+}
+
+.button-edit {
+  background-color: #e3bf32;
+  color: white;
+  width: 15%;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
 

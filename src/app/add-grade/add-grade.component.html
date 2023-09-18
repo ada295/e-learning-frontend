@@ -28,6 +28,10 @@
         Projekt
       </mat-radio-button>
       <br>
+      <br>
+
+      <h3 style="float:left;" class="text">Wpisz ocenę: </h3>
+      <input #grade type="number" min="1" max="6" formControlName="grade" (change)="updateValue(grade)">
 
 
 <!--      <mat-radio-button [value]="answer.id" class="exam-radio-button">-->

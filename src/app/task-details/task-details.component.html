@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="task-container">
+<div *ngIf="sessionService.isStudent()" class="task-container">
   <p class="task-name">Zadanie</p>
   <div *ngIf="task?.status != 'OCENIONE'" class="task-details">
     Status zadania: {{task?.status}}
@@ -121,7 +121,110 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
-
-
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="sessionService.isTeacher()" class="task-container">
+  <p class="task-name">Zadanie</p>
+
+  <div class="task-details">
+    Termin oddania: {{task?.task?.endDate  | date: 'dd.MM.YYYY'}}
+  </div>
+        <div class="task-details" style="margin-bottom: 20px !important;">
+          Treść zadania: </div>
+      <div class="task-description task-details">
+        {{task?.task?.description}}
+      </div>
+
+  <div *ngIf="task?.status == 'AKTYWNE'"  class="task-details file-attachment">
+    Dodaj rozwiązanie:
+  </div>
+  <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
+
+
+
+    <!--    <button *ngIf="task?.status == 'AKTYWNE'"  class="file-button" (click)="fileUpload.click()">-->
+    <button *ngIf="task?.status == 'AKTYWNE'" class="upload-btn" (click)="fileUpload.click()">
+
+
+      <!--    <button *ngIf="task?.status == 'AKTYWNE'" class="file-button" color="primary" class="upload-btn" (click)="fileUpload.click()">-->
+      <!--      <div style="float: left">-->
+      <mat-icon>note_add</mat-icon>
+      <!--      </div>-->
+    </button>
+
+    <input type="file" class="file-input"
+           (change)="onFileSelected($event)" #fileUpload>
+
+    {{fileName || ""}}
+
+
+  </div>
+
+
+
+  <!--  <button *ngIf="task?.status == 'AKTYWNE'" class="file-button">-->
+  <!--    <div style="float: left">-->
+  <!--      <mat-icon>note_add</mat-icon>-->
+  <!--    </div>-->
+  <!--  </button>-->
+
+
+
+  <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
+    Przesłane pliki:
+  </div>
+  <button *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'" class="file-button">
+    <div style="float: left">
+      <mat-icon> attach_file</mat-icon>
+    </div>
+    <div class="file-name">
+      {{task?.taskStudent?.filename}}
+    </div>
+  </button>
+  <div *ngIf="task?.status=='WYKONANE' && checkDate(task)" class="task-option-container">
+    <button mat-button class="button-delete-task" (click)="deleteTask()">Usuń pliki</button>
+  </div>
+
+  <div style="clear:both"></div>
+
+  <mat-accordion *ngIf="task?.status=='OCENIONE'">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Komentarz nauczyciela
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment != null">
+        {{task?.taskStudent?.grade?.comment}}
+      </div>
+      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment == null">
+        Brak komentarza
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div style="text-align: center; margin-top: 85px">
+    <button mat-button class="button-edit">Edytuj</button>
+    <button mat-button class="button-delete-task">Usuń</button>
+  </div>
+
