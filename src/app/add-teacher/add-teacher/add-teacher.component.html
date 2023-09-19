@@ -45,11 +45,10 @@
     <mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Rola użytkownika</ng-template>
-        <mat-label>Rola</mat-label>
         <mat-radio-group formControlName="userRole">
-          <mat-radio-button value="STUDENT">Student</mat-radio-button>
-          <mat-radio-button value="TEACHER">Nauczyciel</mat-radio-button>
-          <mat-radio-button value="ADMIN">Administrator</mat-radio-button>
+          <mat-radio-button value="STUDENT">Student</mat-radio-button><br>
+          <mat-radio-button value="TEACHER">Nauczyciel</mat-radio-button><br>
+          <mat-radio-button value="ADMIN">Administrator</mat-radio-button><br>
         </mat-radio-group>
         <div>
           <button mat-button matStepperPrevious>Wróć</button>
@@ -60,7 +59,7 @@
 
 
     <mat-step>
-      <ng-template matStepLabel>Dodaj nauczyciela</ng-template>
+      <ng-template matStepLabel>Dodaj użytkownika</ng-template>
       <div class="buttons">
         <button mat-button class="save-teacher" (click)="addTeacher()">Zapisz</button>
         <button mat-button matStepperPrevious>Wróć</button>
