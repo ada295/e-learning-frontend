@@ -5,7 +5,7 @@ import {CourseDetailsComponent} from "./course-details/course-details.component"
 import {LessonsComponent} from "./lessons/lessons.component";
 import {ExamComponent} from "./exam/exam.component";
 import {AddCourseComponent} from "./add-course/add-course/add-course.component";
-import {AddTeacherComponent} from "./add-teacher/add-teacher/add-teacher.component";
+import {AddUserComponent} from "./add-user/add-user.component";
 import {TeachersComponent} from "./teachers/teachers.component";
 import {LoginComponent} from "./login/login/login.component";
 import {CalendarComponent} from "./calendar/calendar.component";
@@ -27,6 +27,7 @@ import {GradebookDetailsComponent} from "./gradebook-details/gradebook-details.c
 import {AddAnnouncementComponent} from "./add-announcement/add-announcement.component";
 import {TestDetailsComponent} from "./test-details/test-details.component";
 import {AddGradeComponent} from "./add-grade/add-grade.component";
+import {UsersComponent} from "./users/users.component";
 
 const routes: Routes = [
   {
@@ -66,6 +67,14 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'uzytkownicy',
+    component: UsersComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
+  },
+  {
     path: 'nauczyciele',
     component: TeachersComponent,
     canActivate: [LoggedUserGuard,RoleAccessGuard],
@@ -74,8 +83,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-nauczyciela',
-    component: AddTeacherComponent,
+    path: 'rejestracja',
+    component: AddUserComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_ADMIN']

@@ -1,0 +1,14 @@
+<mat-tab-group>
+  <mat-tab label="Wszyscy użytkownicy">
+    <app-all-users [allUsers]="allUsers"></app-all-users>
+  </mat-tab>
+  <mat-tab label="Nauczyciele">
+    <app-users-teachers [allUsers]="allUsers"></app-users-teachers>
+  </mat-tab>
+  <mat-tab label="Studenci">
+    <app-users-students [allUsers]="allUsers"></app-users-students>
+  </mat-tab>
+  <mat-tab label="Administratorzy">
+    <app-users-admins [allUsers]="allUsers"></app-users-admins>
+  </mat-tab>
+</mat-tab-group>

@@ -29,7 +29,7 @@ import {AddCourseComponent} from './add-course/add-course/add-course.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {AddTeacherComponent} from './add-teacher/add-teacher/add-teacher.component';
+import {AddUserComponent} from './add-user/add-user.component';
 import {TeachersComponent} from './teachers/teachers.component';
 import {LoginComponent} from './login/login/login.component';
 import {CalendarComponent} from './calendar/calendar.component';
@@ -54,6 +54,12 @@ import { AddAnnouncementComponent } from './add-announcement/add-announcement.co
 import { TestDetailsComponent } from './test-details/test-details.component';
 import {AuthTokenInterceptor} from "./auth-token.interceptor";
 import { AddGradeComponent } from './add-grade/add-grade.component';
+import { UsersComponent } from './users/users.component';
+import { UsersStudentsComponent } from './users-students/users-students.component';
+import { UsersTeachersComponent } from './users-teachers/users-teachers.component';
+import { UsersAdminsComponent } from './users-admins/users-admins.component';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { UsersLayoutComponent } from './users-layout/users-layout.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,7 @@ import { AddGradeComponent } from './add-grade/add-grade.component';
     LessonsComponent,
     ExamComponent,
     AddCourseComponent,
-    AddTeacherComponent,
+    AddUserComponent,
     TeachersComponent,
     LoginComponent,
     CalendarComponent,
@@ -86,7 +92,13 @@ import { AddGradeComponent } from './add-grade/add-grade.component';
     GradebookDetailsComponent,
     AddAnnouncementComponent,
     TestDetailsComponent,
-    AddGradeComponent
+    AddGradeComponent,
+    UsersComponent,
+    UsersStudentsComponent,
+    UsersTeachersComponent,
+    UsersAdminsComponent,
+    AllUsersComponent,
+    UsersLayoutComponent
   ],
   imports: [
     BrowserModule,

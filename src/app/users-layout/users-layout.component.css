@@ -1,0 +1,41 @@
+mat-table{
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(91, 91, 96, 0.85);
+  /*border-radius: 10px;*/
+}
+
+mat-header-cell{
+  color: rgba(103, 58, 183, 1);
+  font-weight: bold;
+  font-size: large;
+  border-color: rgba(91, 91, 96, 0.85);
+}
+
+mat-row{
+  font-weight: 500;
+  border-color: rgba(91, 91, 96, 0.85);
+  /*transition: font-size .1s ease-in-out;*/
+}
+
+mat-row:hover{
+  background-color: rgb(103, 58, 183, 1);
+  color: white;
+  border-bottom: 1px solid rgba(91, 91, 96, 0.85);
+  font-size: larger;
+  cursor: pointer;
+}
+
+mat-row:last-child{
+  border-bottom: 0;
+}
+
+mat-row:last-child:hover{
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.teachers-container {
+  width: 80%;
+  margin-left: 10%;
+}

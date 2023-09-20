@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
-import {User} from "../../api-models";
+import {User} from "../api-models";
 import {catchError, of} from "rxjs";
 
 
 @Component({
-  selector: 'app-add-teacher',
-  templateUrl: './add-teacher.component.html',
-  styleUrls: ['./add-teacher.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class AddTeacherComponent {
+export class AddUserComponent {
   firstFormGroup = this._formBuilder.group({
     name: ['', Validators.required],
   });
