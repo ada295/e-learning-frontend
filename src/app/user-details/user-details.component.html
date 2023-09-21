@@ -1,0 +1,27 @@
+<div class="container">
+  <button  (click)="switchEdit()" *ngIf="!edit">Edytuj</button>
+  <button  (click)="switchEdit()" *ngIf="edit">Anuluj edycje</button>
+  <button  (click)="switchEdit()" *ngIf="edit">Zapisz</button>
+
+  <h1 style="color: dimgrey">Szczegóły konta użytkownika</h1>
+  <div class="user-container">
+    <div class="user-details">
+      <h3 >Imię: </h3>
+      <input *ngIf="edit" type="text" value="Jan" formControlName="firstName">
+      <input *ngIf="!edit" type="text" value="Jan" disabled>
+    </div>
+    <div class="user-details">
+      <h3>Nazwisko: </h3> <input type="text" value="Kowalski" formControlName="lastName">
+    </div>
+    <div class="user-details">
+      <h3 >Email: </h3> <input type="text" value="jan.kowalski@wp.pl" formControlName="email">
+    </div>
+    <div class="user-details">
+      <h3 >Rola: </h3> <input type="text" value="student" formControlName="role">
+    </div>
+    <div class="user-details">
+      <h3 >Hasło: </h3> <input type="password" value="student" formControlName="password">
+    </div>
+  </div>
+
+</div>

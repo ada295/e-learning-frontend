@@ -28,6 +28,7 @@ import {AddAnnouncementComponent} from "./add-announcement/add-announcement.comp
 import {TestDetailsComponent} from "./test-details/test-details.component";
 import {AddGradeComponent} from "./add-grade/add-grade.component";
 import {UsersComponent} from "./users/users.component";
+import {UserDetailsComponent} from "./user-details/user-details.component";
 
 const routes: Routes = [
   {
@@ -69,6 +70,14 @@ const routes: Routes = [
   {
     path: 'uzytkownicy',
     component: UsersComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }
+  },
+  {
+    path: 'uzytkownicy/:id',
+    component: UserDetailsComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_ADMIN']

@@ -14,26 +14,21 @@ mat-header-cell{
 
 mat-row{
   font-weight: 500;
-  border-color: rgba(91, 91, 96, 0.85);
-  /*transition: font-size .1s ease-in-out;*/
 }
 
 mat-row:hover{
-  background-color: rgb(103, 58, 183, 1);
-  color: white;
-  border-bottom: 1px solid rgba(91, 91, 96, 0.85);
-  font-size: larger;
   cursor: pointer;
+  background-color: rgba(103, 58, 183, 0.26) !important;
 }
 
 mat-row:last-child{
   border-bottom: 0;
 }
 
-mat-row:last-child:hover{
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
+/*mat-row:last-child:hover{*/
+/*  border-bottom-left-radius: 8px;*/
+/*  border-bottom-right-radius: 8px;*/
+/*}*/
 
 .teachers-container {
   width: 80%;

@@ -60,6 +60,7 @@ import { UsersTeachersComponent } from './users-teachers/users-teachers.componen
 import { UsersAdminsComponent } from './users-admins/users-admins.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UsersLayoutComponent } from './users-layout/users-layout.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { UsersLayoutComponent } from './users-layout/users-layout.component';
     UsersTeachersComponent,
     UsersAdminsComponent,
     AllUsersComponent,
-    UsersLayoutComponent
+    UsersLayoutComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -29,11 +29,8 @@
 
 input {
   width: 40%;
-  margin-left: 0px;
-  margin-right: 0px;
   display: block;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto 0px;
   height: 30px;
   border-radius: 5px;
   border-color: rgba(91, 91, 96, 0.85);
