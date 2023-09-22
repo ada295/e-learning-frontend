@@ -40,3 +40,24 @@ input:focus {
 .user-details {
   margin-bottom: 20px;
 }
+
+.button-edit{
+  background-color: #e3bf32;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}
+
+.button-delete {
+  background-color: #be2424;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}
+
+.button-back {
+  background-color: #afaeae;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}

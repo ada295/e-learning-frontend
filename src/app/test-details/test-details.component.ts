@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {Announcement, Lesson} from "../api-models";
+import {Announcement, ExamDetailsResponse, Lesson} from "../api-models";
 import {catchError, of} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
@@ -12,7 +12,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class TestDetailsComponent implements OnInit{
 
+  response: ExamDetailsResponse | undefined;
   lessonId: string | null = '0';
+  description: string | undefined;
 
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) {
@@ -20,7 +22,14 @@ export class TestDetailsComponent implements OnInit{
 
   ngOnInit() {
    this.lessonId = this.route.snapshot.paramMap.get('id');
+    this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/lesson/" + this.lessonId + "/exam-details")
+      .subscribe(exam => {
+      this.response = exam;
+        if (this.response && this.response.exam){
+          this.description = this.response.exam.name;
+        }
+      });
+
+
   }
-
-
 }

@@ -140,6 +140,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'lekcja/:id/test',
+    component: ExamComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
     path: 'dodaj-test',
     component: AddExamComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],

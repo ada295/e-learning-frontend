@@ -1,7 +1,5 @@
 <div class="container">
-  <button  (click)="switchEdit()" *ngIf="!edit">Edytuj</button>
-  <button  (click)="switchEdit()" *ngIf="edit">Anuluj edycje</button>
-  <button  (click)="switchEdit()" *ngIf="edit">Zapisz</button>
+
 
   <h1 style="color: dimgrey">Szczegóły konta użytkownika</h1>
   <div class="user-container">
@@ -11,17 +9,30 @@
       <input *ngIf="!edit" type="text" value="Jan" disabled>
     </div>
     <div class="user-details">
-      <h3>Nazwisko: </h3> <input type="text" value="Kowalski" formControlName="lastName">
+      <h3>Nazwisko: </h3>
+      <input *ngIf="edit" type="text" value="Kowalski" formControlName="lastName">
+      <input *ngIf="!edit" type="text" value="Kowalski" disabled>
     </div>
     <div class="user-details">
-      <h3 >Email: </h3> <input type="text" value="jan.kowalski@wp.pl" formControlName="email">
+      <h3 >Email: </h3>
+      <input *ngIf="edit" type="text" value="jan.kowalski@wp.pl" formControlName="email">
+      <input *ngIf="!edit" type="text" value="jan.kowalski@wp.pl" disabled>
     </div>
     <div class="user-details">
-      <h3 >Rola: </h3> <input type="text" value="student" formControlName="role">
+      <h3 >Rola: </h3>
+      <input *ngIf="edit" type="text" value="student" formControlName="role">
+      <input *ngIf="!edit" type="text" value="student" disabled>
     </div>
-    <div class="user-details">
-      <h3 >Hasło: </h3> <input type="password" value="student" formControlName="password">
+    <div *ngIf="!edit" class="user-details"></div>
+    <div *ngIf="edit" class="user-details">
+      <h3 >Hasło: </h3>
+      <input  type="password" formControlName="password">
     </div>
   </div>
+
+  <button  mat-button class="button-edit" (click)="switchEdit()" *ngIf="!edit">Edytuj</button>
+  <button  mat-button class="button-delete" (click)="switchEdit()" *ngIf="!edit">Usuń</button>
+  <button  mat-button class="button-back" (click)="switchEdit()" *ngIf="edit">Anuluj</button>
+  <button  mat-button class="button-edit" (click)="switchEdit()" *ngIf="edit">Zapisz</button>
 
 </div>

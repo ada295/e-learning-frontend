@@ -14,16 +14,16 @@ export class ExamComponent implements OnInit {
 
   exam: ExamDetailsResponse | undefined;
 
-  exampleABCDOdpowiedziTest = ["2", "3", "4", "10"]
+  // exampleABCDOdpowiedziTest = ["2", "3", "4", "10"]
 
 
   examAnswers: FormGroup[] = []
 
-  exampleABCD = this.formBuilder.group({
-    questionId: 1,
-    answersIds: this.formBuilder.array([1, 2, 3, 4]),
-    answers: this.formBuilder.array([false, true, true, false]),
-  });
+  // exampleABCD = this.formBuilder.group({
+  //   questionId: 1,
+  //   answersIds: this.formBuilder.array([1, 2, 3, 4]),
+  //   answers: this.formBuilder.array([false, true, true, false]),
+  // });
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient,
               private formBuilder: FormBuilder) {
@@ -33,7 +33,7 @@ export class ExamComponent implements OnInit {
     //pobranie wartości a adresu URL /test/:id
     let id = this.route.snapshot.paramMap.get('id');
 
-    this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/exam/" + id).subscribe(exam => {
+    this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/exam/" + id + "/active-exam").subscribe(exam => {
         this.exam = exam;
 
         if (this.exam && this.exam.questions) {
