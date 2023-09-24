@@ -29,6 +29,7 @@ import {TestDetailsComponent} from "./test-details/test-details.component";
 import {AddGradeComponent} from "./add-grade/add-grade.component";
 import {UsersComponent} from "./users/users.component";
 import {UserDetailsComponent} from "./user-details/user-details.component";
+import {ExamStudentResultComponent} from "./exam-result/exam-student-result.component";
 
 const routes: Routes = [
   {
@@ -145,6 +146,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'lekcja/:id/wynik-testu',
+    component: ExamStudentResultComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_STUDENT']
     }
   },
   {

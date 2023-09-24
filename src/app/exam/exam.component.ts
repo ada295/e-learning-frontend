@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ExamDetailsResponse} from "../api-models";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
@@ -14,23 +14,13 @@ export class ExamComponent implements OnInit {
 
   exam: ExamDetailsResponse | undefined;
 
-  // exampleABCDOdpowiedziTest = ["2", "3", "4", "10"]
-
-
   examAnswers: FormGroup[] = []
 
-  // exampleABCD = this.formBuilder.group({
-  //   questionId: 1,
-  //   answersIds: this.formBuilder.array([1, 2, 3, 4]),
-  //   answers: this.formBuilder.array([false, true, true, false]),
-  // });
-
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient,
+  constructor(private route: ActivatedRoute, private router: Router, private httpClient: HttpClient,
               private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    //pobranie wartości a adresu URL /test/:id
     let id = this.route.snapshot.paramMap.get('id');
 
     this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/exam/" + id + "/active-exam").subscribe(exam => {
@@ -61,11 +51,9 @@ export class ExamComponent implements OnInit {
     );
   }
 
-  nextQuestion() {
-
-  }
-
   showConfirmation() {
+    let id = this.route.snapshot.paramMap.get('id');
+
     let decision = confirm('Czy na pewno chcesz zakończyć test?');
     if (decision) {
       //zmienic na inne wysylanie id, bo mozna tym za bardzo manipulowac
@@ -74,16 +62,8 @@ export class ExamComponent implements OnInit {
       let body = this.examAnswers.map(e => e.value);
       this.httpClient.post<any>("http://localhost:8080/exam/" + id + "/finish", body)
         .subscribe(value => {
+          this.router.navigateByUrl("/lekcja/" + id + "/wynik-testu");
         });
     }
   }
-
-  //
-  // exampleABCD = this.formBuilder.group({
-  //   answerA: false,
-  //   answerB: false,
-  //   answerC: false,
-  //   answerD: false
-  // });
-
 }

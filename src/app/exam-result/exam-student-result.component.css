@@ -1,0 +1,45 @@
+/*.exam-radio-group {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  margin: 15px 0;*/
+/*  align-items: flex-start;*/
+/*}*/
+
+/*.exam-radio-button {*/
+/*  margin: 5px;*/
+/*}*/
+
+.question-container
+{
+  background-color: white;
+  color: black;
+  margin-top: 20px !important;
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.question
+{
+  margin-left: 7%;
+  margin-right: 7%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.finish-test-container
+{
+  text-align: center;
+}
+
+.finish-test-button
+{
+  margin-bottom: 40px;
+  margin-top: 40px;
+  background-color: #ffd740;
+  color: white;
+}
+.finish-test-button:hover {
+  box-shadow: 0 0 10px #e3bf32;
+}
+

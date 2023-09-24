@@ -61,6 +61,7 @@ import { UsersAdminsComponent } from './users-admins/users-admins.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UsersLayoutComponent } from './users-layout/users-layout.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { ExamStudentResultComponent } from './exam-result/exam-student-result.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     UsersAdminsComponent,
     AllUsersComponent,
     UsersLayoutComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ExamStudentResultComponent
   ],
   imports: [
     BrowserModule,

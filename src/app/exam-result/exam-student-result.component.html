@@ -1,0 +1,41 @@
+<div class="question-container">
+  <div *ngFor="let questionResponse of exam?.questions; let i = index" class="question">
+    <h3><strong>Pytanie {{i + 1}}
+      ({{questionResponse.studentPoints}} / {{questionResponse.question.points}})
+      <span *ngIf="questionResponse.question.questionType == 'OPEN' && questionResponse.studentPoints == null"
+            style="color:#deaf66">Nie sprawdzone!</span>
+
+    </strong>
+    </h3>
+    <h4>{{questionResponse.question.content}}</h4>
+
+    <div *ngIf="questionResponse.question.questionType == 'ONE_CHOICE'">
+      <mat-radio-group class="exam-radio-group">
+        <p *ngFor="let answer of questionResponse.questionAnswers">
+          <mat-radio-button class="exam-radio-button" disabled [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)">
+            <span *ngIf="answer.correct"><strong style="color: green">{{answer.content}}</strong></span>
+            <span *ngIf="!answer.correct">{{answer.content}}</span>
+          </mat-radio-button>
+        </p>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="questionResponse.question.questionType == 'MULTI_CHOICE'">
+      <p *ngFor="let answer of questionResponse.questionAnswers">
+        <mat-checkbox *ngIf="answer.correct" [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)"
+                      disabled
+        ><strong style="color: green">{{answer.content}}</strong></mat-checkbox>
+        <mat-checkbox *ngIf="!answer.correct" [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)"
+                      disabled>
+          {{answer.content}}</mat-checkbox>
+      </p>
+    </div>
+
+    <div *ngIf="questionResponse.question.questionType == 'OPEN'">
+    <textarea [value]="questionResponse.openQuestionAnswer" disabled style="width:100%">
+
+    </textarea>
+    </div>
+  </div>
+</div>
+
