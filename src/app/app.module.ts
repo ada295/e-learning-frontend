@@ -62,6 +62,8 @@ import { AllUsersComponent } from './all-users/all-users.component';
 import { UsersLayoutComponent } from './users-layout/users-layout.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { ExamStudentResultComponent } from './exam-result/exam-student-result.component';
+import { ExamTeacherResultsListComponent } from './exam-result/exam-teacher-results-list/exam-teacher-results-list.component';
+import { ExamTeacherResultDetailsComponent } from './exam-result/exam-teacher-result-details/exam-teacher-result-details.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,9 @@ import { ExamStudentResultComponent } from './exam-result/exam-student-result.co
     AllUsersComponent,
     UsersLayoutComponent,
     UserDetailsComponent,
-    ExamStudentResultComponent
+    ExamStudentResultComponent,
+    ExamTeacherResultsListComponent,
+    ExamTeacherResultDetailsComponent
   ],
   imports: [
     BrowserModule,

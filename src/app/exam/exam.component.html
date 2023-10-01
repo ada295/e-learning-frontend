@@ -28,6 +28,8 @@
   </div>
 
   <div class="finish-test-container">
-    <button (click)="showConfirmation()" mat-button class="finish-test-button">Zakończ test</button>
+    <button *ngIf="sessionService.isStudent()" (click)="showConfirmation()" mat-button class="finish-test-button">Zakończ test</button>
+    <button *ngIf="sessionService.isTeacher()" style="margin-right: 5px" mat-button class="finish-test-button">Edytuj</button>
+    <button *ngIf="sessionService.isTeacher()" style="margin-right: 5px" routerLink="/lekcja/{{lessonId}}/wyniki-testu" mat-button class="finish-test-button">Zobacz wyniki</button>
   </div>
 </div>

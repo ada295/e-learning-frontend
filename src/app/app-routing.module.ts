@@ -30,6 +30,12 @@ import {AddGradeComponent} from "./add-grade/add-grade.component";
 import {UsersComponent} from "./users/users.component";
 import {UserDetailsComponent} from "./user-details/user-details.component";
 import {ExamStudentResultComponent} from "./exam-result/exam-student-result.component";
+import {
+  ExamTeacherResultsListComponent
+} from "./exam-result/exam-teacher-results-list/exam-teacher-results-list.component";
+import {
+  ExamTeacherResultDetailsComponent
+} from "./exam-result/exam-teacher-result-details/exam-teacher-result-details.component";
 
 const routes: Routes = [
   {
@@ -154,6 +160,22 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'wyniki-testu/:id',
+    component: ExamTeacherResultDetailsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'lekcja/:id/wyniki-testu',
+    component: ExamTeacherResultsListComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
     }
   },
   {

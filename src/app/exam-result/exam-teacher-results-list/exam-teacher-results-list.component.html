@@ -1,0 +1,14 @@
+<h2 style="margin-left: 10%">Wyniki egzaminu:</h2>
+<div *ngFor="let exam of exams" style="width: 80%; margin-left: 10%; margin-right: 10%">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{exam.student.firstName}} {{exam.student.lastName}} ({{exam.points}}/{{exam.maxPoints}})</mat-card-title>
+      <mat-card-subtitle *ngIf="exam.status=='NOT_CHECKED_BY_TEACHER'">Egzamin niesprawdzony</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="exam.status=='CHECKED_BY_TEACHER'">Egzamin sprawdzony</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button routerLink="/wyniki-testu/{{exam.examResultId}}">Przejdź</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</div>

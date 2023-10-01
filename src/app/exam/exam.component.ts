@@ -3,6 +3,7 @@ import {ExamDetailsResponse} from "../api-models";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {SessionService} from "../session.service";
 
 @Component({
   selector: 'app-exam',
@@ -16,14 +17,17 @@ export class ExamComponent implements OnInit {
 
   examAnswers: FormGroup[] = []
 
+  lessonId: string | null = "";
+
   constructor(private route: ActivatedRoute, private router: Router, private httpClient: HttpClient,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,  public sessionService: SessionService) {
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
+    let lessonId = this.route.snapshot.paramMap.get('id');
+    this.lessonId = lessonId;
 
-    this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/exam/" + id + "/active-exam").subscribe(exam => {
+    this.httpClient.get<ExamDetailsResponse>("http://localhost:8080/exam/" + lessonId + "/active-exam").subscribe(exam => {
         this.exam = exam;
 
         if (this.exam && this.exam.questions) {
@@ -66,4 +70,6 @@ export class ExamComponent implements OnInit {
         });
     }
   }
+
+  protected readonly sessionStorage = sessionStorage;
 }

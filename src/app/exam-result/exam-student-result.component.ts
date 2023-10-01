@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {User} from "../api-models";
 
 export class QuestionStudentAnswerResponse {
   question = new Question();
@@ -17,6 +18,7 @@ export class Answer {
 }
 
 export class Question {
+  id: number = 0;
   content = "";
   points = 0;
   questionType = "";
@@ -30,10 +32,13 @@ class Exam {
 }
 
 export class ExamResult {
+  examResultId = 0;
   questions: QuestionStudentAnswerResponse[] = [];
   exam: Exam = new Exam();
   points: number = 0;
   maxPoints: number = 0;
+  student: User = new User();
+  status: string = "";
 }
 
 
@@ -60,7 +65,6 @@ export class ExamStudentResultComponent implements OnInit {
   }
 
   isCheckedAnswer(answer: Answer, studentAnswers: Answer[]) {
-    console.log("sdasdas");
     return studentAnswers.map(value => value.id).includes(answer.id);
   }
 }

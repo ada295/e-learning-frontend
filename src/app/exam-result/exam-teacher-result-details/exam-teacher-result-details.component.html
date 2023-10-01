@@ -10,12 +10,13 @@
     <h4>{{questionResponse.question.content}}</h4>
 
     <div *ngIf="questionResponse.question.questionType == 'ONE_CHOICE'">
-        <p *ngFor="let answer of questionResponse.questionAnswers">
-          <mat-radio-button class="exam-radio-button" disabled [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)">
-            <span *ngIf="answer.correct"><strong style="color: green">{{answer.content}}</strong></span>
-            <span *ngIf="!answer.correct">{{answer.content}}</span>
-          </mat-radio-button>
-        </p>
+      <p *ngFor="let answer of questionResponse.questionAnswers">
+        <mat-radio-button [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)" class="exam-radio-button"
+                          disabled>
+          <span *ngIf="answer.correct"><strong style="color: green">{{answer.content}}</strong></span>
+          <span *ngIf="!answer.correct">{{answer.content}}</span>
+        </mat-radio-button>
+      </p>
     </div>
 
     <div *ngIf="questionResponse.question.questionType == 'MULTI_CHOICE'">
@@ -30,10 +31,17 @@
     </div>
 
     <div *ngIf="questionResponse.question.questionType == 'OPEN'">
-    <textarea [value]="questionResponse.openQuestionAnswer" disabled style="width:100%">
+      <textarea [value]="questionResponse.openQuestionAnswer" disabled style="width:100%">
+      </textarea>
 
-    </textarea>
+      <div>
+        Oceń odpowiedź studenta:
+        <input mat-input max="{{questionResponse.question.points}}" #inputGrade min="0" type="number">
+        <button class="finish-test-button" mat-button style="margin-left: 10px" (click)="updateGrade(questionResponse.question.id, inputGrade.value)">Oceń</button>
+      </div>
     </div>
   </div>
+  <button class="finish-test-button" mat-button style="margin-left: 45%" (click)="finishAndCloseExamResult()">Zakończ ocenianie</button>
+
 </div>
 
