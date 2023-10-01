@@ -10,14 +10,12 @@
     <h4>{{questionResponse.question.content}}</h4>
 
     <div *ngIf="questionResponse.question.questionType == 'ONE_CHOICE'">
-      <mat-radio-group class="exam-radio-group">
         <p *ngFor="let answer of questionResponse.questionAnswers">
           <mat-radio-button class="exam-radio-button" disabled [checked]="isCheckedAnswer(answer, questionResponse.studentAnswers)">
             <span *ngIf="answer.correct"><strong style="color: green">{{answer.content}}</strong></span>
             <span *ngIf="!answer.correct">{{answer.content}}</span>
           </mat-radio-button>
         </p>
-      </mat-radio-group>
     </div>
 
     <div *ngIf="questionResponse.question.questionType == 'MULTI_CHOICE'">
