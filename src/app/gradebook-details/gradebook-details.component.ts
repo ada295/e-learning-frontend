@@ -51,7 +51,7 @@ export class GradebookDetailsComponent implements OnInit {
         this.gradeResponses = gradeResponses;
         for (let gradeResponse of gradeResponses) {
           let summaryDataSource = new SummaryDataSource();
-          summaryDataSource.avg = -1;
+          summaryDataSource.avg = gradeResponse.avg;
           summaryDataSource.studentName = gradeResponse.student?.firstName;
           summaryDataSource.studentSurname = gradeResponse.student?.lastName;
 
@@ -83,6 +83,7 @@ export class GradeResponse {
   course: CourseDetails | undefined;
   student: User | undefined;
   grades: Grade[] = [];
+  avg: number | undefined;
 }
 
 export class SummaryDataSource {

@@ -2,7 +2,7 @@
   <div class="gradebook-header">OCENY: <span style="margin-left: 4%">{{courseName}}</span></div>
 
   <table *ngIf="sessionService.isStudent()" mat-table
-         [dataSource]="dataSourceSummary" multiTemplateDataRows
+         [dataSource]="dataSourceSummary[0].grades" multiTemplateDataRows
          class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Opis</th>
@@ -55,7 +55,7 @@
     </ng-container>
     <ng-container matColumnDef="grade">
       <th mat-header-cell *matHeaderCellDef> Średnia ocen</th>
-      <td mat-cell *matCellDef="let element"> {{element['avg']}} </td>
+      <td mat-cell *matCellDef="let element"> {{element['avg'] | number : '1.2'}} </td>
     </ng-container>
     <ng-container matColumnDef="add">
       <th mat-header-cell *matHeaderCellDef></th>
