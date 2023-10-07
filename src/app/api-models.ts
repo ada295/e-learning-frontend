@@ -5,6 +5,7 @@ export class Course {
   finished: boolean = false;
   customLink: string = "";
   customLabel: string = "";
+  accessCode: string = "";
 }
 
 export class User {

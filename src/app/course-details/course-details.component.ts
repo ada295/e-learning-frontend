@@ -1,7 +1,7 @@
-import {Component, OnInit, Optional} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Course, CourseDetails, Lesson} from "../api-models";
+import {CourseDetails} from "../api-models";
 import {SessionService} from "../session.service";
 
 
@@ -53,5 +53,13 @@ export class CourseDetailsComponent implements OnInit {
       event.target.classList.remove(classB);
     }
 
+  }
+
+  regenerateAccessCode() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.httpClient.post("http://localhost:8080/courses/" + id + "/regenerate-access-code", null)
+      .subscribe(() => {
+        this.ngOnInit();
+      })
   }
 }

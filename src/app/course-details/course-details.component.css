@@ -111,3 +111,14 @@ mat-expansion-panel-header {
 }
 
 
+.refresh-icon {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+
+.refresh-icon:hover {
+  cursor: pointer;
+  color: #cec7c7;
+}
+
