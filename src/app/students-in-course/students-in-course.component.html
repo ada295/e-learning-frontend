@@ -1,0 +1,31 @@
+<h1 style="color: #5e239d; text-align: center">Studenci:</h1>
+
+<div *ngIf="users.length > 0" class="teachers-container">
+  <mat-table [dataSource]="users">
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-header-cell> Imię</mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-cell> {{element.firstName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef class="header" mat-header-cell> Nazwisko</mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-cell> {{element.lastName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef class="header" mat-header-cell> E-mail</mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-cell> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container *ngIf="sessionService.isTeacher()" matColumnDef="removeFromCourse">
+      <mat-header-cell *matHeaderCellDef class="header" mat-header-cell> Akcja</mat-header-cell>
+      <mat-cell *matCellDef="let element" mat-cell>
+        <button color="accent" mat-button (click)="removeFromCourse(element.id)">Usuń z kursu</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple></mat-row>
+  </mat-table>
+</div>
+

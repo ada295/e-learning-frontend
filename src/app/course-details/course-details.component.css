@@ -5,7 +5,7 @@
 
 .course-name-and-announcement {
   width: 74.5%;
-  height: 100px;
+  height: 200px;
   margin: auto;
   text-align: center;
 }
@@ -48,12 +48,9 @@ mat-expansion-panel-header {
 }
 
 .course-name {
-  font-size: 50px;
+  font-size: 35px;
   color: rgb(103, 58, 183);
-  /*text-align: left;*/
-  margin-top: auto;
   height: 150px;
-  text-align: center;
   line-height: 50px;
   padding-bottom: 50px;
 }
@@ -120,5 +117,10 @@ mat-expansion-panel-header {
 .refresh-icon:hover {
   cursor: pointer;
   color: #cec7c7;
+}
+
+.click-tile {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 

@@ -1,37 +1,48 @@
 <div class="course-details">
-  <div class="course-name-and-announcement row g-0">
-   <div class="col-md-3">
-     <mat-card *ngIf="sessionService.isTeacher()" style="background-color: #5e239d; color: #efefef">
-       <h1>Kod dostępu: {{courseDetails?.course?.accessCode}}</h1>
-       <hr>
-       <span>
-       <h1 class="refresh-icon" (click)="regenerateAccessCode()">
-         ⟲
-       </h1>
-       </span>
-     </mat-card>
-   </div>
-    <div class="col-md-5 course-name">{{courseDetails?.course?.name}}
-    </div>
-    <div class="col-md-2">
-      <button *ngIf="sessionService.isTeacher()" class="button-option" style="float: right" mat-button routerLink="/kursy/{{courseDetails?.course?.id}}/dodaj-lekcję">
-        <div class="option-name button-announcement">Dodaj lekcję</div>
-        <div class="icon-container">
-          <mat-icon>add</mat-icon>
-        </div>
-      </button>
-    </div>
-    <div class="col-md-2">
-    <button class="button-option" style="float: right" mat-button routerLink="/kursy/{{courseDetails?.course?.id}}/ogloszenia">
-      <div class="option-name button-announcement">Ogłoszenia</div>
-      <div class="icon-container">
-        <mat-icon>people</mat-icon>
+  <div class="course-name-and-announcement">
+    <div class="row g-0">
+      <div class="col-sm-3">
+        <mat-card *ngIf="sessionService.isTeacher()" style="background-color: #5e239d; color: #efefef">
+          <h1>Kod dostępu: {{courseDetails?.course?.accessCode}}</h1>
+          <hr>
+          <span>
+            <h1 (click)="regenerateAccessCode()" class="refresh-icon">
+               ⟲
+            </h1>
+          </span>
+        </mat-card>
       </div>
-    </button>
+      <div class="col-sm-3 course-name">{{courseDetails?.course?.name}}</div>
+      <div class="col-sm-6">
+        <span class="click-tile">
+          <button *ngIf="sessionService.isTeacher()" class="button-option" mat-button
+                  routerLink="/kursy/{{courseDetails?.course?.id}}/dodaj-lekcję">
+            <div class="option-name button-announcement">Dodaj lekcję</div>
+            <div class="icon-container">
+              <mat-icon>add</mat-icon>
+            </div>
+          </button>
+        </span>
+        <span class="click-tile">
+          <button class="button-option" mat-button routerLink="/kursy/{{courseDetails?.course?.id}}/ogloszenia">
+            <div class="option-name button-announcement">Ogłoszenia</div>
+            <div class="icon-container">
+              <mat-icon>assignment_late</mat-icon>
+            </div>
+          </button>
+        </span>
+        <span class="click-tile">
+          <button class="button-option" mat-button routerLink="/kursy/{{courseDetails?.course?.id}}/studenci">
+            <div class="option-name button-announcement">Studenci</div>
+            <div class="icon-container">
+              <mat-icon>people</mat-icon>
+            </div>
+          </button>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-
 
 <div class="lessons-container">
   <mat-grid-list cols="2" rowHeight="2.5:1">

@@ -64,6 +64,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { ExamStudentResultComponent } from './exam-result/exam-student-result.component';
 import { ExamTeacherResultsListComponent } from './exam-result/exam-teacher-results-list/exam-teacher-results-list.component';
 import { ExamTeacherResultDetailsComponent } from './exam-result/exam-teacher-result-details/exam-teacher-result-details.component';
+import { StudentsInCourseComponent } from './students-in-course/students-in-course.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { ExamTeacherResultDetailsComponent } from './exam-result/exam-teacher-re
     UserDetailsComponent,
     ExamStudentResultComponent,
     ExamTeacherResultsListComponent,
-    ExamTeacherResultDetailsComponent
+    ExamTeacherResultDetailsComponent,
+    StudentsInCourseComponent
   ],
   imports: [
     BrowserModule,

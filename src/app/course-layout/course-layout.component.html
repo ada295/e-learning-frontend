@@ -1,15 +1,3 @@
-<!--
-przykladowe courses - jest to tablica kursow
-{"id":1,"name":"Fizyka","description":"Kurs z fizyki - poziom podstawowy","finished":true},
-{"id":2,"name":"Matematyka","description":"Kurs z matematyki - poziom podstawowy","finished":true};
-
-pętla tworzy 2 przyciski, najpierw dla 1 elemenetu, potem dla drugiego:
-  <button mat-button routerLink="/kursy/1" class="course">Fizyka</button>
-  <button mat-button routerLink="/kursy/2" class="course">Matematyka</button>
-
- /kursy/{{course.id}}
--->
-
 <div class="course-container" *ngFor="let course of courses">
   <button mat-button *ngIf='course.customLabel && course.customLabel.length > 0 && sessionService.isStudent()' style="width: 100%"
           routerLink="{{course.customLink}}"

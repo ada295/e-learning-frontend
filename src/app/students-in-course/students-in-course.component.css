@@ -1,0 +1,36 @@
+mat-table{
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(91, 91, 96, 0.85);
+  /*border-radius: 10px;*/
+}
+
+mat-header-cell{
+  color: rgba(103, 58, 183, 1);
+  font-weight: bold;
+  font-size: large;
+  border-color: rgba(91, 91, 96, 0.85);
+}
+
+mat-row{
+  font-weight: 500;
+}
+
+mat-row:hover{
+  cursor: pointer;
+  background-color: rgba(103, 58, 183, 0.26) !important;
+}
+
+mat-row:last-child{
+  border-bottom: 0;
+}
+
+/*mat-row:last-child:hover{*/
+/*  border-bottom-left-radius: 8px;*/
+/*  border-bottom-right-radius: 8px;*/
+/*}*/
+
+.teachers-container {
+  width: 80%;
+  margin-left: 10%;
+}

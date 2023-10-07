@@ -8,6 +8,7 @@ export class Course {
   accessCode: string = "";
 }
 
+
 export class User {
   id: number = 0;
   firstName: string = "";
@@ -15,6 +16,10 @@ export class User {
   email: string = "";
   roles: string[] = [];
   customLink: string = "";
+}
+
+export class StudentUserInCourseTable extends User {
+  removeFromCourse = "Usuń";
 }
 
 export class Lesson {
@@ -35,7 +40,7 @@ export class CourseDetails {
   course: Course | undefined;
   lessons: Lesson[] = [];
   announcements: Announcement[] = [];
-  // students: null,
+  students: User[] = [];
 }
 
 export class Material {

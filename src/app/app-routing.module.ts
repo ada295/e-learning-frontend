@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {CoursesComponent} from "./courses/courses.component";
 import {CourseDetailsComponent} from "./course-details/course-details.component";
 import {LessonsComponent} from "./lessons/lessons.component";
@@ -9,10 +9,8 @@ import {AddUserComponent} from "./add-user/add-user.component";
 import {TeachersComponent} from "./teachers/teachers.component";
 import {LoginComponent} from "./login/login/login.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-import {JoinCourseComponent} from "./join-course/join-course.component";
 import {LoggedUserGuard} from "./logged-user.guard";
 import {RoleAccessGuard} from "./role-access-guard.service";
-import {AddExam} from "./api-models";
 import {AddExamComponent} from "./add-exam/add-exam/add-exam.component";
 import {MaterialComponent} from "./material/material.component";
 import {TasksComponent} from "./tasks/tasks.component";
@@ -36,6 +34,7 @@ import {
 import {
   ExamTeacherResultDetailsComponent
 } from "./exam-result/exam-teacher-result-details/exam-teacher-result-details.component";
+import {StudentsInCourseComponent} from "./students-in-course/students-in-course.component";
 
 const routes: Routes = [
   {
@@ -253,6 +252,14 @@ const routes: Routes = [
   {
     path: 'kursy/:id/ogloszenia',
     component: AnnouncementsComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'kursy/:id/studenci',
+    component: StudentsInCourseComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
