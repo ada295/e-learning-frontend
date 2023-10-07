@@ -19,7 +19,9 @@ export class AnnouncementsComponent implements OnInit{
 
   ngOnInit() {
     let courseId = this.route.snapshot.paramMap.get('id');
-    this.httpClient.get<CourseDetails>("http://localhost:8080/courses/" + courseId).subscribe(course => {this.course = course; console.log(this.course)});
+    this.httpClient.get<CourseDetails>("http://localhost:8080/courses/" + courseId).subscribe(course => {
+      this.course = course;
+    });
   }
 
 }

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Announcement, Lesson} from "../api-models";
 import {catchError, of} from "rxjs";
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-announcement',
@@ -16,11 +17,13 @@ export class AddAnnouncementComponent {
     description: ['', Validators.required]
   })
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
 
 
   addAnnouncement() {
+    let id = this.route.snapshot.paramMap.get('id');
+
     if (this.announcementGroup.valid) {
       let announcementRequest = new Announcement();
       if (this.announcementGroup.value.name)
@@ -28,17 +31,18 @@ export class AddAnnouncementComponent {
       if (this.announcementGroup.value.description)
         announcementRequest.description = this.announcementGroup.value.description;
       // pobierz id z linku
-      this.httpClient.post<Lesson>("http://localhost:8080/course/1/announcement", announcementRequest)
+      this.httpClient.post<Lesson>("http://localhost:8080/courses/" + id + "/announcements", announcementRequest)
         .pipe(
           catchError(error => {
-            alert(error.error);
             return of([]);
           })
         )
-        .subscribe(value =>
-          //kolko przestaje sie krecic
-          alert("Ogłoszenie zostało dodane!")
-        );
+        .subscribe(value => {
+          alert("Ogłoszenie zostało dodane!");
+          this.router.navigateByUrl("/kursy/" + id + "/ogloszenia");
+        });
+    } else {
+      alert("Błędy w formularzu!");
     }
   }
 }

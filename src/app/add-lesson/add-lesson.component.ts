@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {AddExam, Lesson} from "../api-models";
+import {Lesson} from "../api-models";
 import {catchError, of} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-lesson',
@@ -15,7 +16,7 @@ export class AddLessonComponent {
     name: ['', Validators.required]
   })
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
 
 
@@ -25,18 +26,19 @@ export class AddLessonComponent {
       if (this.lessonGroup.value.name)
         lessonRequest.name = this.lessonGroup.value.name;
 
-    // pobierz id z linku
-    this.httpClient.post<Lesson>("http://localhost:8080/course/1/exam", lessonRequest)
-      .pipe(
-        catchError(error => {
-          alert(error.error);
-          return of([]);
-        })
-      )
-      .subscribe(value =>
-        //kolko przestaje sie krecic
-        alert("Lekcja została dodana!")
-      );
+      let id = this.route.snapshot.paramMap.get('id');
+
+      this.httpClient.post<Lesson>("http://localhost:8080/courses/" + id + "/lessons", lessonRequest)
+        .pipe(
+          catchError(error => {
+            return of([]);
+          })
+        )
+        .subscribe(value => {
+            alert("Lekcja została dodana!")
+            this.router.navigateByUrl("kursy/" + id);
+          }
+        );
   }
   }
 }

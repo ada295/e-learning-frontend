@@ -235,7 +235,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-lekcję',
+    path: 'kursy/:id/dodaj-lekcję',
     component: AddLessonComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
@@ -243,7 +243,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-ogloszenie',
+    path: 'kursy/:id/dodaj-ogloszenie',
     component: AddAnnouncementComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {

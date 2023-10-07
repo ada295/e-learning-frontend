@@ -26,12 +26,14 @@ export class Announcement {
   id: number = 0;
   name: string | undefined;
   description: string | undefined;
+  date: Date | undefined;
   course: Course | undefined;
 }
 
 export class CourseDetails {
   course: Course | undefined;
   lessons: Lesson[] = [];
+  announcements: Announcement[] = [];
   // students: null,
 }
 

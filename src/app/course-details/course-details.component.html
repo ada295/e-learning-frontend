@@ -4,7 +4,7 @@
     <div class="col-md-8 course-name">{{courseDetails?.course?.name}}
     </div>
     <div class="col-md-2">
-      <button *ngIf="sessionService.isTeacher()" class="button-option" style="float: right" mat-button routerLink="/dodaj-lekcję">
+      <button *ngIf="sessionService.isTeacher()" class="button-option" style="float: right" mat-button routerLink="/kursy/{{courseDetails?.course?.id}}/dodaj-lekcję">
         <div class="option-name button-announcement">Dodaj lekcję</div>
         <div class="icon-container">
           <mat-icon>add</mat-icon>
