@@ -1,8 +1,8 @@
-<div class="gradebook-container">
+<div class="gradebook-container" *ngIf="dataSourceSummary && dataSourceSummary.length > 0">
   <div class="gradebook-header">OCENY: <span style="margin-left: 4%">{{courseName}}</span></div>
 
   <table *ngIf="sessionService.isStudent()" mat-table
-         [dataSource]="dataSource" multiTemplateDataRows
+         [dataSource]="dataSourceSummary" multiTemplateDataRows
          class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Opis</th>
@@ -47,7 +47,7 @@
 
 
   <table *ngIf="sessionService.isTeacher()" mat-table
-         [dataSource]="dataSource" multiTemplateDataRows
+         [dataSource]="dataSourceSummary" multiTemplateDataRows
          class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Imię i nazwisko</th>
@@ -55,7 +55,7 @@
     </ng-container>
     <ng-container matColumnDef="grade">
       <th mat-header-cell *matHeaderCellDef> Średnia ocen</th>
-      <td mat-cell *matCellDef="let element"> {{element['grade']}} </td>
+      <td mat-cell *matCellDef="let element"> {{element['avg']}} </td>
     </ng-container>
     <ng-container matColumnDef="add">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -85,22 +85,21 @@
 
           <div class="example-element-description">
 
-
             <table mat-table
-                   [dataSource]="dataSource" multiTemplateDataRows
+                   [dataSource]="getDataSourceForGrades(element)" multiTemplateDataRows
                    class="mat-elevation-z8">
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Opis</th>
-                <td mat-cell *matCellDef="let element"> {{element['name']}} </td>
+                <td mat-cell *matCellDef="let element1"> {{element1['name']}} </td>
               </ng-container>
               <ng-container matColumnDef="grade">
                 <th mat-header-cell *matHeaderCellDef> Ocena</th>
-                <td mat-cell *matCellDef="let element"> {{element['grade']}} </td>
+                <td mat-cell *matCellDef="let element1"> {{element1['grade']}} </td>
               </ng-container>
               <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element">
-                  <button class="button-edit" (click)="edit(element); $event.stopPropagation();">{{element['edit']}}</button>
+                <td mat-cell *matCellDef="let element1">
+                  <button class="button-edit" (click)="edit(element1); $event.stopPropagation();">{{element1['edit']}}</button>
                 </td>
               </ng-container>
               <ng-container matColumnDef="delete">
@@ -148,6 +147,10 @@
         </div>
       </td>
     </ng-container>
+
+
+
+
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand1"></tr>
     <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand1;"

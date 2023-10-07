@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
-import {Course} from "../api-models";
+import {CourseDetails, Grade, User} from "../api-models";
 import {ActivatedRoute} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
@@ -19,59 +19,85 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class GradebookDetailsComponent implements OnInit {
   courseName: string | null | undefined;
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay1 = ['name', 'grade', 'add'];
-  columnsToDisplay2 = ['name', 'grade', 'edit', 'delete'];
-  columnsToDisplayWithExpand1 = [...this.columnsToDisplay1, 'expand'];
-  columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
-  expandedElement: PeriodicElement | null | undefined;
-  expandedElementChild: PeriodicElement | null | undefined;
+  gradeResponses: GradeResponse[] = [];
+  dataSourceSummary: SummaryDataSource[] = [];
+  columnsToDisplay1 = ['name', 'grade'];
+  columnsToDisplay2 = ['name', 'grade'];
+  columnsToDisplayWithExpand1: string [] = [];
+  columnsToDisplayWithExpand2: string[] = [];
+  expandedElement: SummaryDataSource | null | undefined;
+  expandedElementChild: GradeDataSource | null | undefined;
 
   constructor(private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    if (this.sessionService.isTeacher() && !this.columnsToDisplay1.includes("add")) {
+      this.columnsToDisplay1.push("add");
+    }
+
+    if (this.sessionService.isTeacher() && !this.columnsToDisplay2.includes("edit")) {
+      this.columnsToDisplay2.push("edit");
+      this.columnsToDisplay2.push("delete");
+    }
+
+    this.columnsToDisplayWithExpand1 = [...this.columnsToDisplay1, 'expand'];
+    this.columnsToDisplayWithExpand2 = [...this.columnsToDisplay2, 'expand'];
+
     this.courseName = this.route.snapshot.paramMap.get('courseName');
-    this.httpClient.get<Course[]>("http://localhost:8080/courses")
+    let id = this.route.snapshot.paramMap.get('id');
+    this.httpClient.get<GradeResponse[]>("http://localhost:8080/courses/" + id + "/grades")
+      .subscribe((gradeResponses) => {
+        this.gradeResponses = gradeResponses;
+        for (let gradeResponse of gradeResponses) {
+          let summaryDataSource = new SummaryDataSource();
+          summaryDataSource.avg = -1;
+          summaryDataSource.studentName = gradeResponse.student?.firstName;
+          summaryDataSource.studentSurname = gradeResponse.student?.lastName;
+
+          summaryDataSource.grades = [];
+          for (let grade of gradeResponse.grades) {
+            let dataSourceGrade = new GradeDataSource();
+            dataSourceGrade.grade = grade.value;
+            dataSourceGrade.name = grade.category;
+            dataSourceGrade.description = grade.comment;
+            summaryDataSource.grades.push(dataSourceGrade);
+          }
+
+          this.dataSourceSummary.push(summaryDataSource);
+        }
+      });
   }
 
-  edit(element: PeriodicElement) {
+  edit(element: any) {
     alert(element);
 
   }
+
+  getDataSourceForGrades(element: SummaryDataSource) {
+    return element.grades;
+  }
 }
 
-export class PeriodicElement {
-  name: string | undefined;
-  grade: number | undefined;
-  description: string | undefined;
+export class GradeResponse {
+  course: CourseDetails | undefined;
+  student: User | undefined;
+  grades: Grade[] = [];
+}
+
+export class SummaryDataSource {
+  avg: number | undefined;
   studentName: string | undefined;
   studentSurname: string | undefined;
-  delete = "Usuń";
-  edit = "Edytuj";
   add = "Dodaj ocenę";
+  grades: GradeDataSource[] = [];
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    grade: 4,
-    name: 'Odpowiedź ustna',
-    description: `Odpowieź ustna z wiedzy dotyczącej świata roślin i zwierząt`,
-    studentName: "Jan",
-    studentSurname: "Kowalski",
-    delete: "Usuń",
-    edit: "Edytuj",
-    add: "Dodaj ocenę"
-  },
-  {
-    grade: 5,
-    name: 'Aktywność',
-    description: `Praca nad wybranym projektem w grupach. Praca grupy objawiająca się licznymi pomysłami, komunikatywnością i dobrym podziełem pracy.`,
-    studentName: "Jan",
-    studentSurname: "Kowalski",
-    delete: "Usuń",
-    edit: "Edytuj",
-    add: "Dodaj ocenę"
-  },
-];
+export class GradeDataSource {
+  grade: number | undefined;
+  name: string | undefined;
+  description: string | undefined;
+  edit = "Edytuj";
+  delete = "Usuń";
+}
 
