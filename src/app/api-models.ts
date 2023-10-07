@@ -118,9 +118,14 @@ export class Task {
 
 export class TaskToDo {
   task: Task | undefined;
-  taskStudent: TaskStudent |undefined;
-  status: string |undefined;
+  taskStudent: TaskStudent | undefined;
+  status: string | undefined;
   icon: string | undefined;
+}
+
+export class StudentSolutionForTask {
+  task: TaskToDo | undefined;
+  student: User | undefined;
 }
 
 export class Grade {

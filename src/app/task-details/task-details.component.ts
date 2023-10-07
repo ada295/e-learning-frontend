@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
-import {TaskToDo} from "../api-models";
+import {Material, TaskToDo} from "../api-models";
 
 @Component({
   selector: 'app-task-details',
@@ -40,8 +40,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   deleteTask() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.httpClient.delete<TaskToDo>("http://localhost:8080/student-tasks/" + id + "/delete").subscribe(task => this.task = task);
+    this.httpClient.delete<TaskToDo>("http://localhost:8080/student-tasks/" + this.task?.taskStudent?.id + "/delete").subscribe(task => this.task = task);
     this.ngOnInit();
   }
 
@@ -61,5 +60,15 @@ export class TaskDetailsComponent implements OnInit {
   private loadTaskDetails() {
     let id = this.route.snapshot.paramMap.get('id');
     this.httpClient.get<TaskToDo>("http://localhost:8080/student-tasks/" + id).subscribe(task => this.task = task)
+  }
+
+  uploadFile() {
+    if (this.formData.get('file')) {
+      let taskId = this.route.snapshot.paramMap.get('id');
+      this.httpClient.post<Material>(`http://localhost:8080/tasks/${taskId}/upload-solution`, this.formData)
+        .subscribe(e => {
+          this.loadTaskDetails();
+        });
+    }
   }
 }

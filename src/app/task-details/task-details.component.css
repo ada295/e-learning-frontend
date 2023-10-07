@@ -162,6 +162,14 @@ mat-panel-title.mat-expansion-panel-header-title {
   font-size: 20px;
 }
 
+.create-button {
+  background-color: #f1af55;
+  color: white;
+  width: 15%;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
 .task-points {
   float: right;
 }

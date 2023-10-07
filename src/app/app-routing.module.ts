@@ -35,6 +35,7 @@ import {
   ExamTeacherResultDetailsComponent
 } from "./exam-result/exam-teacher-result-details/exam-teacher-result-details.component";
 import {StudentsInCourseComponent} from "./students-in-course/students-in-course.component";
+import {TaskSolutionsForTeacherComponent} from "./task-solutions-for-teacher/task-solutions-for-teacher.component";
 
 const routes: Routes = [
   {
@@ -268,6 +269,14 @@ const routes: Routes = [
   {
     path: 'lekcja/:id/dodaj-zadanie',
     component: AddTaskComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
+    }
+  },
+  {
+    path: 'lekcja/:lessonId/zadanie/:taskId/rozwiązania',
+    component: TaskSolutionsForTeacherComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER']

@@ -1,6 +1,6 @@
 <div class="header-container row">
   <div class="course-name col-md-4">FIZYKA</div>
-  <div class="lesson-number col-md-3">Lekcja 79</div>
+  <div class="lesson-number col-md-3">Lekcja</div>
   <div class="buttons-container col-md-5">
     <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test-opis">
       <div class="option-name">Test</div>
@@ -52,55 +52,44 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
+  <div *ngIf="sessionService.isStudent()">
 
-  <div *ngIf="task?.status == 'AKTYWNE'"  class="task-details file-attachment">
-    Dodaj rozwiązanie:
+    <div *ngIf="task?.status == 'AKTYWNE'" class="task-details file-attachment">
+      Dodaj rozwiązanie:
+    </div>
+    <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
+
+      <button (click)="fileUpload.click()" *ngIf="task?.status == 'AKTYWNE'" class="upload-btn">
+        +
+      </button>
+
+      <input #fileUpload (change)="onFileSelected($event)"
+             class="file-input" type="file">
+
+      {{fileName || ""}}
+    </div>
   </div>
-  <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
-
-
-
-<!--    <button *ngIf="task?.status == 'AKTYWNE'"  class="file-button" (click)="fileUpload.click()">-->
-    <button *ngIf="task?.status == 'AKTYWNE'" class="upload-btn" (click)="fileUpload.click()">
-
-
-      <!--    <button *ngIf="task?.status == 'AKTYWNE'" class="file-button" color="primary" class="upload-btn" (click)="fileUpload.click()">-->
-      <!--      <div style="float: left">-->
-      <mat-icon>note_add</mat-icon>
-      <!--      </div>-->
-    </button>
-
-    <input type="file" class="file-input"
-           (change)="onFileSelected($event)" #fileUpload>
-
-    {{fileName || ""}}
-
-
-  </div>
-
-
-
-<!--  <button *ngIf="task?.status == 'AKTYWNE'" class="file-button">-->
-<!--    <div style="float: left">-->
-<!--      <mat-icon>note_add</mat-icon>-->
-<!--    </div>-->
-<!--  </button>-->
-
-
 
   <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
     Przesłane pliki:
   </div>
   <button *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'" class="file-button">
-  <div style="float: left">
-    <mat-icon> attach_file</mat-icon>
-  </div>
-  <div class="file-name">
-    {{task?.taskStudent?.filename}}
-  </div>
+    <div style="float: left">
+      <mat-icon> attach_file</mat-icon>
+    </div>
+    <div class="file-name">
+      {{task?.taskStudent?.filename}}
+    </div>
   </button>
   <div *ngIf="task?.status=='WYKONANE' && checkDate(task)" class="task-option-container">
-    <button mat-button class="button-delete-task" (click)="deleteTask()">Usuń pliki</button>
+    <button (click)="deleteTask()" class="button-delete-task" mat-button>Usuń</button>
+  </div>
+
+  <div class="task-option-container">
+    <button (click)="uploadFile()" [hidden]="formData.get('file') == null" class="create-button" color="accent"
+            mat-button>
+      Dodaj
+    </button>
   </div>
 
   <div style="clear:both"></div>
@@ -124,24 +113,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div *ngIf="sessionService.isTeacher()" class="task-container">
   <p class="task-name">Zadanie</p>
 
@@ -153,41 +124,6 @@
       <div class="task-description task-details">
         {{task?.task?.description}}
       </div>
-
-  <div *ngIf="task?.status == 'AKTYWNE'"  class="task-details file-attachment">
-    Dodaj rozwiązanie:
-  </div>
-  <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
-
-
-
-    <!--    <button *ngIf="task?.status == 'AKTYWNE'"  class="file-button" (click)="fileUpload.click()">-->
-    <button *ngIf="task?.status == 'AKTYWNE'" class="upload-btn" (click)="fileUpload.click()">
-
-
-      <!--    <button *ngIf="task?.status == 'AKTYWNE'" class="file-button" color="primary" class="upload-btn" (click)="fileUpload.click()">-->
-      <!--      <div style="float: left">-->
-      <mat-icon>note_add</mat-icon>
-      <!--      </div>-->
-    </button>
-
-    <input type="file" class="file-input"
-           (change)="onFileSelected($event)" #fileUpload>
-
-    {{fileName || ""}}
-
-
-  </div>
-
-
-
-  <!--  <button *ngIf="task?.status == 'AKTYWNE'" class="file-button">-->
-  <!--    <div style="float: left">-->
-  <!--      <mat-icon>note_add</mat-icon>-->
-  <!--    </div>-->
-  <!--  </button>-->
-
-
 
   <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
     Przesłane pliki:
@@ -224,6 +160,9 @@
   </mat-accordion>
 
   <div style="text-align: center; margin-top: 85px">
+    <button class="button-edit" mat-button routerLink="/lekcja/{{lessonId}}/zadanie/{{task?.task?.id}}/rozwiązania">
+      Rozwiązania
+    </button>
     <button mat-button class="button-edit">Edytuj</button>
     <button mat-button class="button-delete-task">Usuń</button>
   </div>
