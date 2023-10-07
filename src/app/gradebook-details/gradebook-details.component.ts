@@ -19,6 +19,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class GradebookDetailsComponent implements OnInit {
   courseName: string | null | undefined;
+  courseId: string | null | undefined;
   gradeResponses: GradeResponse[] = [];
   dataSourceSummary: SummaryDataSource[] = [];
   columnsToDisplay1 = ['name', 'grade'];
@@ -46,6 +47,7 @@ export class GradebookDetailsComponent implements OnInit {
 
     this.courseName = this.route.snapshot.paramMap.get('courseName');
     let id = this.route.snapshot.paramMap.get('id');
+    this.courseId = id;
     this.httpClient.get<GradeResponse[]>("http://localhost:8080/courses/" + id + "/grades")
       .subscribe((gradeResponses) => {
         this.gradeResponses = gradeResponses;
@@ -54,6 +56,7 @@ export class GradebookDetailsComponent implements OnInit {
           summaryDataSource.avg = gradeResponse.avg;
           summaryDataSource.studentName = gradeResponse.student?.firstName;
           summaryDataSource.studentSurname = gradeResponse.student?.lastName;
+          summaryDataSource.studentId = gradeResponse.student?.id;
 
           summaryDataSource.grades = [];
           for (let grade of gradeResponse.grades) {
@@ -87,6 +90,7 @@ export class GradeResponse {
 }
 
 export class SummaryDataSource {
+  studentId: number | undefined;
   avg: number | undefined;
   studentName: string | undefined;
   studentSurname: string | undefined;

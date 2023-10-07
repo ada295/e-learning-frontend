@@ -4,40 +4,56 @@
       <h1 class="header">Jan Kowalski</h1>
       <br>
       <h3 class="text">Wybierz typ oceny: </h3>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-group class="exam-radio-group" formControlName="type">
+      <span *ngIf="type == 'Sprawdzian'">
+          <mat-radio-button value="Sprawdzian" checked="true" class="exam-radio-button">
+            Sprawdzian
+          </mat-radio-button>
+      </span>
+        <span *ngIf="type == 'Praca domowa'">
+          <mat-radio-button value="Praca domowa" checked="true" class="exam-radio-button">
+            Praca domowa
+          </mat-radio-button>
+      </span>
+
+        <span *ngIf="type == '' || !type">
+         <mat-radio-button value="Sprawdzian" class="exam-radio-button">
         Sprawdzian
-      </mat-radio-button>
+         </mat-radio-button>
       <br>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-button value="Odpowiedź ustna" class="exam-radio-button">
        Odpowiedź ustna
       </mat-radio-button>
       <br>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-button value="Aktywność" class="exam-radio-button">
         Aktywność
       </mat-radio-button>
       <br>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-button value="Kartkówka" class="exam-radio-button">
         Kartkówka
       </mat-radio-button>
       <br>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-button value="Praca domowa" class="exam-radio-button">
         Praca domowa
       </mat-radio-button>
       <br>
-      <mat-radio-button class="exam-radio-button">
+      <mat-radio-button  value="Projekt" class="exam-radio-button">
         Projekt
       </mat-radio-button>
+      </span>
+      </mat-radio-group>
+
       <br>
       <br>
 
       <h3 style="float:left;" class="text">Wpisz ocenę: </h3>
-      <input #grade type="number" min="1" max="6" formControlName="grade" (change)="updateValue(grade)">
+      <input #grade (change)="updateValue(grade)" formControlName="grade" max="5" min="1" type="number">
 
 
-<!--      <mat-radio-button [value]="answer.id" class="exam-radio-button">-->
-<!--        {{answer.content}}-->
-<!--      </mat-radio-button>-->
-<!--      <input type="text" formControlName="type" required>-->
+      <!--      <mat-radio-button [value]="answer.id" class="exam-radio-button">-->
+      <!--        {{answer.content}}-->
+      <!--      </mat-radio-button>-->
+      <!--      <input type="text" formControlName="type" required>-->
       <br>
       <h3 class="text">Podaj opis oceny: </h3>
       <textarea formControlName="description"></textarea>

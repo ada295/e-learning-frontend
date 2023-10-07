@@ -63,7 +63,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-ocene/:courseName/:id/:studentId',
+    path: 'dodaj-ocene/:courseName/:courseId/:studentId',
     component: AddGradeComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
