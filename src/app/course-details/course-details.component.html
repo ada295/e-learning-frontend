@@ -2,24 +2,16 @@
   <div class="course-name-and-announcement">
     <div class="row g-0">
       <div class="col-sm-3">
-        <mat-card *ngIf="sessionService.isTeacher()" style="background-color: #5e239d; color: #efefef">
-          <h1>Kod dostępu: {{courseDetails?.course?.accessCode}}</h1>
-          <hr>
-          <span>
-            <h1 (click)="regenerateAccessCode()" class="refresh-icon">
-               ⟲
-            </h1>
-          </span>
-        </mat-card>
+
       </div>
       <div class="col-sm-3 course-name">{{courseDetails?.course?.name}}</div>
       <div class="col-sm-6">
         <span class="click-tile">
           <button *ngIf="sessionService.isTeacher()" class="button-option" mat-button
-                  routerLink="/kursy/{{courseDetails?.course?.id}}/dodaj-lekcję">
-            <div class="option-name button-announcement">Dodaj lekcję</div>
+                  (click)="regenerateAccessCode()">
+            <div class="option-name button-announcement">Kod: {{courseDetails?.course?.accessCode}}</div>
             <div class="icon-container">
-              <mat-icon>add</mat-icon>
+              <mat-icon>⟲</mat-icon>
             </div>
           </button>
         </span>
@@ -46,11 +38,38 @@
 
 <div class="lessons-container">
   <mat-grid-list cols="2" rowHeight="2.5:1">
+    <mat-grid-tile *ngIf="sessionService.isTeacher()">
+      <div>
+        <div class="name-lesson" matTooltip="Dodaj nową lekcję" matTooltipPosition="above">Lekcja</div>
+        <mat-card class="options-lesson">
+          <mat-card-actions>
+            <button class="button-option" mat-button disabled="true" >
+              <div class="option-name"></div>
+              <div class="icon-container">
+              </div>
+            </button>
+            <button class="button-option" mat-button
+                    routerLink="/kursy/{{courseDetails?.course?.id}}/dodaj-lekcję">
+              <div class="option-name">Dodaj lekcję</div>
+              <div class="icon-container">
+                <mat-icon>add</mat-icon>
+              </div>
+            </button>
+            <button class="button-option" mat-button  disabled="true">
+              <div class="option-name"></div>
+              <div class="icon-container">
+              </div>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
 
     <div *ngFor="let lesson of courseDetails?.lessons; let i = index">
       <mat-grid-tile>
         <div>
-          <div class="name-lesson" matTooltip="{{lesson.name}}" matTooltipPosition="above">Lekcja {{lessonsSize - i}}</div>
+          <div class="name-lesson" matTooltip="{{lesson.name}}" matTooltipPosition="above">
+            Lekcja {{lessonsSize - i}}</div>
 
           <mat-card class="options-lesson">
             <mat-card-actions>
@@ -75,18 +94,6 @@
             </mat-card-actions>
           </mat-card>
         </div>
-
-
-        <!--    <mat-card (click)="toggleClass($event, 'lesson-clicked', 'lesson')">-->
-        <!--      <mat-card-content>-->
-        <!--        <button mat-button routerLink="/lekcje/{{lesson.id}}">{{lesson.name}}</button>-->
-        <!--      </mat-card-content>-->
-        <!--      <mat-card-actions>-->
-        <!--        <button mat-button>Zadania</button>-->
-        <!--        <button mat-button>Materiały</button>-->
-        <!--        <button mat-button>Test</button>-->
-        <!--      </mat-card-actions>-->
-        <!--    </mat-card>-->
       </mat-grid-tile>
     </div>
 

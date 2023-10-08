@@ -96,6 +96,11 @@ mat-expansion-panel-header {
   background-color: rgb(103, 58, 183);
 }
 
+.button-option-add-lesson {
+  margin-bottom: 10px;
+  background-color: rgb(103, 58, 183);
+}
+
 .name-lesson:hover + .description-lesson {
   display: block;
   background-color: rgb(103, 58, 183);
