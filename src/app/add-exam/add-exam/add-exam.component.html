@@ -12,7 +12,17 @@
       <h3 class="text">Podaj opis testu: </h3>
       <textarea formControlName="description"></textarea>
       <br>
-      <br><br>
+      <br>
+      <h3 class="text">Podaj daty: </h3>
+      <br>
+      <br>
+      <h3 class="text">- rozpoczęcia testu: </h3>
+      <input formControlName="startDate" matInput type="datetime-local"/>
+      <br>
+      <h3 class="text">- zakończenia testu: </h3>
+      <input formControlName="endDate" type="datetime-local"/>
+      <br>
+      <br>
       <div>
         <button mat-button class="create-button" (click)="addExam()">Stwórz test</button>
       </div>
@@ -49,6 +59,17 @@
               </mat-form-field>
             </div>
           </div>
+
+
+          <div class="row" *ngIf="questionGroup.value.type=='MULTI_CHOICE' || questionGroup.value.type=='ONE_CHOICE' || questionGroup.value.type=='OPEN'">
+            <div class="col-md-3">
+              <h2>Podaj liczbę punktów :</h2>
+            </div>
+            <div class="col-md-3">
+              <input matInput style="width: 50%" type="number" min="1" max="50" formControlName="points" required>
+            </div>
+          </div>
+
 
           <div class="row" *ngIf="questionGroup.value.type=='MULTI_CHOICE' || questionGroup.value.type=='ONE_CHOICE'">
             <div class="col-md-3">
@@ -113,6 +134,7 @@
               </mat-form-field>
             </div>
           </div>
+
         </form>
       </mat-card>
 

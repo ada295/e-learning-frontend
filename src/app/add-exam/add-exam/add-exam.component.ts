@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {MatOption} from "@angular/material/core";
 import {AddExam, AddExamQuestion, AddQuestionAnswer} from "../../api-models";
 import {HttpClient} from "@angular/common/http";
-import {catchError, of} from "rxjs";
+import {catchError, delay, of} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-exam',
@@ -18,16 +19,22 @@ export class AddExamComponent {
     name: ['', Validators.required],
     amountOfQuestions: ['', Validators.required],
     description: ['', Validators.required],
+    startDate: ['', Validators.required, AddExamComponent.LessThanToday],
+    endDate: ['', Validators.required, AddExamComponent.LessThanToday]
   })
 
   questionGroups: FormGroup[] = [];
   answersGroups = new Map();
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute,
+              private router: Router) {
   }
 
   addExam() {
-    if (this.examGroup.valid) {
+    if (this.examGroup.valid && this.examGroup.value.startDate
+      && this.examGroup.value.endDate
+      && new Date(this.examGroup.value.startDate).getTime()
+      < new Date(this.examGroup.value.endDate).getTime()) {
       this.examBasicInformationSet = true;
       for (let i = 0; i < parseInt(<string>this.examGroup.value.amountOfQuestions); i++) {
         this.questionGroups.push(
@@ -35,11 +42,14 @@ export class AddExamComponent {
             {
               content: ['', Validators.required],
               amountOfAnswers: ['', Validators.required],
+              points: ['', Validators.required],
               type: ['', Validators.required]
             }
           )
         )
       }
+    } else {
+      alert("Popraw błędy w formularzu!");
     }
   }
 
@@ -61,6 +71,8 @@ export class AddExamComponent {
       }
 
       this.answersGroups.set(i, questionAnswersGroups);
+    } else {
+      alert("Popraw błędy w formularzu!");
     }
   }
 
@@ -85,11 +97,13 @@ export class AddExamComponent {
   }
 
   saveExam() {
-    if (this.isValid()) {
+    if (this.isValid() && this.examGroup.value.startDate && this.examGroup.value.endDate) {
       let examRequest = new AddExam();
 
       examRequest.name = this.examGroup.value.name;
       examRequest.description = this.examGroup.value.description;
+      examRequest.startDate = new Date(this.examGroup.value.startDate);
+      examRequest.endDate = new Date(this.examGroup.value.endDate);
 
       let questionNumber = 0;
       for (let questionGroup of this.questionGroups) {
@@ -98,7 +112,7 @@ export class AddExamComponent {
         addQuestion.type = questionGroup.value.type;
         addQuestion.points = questionGroup.value.points;
 
-        if(this.answersGroups.get(questionNumber)) {
+        if (this.answersGroups.get(questionNumber)) {
           for (let answerGroup of this.answersGroups.get(questionNumber)) {
             let addExamAnswer = new AddQuestionAnswer();
             addExamAnswer.content = answerGroup.value.content;
@@ -111,19 +125,22 @@ export class AddExamComponent {
         examRequest.questions.push(addQuestion);
         questionNumber++;
       }
+      let lessonId = this.route.snapshot.paramMap.get('id');
 
-      // pobierz id z linku
-      this.httpClient.post<AddExam>("http://localhost:8080/course/1/exam", examRequest)
+      this.httpClient.post<AddExam>("http://localhost:8080/lesson/" + lessonId + "/exam", examRequest)
         .pipe(
           catchError(error => {
             alert(error.error);
             return of([]);
           })
         )
-        .subscribe(value =>
-          //kolko przestaje sie krecic
-          alert("Test został dodany!")
+        .subscribe(value => {
+            alert("Test został dodany!");
+            this.router.navigateByUrl("/lekcja/" + lessonId + "/test-opis");
+          }
         );
+    } else {
+      alert("Popraw błędy w formularzu!");
     }
   }
 
@@ -140,12 +157,7 @@ export class AddExamComponent {
       && this.questionGroups.length > 0 && atLeastOneAnswer;
   }
 
-  saveOneChoiceQuestion(questionNumber
-                          :
-                          number, selected
-                          :
-                          MatOption<any> | MatOption[]
-  ) {
+  saveOneChoiceQuestion(questionNumber: number, selected: MatOption<any> | MatOption[]) {
     let correctAnswer = -1;
     if (selected instanceof MatOption) {
       correctAnswer = selected.value;
@@ -182,4 +194,22 @@ export class AddExamComponent {
       })
     }
   }
+
+  static LessThanToday(control: FormControl): ValidationErrors | null {
+    let today: Date = new Date();
+
+    if (new Date(control.value) > today) {
+      return of(true).pipe(
+        delay(1000)
+      );
+    }
+
+    return of(false).pipe(
+      delay(1000)
+    );
+
+  }
+
+  protected readonly Date = Date;
+
 }

@@ -81,6 +81,8 @@ export class ExamDetailsResponse {
 export class AddExam {
   name: string | undefined | null;
   description: string | undefined | null;
+  startDate: Date | undefined | null;
+  endDate: Date | undefined | null;
   questions: AddExamQuestion[] = [];
 }
 

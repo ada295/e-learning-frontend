@@ -29,6 +29,12 @@ export class AddGradeComponent {
   }
 
   addGrade() {
+    if(this.type) {
+      this.gradeGroup.patchValue({
+        type: this.type
+      });
+    }
+
     if (this.gradeGroup.valid) {
 
       let studentId = this.route.snapshot.paramMap.get('studentId');

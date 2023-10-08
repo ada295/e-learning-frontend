@@ -1,15 +1,31 @@
 <div class="container">
-  <div>
-      <h1 class="header">TEST</h1>
+  <div *ngIf="response">
+      <h1 class="header">Test</h1>
       <br>
       <div style="margin-left: 10%; margin-right: 10%; text-align: center">
         {{description}}
       </div>
+      Test aktywny od {{response.exam?.startDate}} do {{response.exam?.endDate}}
 
       <br><br>
       <div>
-        <button mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Rozpocznij</button>
+        <button *ngIf="sessionService.isStudent()" [disabled]="isActiveTest()" mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Rozpocznij</button>
+        <button *ngIf="sessionService.isTeacher()" mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Pokaż szczegóły</button>
       </div>
+  </div>
+
+  <div *ngIf="!response && sessionService.isStudent()">
+    <h1 class="header">Brak testu!</h1>
+  </div>
+
+  <div *ngIf="!response && sessionService.isTeacher()">
+    <h1 class="header">Brak testu!</h1>
+    <br>
+
+    <br><br>
+    <div>
+      <button mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test</button>
+    </div>
   </div>
 </div>
 

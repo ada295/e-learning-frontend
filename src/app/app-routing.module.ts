@@ -179,7 +179,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dodaj-test',
+    path: 'lekcja/:id/dodaj-test',
     component: AddExamComponent,
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {

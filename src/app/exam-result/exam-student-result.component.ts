@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {User} from "../api-models";
+import {Course, User} from "../api-models";
 
 export class QuestionStudentAnswerResponse {
   question = new Question();
@@ -39,6 +39,7 @@ export class ExamResult {
   maxPoints: number = 0;
   student: User = new User();
   status: string = "";
+  course: Course = new Course();
 }
 
 

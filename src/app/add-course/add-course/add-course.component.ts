@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Course} from "../../api-models";
 import {HttpClient} from "@angular/common/http";
 import {catchError, of} from "rxjs";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class AddCourseComponent {
   });
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private router: Router, private _formBuilder: FormBuilder, private httpClient: HttpClient) {
 
   }
 
@@ -38,9 +39,9 @@ export class AddCourseComponent {
             return of([]);
           })
         ).subscribe(value => {
-        //uruchamia się, gdy request się wykona
-        //dodać wyświetlenie komunikatu na frontendzie "Dodałeś kurs"
         alert("Kurs dodany!");
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+          this.router.navigate(["/kursy"]));
       });
     }
 

@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Announcement, ExamDetailsResponse, Lesson} from "../api-models";
 import {catchError, of} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {SessionService} from "../session.service";
 
 @Component({
   selector: 'app-test-details',
@@ -17,7 +18,7 @@ export class TestDetailsComponent implements OnInit{
   description: string | undefined;
 
 
-  constructor(private httpClient: HttpClient, private route: ActivatedRoute) {
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute, public sessionService: SessionService) {
   }
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class TestDetailsComponent implements OnInit{
       });
 
 
+  }
+
+  isActiveTest() {
+    return false;
   }
 }

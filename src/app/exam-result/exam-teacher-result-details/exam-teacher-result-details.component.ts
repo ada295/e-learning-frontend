@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Answer, ExamResult} from "../exam-student-result.component";
+import {Course} from "../../api-models";
 
 @Component({
   selector: 'app-exam-teacher-result-details',
@@ -13,6 +14,7 @@ export class ExamTeacherResultDetailsComponent implements OnInit {
   }
 
   exam = new ExamResult();
+  course: Course = new Course();
 
   ngOnInit() {
     let examResultId = this.route.snapshot.paramMap.get('id');
@@ -20,6 +22,7 @@ export class ExamTeacherResultDetailsComponent implements OnInit {
     this.httpClient.get<ExamResult>(`http://localhost:8080/teacher-exam-results/${examResultId}/details`)
       .subscribe(result => {
           this.exam = result;
+          this.course = result.course;
         }
       );
   }
