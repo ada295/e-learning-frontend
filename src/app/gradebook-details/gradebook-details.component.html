@@ -95,26 +95,37 @@
               </ng-container>
               <ng-container matColumnDef="grade">
                 <th mat-header-cell *matHeaderCellDef> Ocena</th>
-                <td mat-cell *matCellDef="let element1"> {{element1['grade']}} </td>
+                <td *matCellDef="let element1" mat-cell>
+                  <span *ngIf="!isEditGrade(element1)">{{element1['grade']}} </span>
+                  <span *ngIf="isEditGrade(element1)">
+                    <input #grade value="{{element1.grade}}" (change)="updateValue(element1, grade);" max="5"
+                           min="1"
+                           type="number"/>
+                  </span>
+                </td>
               </ng-container>
               <ng-container matColumnDef="edit">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element1">
-                  <button class="button-edit" (click)="edit(element1); $event.stopPropagation();">{{element1['edit']}}</button>
+                  <button *ngIf="isEditGrade(element1)" class="button-edit" (click)="editGrade(element1); $event.stopPropagation();">Zapisz</button>
+                  <button *ngIf="!isEditGrade(element1)" class="button-edit" (click)="edit(element1); $event.stopPropagation();">{{element1['edit']}}</button>
                 </td>
               </ng-container>
               <ng-container matColumnDef="delete">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                  <button class="button-delete"
-                          (click)="edit(element); $event.stopPropagation();">{{element['delete']}}</button>
+                  <button *ngIf="!isEditGrade(element)" class="button-delete"
+                          (click)="delete(element); $event.stopPropagation();">{{element['delete']}}</button>
+
+                  <button *ngIf="isEditGrade(element)" class="button-delete" (click)="noEdit(element); $event.stopPropagation();">Anuluj</button>
                 </td>
               </ng-container>
               <ng-container matColumnDef="expand">
                 <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
                 <td mat-cell *matCellDef="let element">
                   <button mat-icon-button aria-label="expand row"
-                          (click)="(expandedElementChild = expandedElementChild === element ? null : element); $event.stopPropagation()">
+                          (click)="(expandedElementChild = expandedElementChild === element ? null : element);
+                          $event.stopPropagation()">
                     <mat-icon *ngIf="expandedElementChild !== element">keyboard_arrow_down</mat-icon>
                     <mat-icon *ngIf="expandedElementChild === element">keyboard_arrow_up</mat-icon>
                   </button>
@@ -124,13 +135,21 @@
               <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
               <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand2.length">
-                  <div class="example-element-detail"
-                       [@detailExpand]="element == expandedElementChild ? 'expanded' : 'collapsed'">
+                  <div *ngIf="isEditGrade(element)" class="example-element-detail"
+                       [@detailExpand]="'expanded'">
+                    <div class="example-element-description">
+                      <textarea #comment [value]="element.description" (change)="updateComment(element, comment)"></textarea>
+                    </div>
+                  </div>
 
+                  <div *ngIf="!isEditGrade(element)" class="example-element-detail"
+                       [@detailExpand]="element == expandedElementChild ? 'expanded' : 'collapsed'">
                     <div class="example-element-description">
                       {{element.description}}
                     </div>
                   </div>
+
+
                 </td>
               </ng-container>
 

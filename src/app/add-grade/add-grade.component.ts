@@ -53,6 +53,8 @@ export class AddGradeComponent {
 
           this.router.navigateByUrl("/dziennik/" + courseName + "/" + courseId);
         })
+    } else {
+      alert("Popraw błędy w formularzu!");
     }
   }
 

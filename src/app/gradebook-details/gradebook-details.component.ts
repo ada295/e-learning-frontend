@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
 import {CourseDetails, Grade, User} from "../api-models";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -28,11 +28,13 @@ export class GradebookDetailsComponent implements OnInit {
   columnsToDisplayWithExpand2: string[] = [];
   expandedElement: SummaryDataSource | null | undefined;
   expandedElementChild: GradeDataSource | null | undefined;
+  editRowMap = new Map<number, boolean>();
 
-  constructor(private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
+  constructor(private httpClient: HttpClient, private router: Router, public sessionService: SessionService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.editRowMap = new Map();
     if (this.sessionService.isTeacher() && !this.columnsToDisplay1.includes("add")) {
       this.columnsToDisplay1.push("add");
     }
@@ -62,6 +64,8 @@ export class GradebookDetailsComponent implements OnInit {
           for (let grade of gradeResponse.grades) {
             let dataSourceGrade = new GradeDataSource();
             dataSourceGrade.grade = grade.value;
+            dataSourceGrade.value = grade.value + '';
+            dataSourceGrade.gradeId = grade.id;
             dataSourceGrade.name = grade.category;
             dataSourceGrade.description = grade.comment;
             summaryDataSource.grades.push(dataSourceGrade);
@@ -73,12 +77,65 @@ export class GradebookDetailsComponent implements OnInit {
   }
 
   edit(element: any) {
-    alert(element);
+    this.editRowMap.set(element.gradeId, true);
+  }
 
+  noEdit(element: any) {
+    this.editRowMap.set(element.gradeId, false);
+    this.ngOnInit();
+  }
+
+  isEditGrade(element: any) {
+    return this.editRowMap.get(element.gradeId);
   }
 
   getDataSourceForGrades(element: SummaryDataSource) {
     return element.grades;
+  }
+
+  updateValue(element: GradeDataSource, grade: HTMLInputElement) {
+    if (parseInt(grade.value) > 5) {
+      grade.value = "5";
+    } else if (parseInt(grade.value) < 1) {
+      grade.value = "1";
+    }
+
+    if(parseInt(grade.value) >= 1 && parseInt(grade.value) <=5) {
+      console.log(grade.value);
+      element.grade = parseInt(grade.value);
+      element.value = grade.value;
+    }
+  }
+
+  updateComment(element: GradeDataSource, comment: HTMLTextAreaElement) {
+    element.description = comment.value;
+  }
+
+  delete(element:GradeDataSource) {
+    this.httpClient.delete(`http://localhost:8080/courses/grades/delete-grade/` + element.gradeId)
+      .subscribe(e => {
+        this.dataSourceSummary = [];
+        this.ngOnInit();
+      })
+  }
+
+  editGrade(element: GradeDataSource) {
+    if(element.value && element.value.length > 0 && element.description && element.description.length > 0) {
+      let grade = {
+        "category": element.name,
+        "comment": element.description,
+        "value": element.value,
+        "id": element.gradeId
+      }
+      this.httpClient.post(`http://localhost:8080/courses/grades/edit-grade`, grade)
+        .subscribe(e => {
+          this.dataSourceSummary = [];
+          this.ngOnInit();
+        })
+    } else {
+      alert("Popraw błędy w formularzu!");
+    }
+
   }
 }
 
@@ -99,10 +156,13 @@ export class SummaryDataSource {
 }
 
 export class GradeDataSource {
+  gradeId: number | undefined;
   grade: number | undefined;
+  value: string | undefined;
   name: string | undefined;
   description: string | undefined;
   edit = "Edytuj";
   delete = "Usuń";
 }
+
 
