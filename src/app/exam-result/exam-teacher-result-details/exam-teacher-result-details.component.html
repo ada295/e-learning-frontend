@@ -44,7 +44,7 @@
   <button class="finish-test-button" mat-button style="margin-left: 45%" (click)="finishAndCloseExamResult()">Zakończ ocenianie</button>
 
   <div *ngIf="exam.status == 'CHECKED_BY_TEACHER'">
-    <app-add-grade type="Sprawdzian" [course]="course" [studentId]="exam.student.id"></app-add-grade>
+    <app-add-grade type="Sprawdzian" [course]="course" [lessonId]="exam.lessonId" [studentId]="exam.student.id"></app-add-grade>
   </div>
 
 </div>

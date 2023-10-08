@@ -1,9 +1,5 @@
-<div class="row g-0">
-  <div class="col-md-1">
-    <button mat-button class="create-button add-event-button button-nav"
-            routerLink="/dodaj-wydarzenie/{{selectedDateAsString()}}" (click)="addEvent()">Dodaj wydarzenie</button>
-  </div>
-  <div class="col-md-5">
+<div class="row">
+  <div class="col-md-6">
     <mat-card class="demo-inline-calendar-card" *ngIf="eventsLoaded">
       <mat-calendar [dateClass]="getDateClass" [(selected)]="selected"></mat-calendar>
     </mat-card>
@@ -14,6 +10,11 @@
         {{event.hour}}.{{event.minutes}} - {{event.description}}
       </div>
     </div>
+  </div>
+  <div class="row">
+    <button (click)="addEvent()" style="width: 20%" *ngIf="sessionService.isTeacher()" class="create-button"
+            mat-button routerLink="/dodaj-wydarzenie/{{selectedDateAsString()}}">Dodaj wydarzenie
+    </button>
   </div>
 </div>
 

@@ -17,6 +17,8 @@ export class AddGradeComponent {
   course: Course | undefined;
   @Input()
   studentId: number | undefined;
+  @Input()
+  lessonId: number | undefined;
 
   gradeGroup = this.formBuilder.group({
     type: ['', Validators.required],
@@ -44,7 +46,10 @@ export class AddGradeComponent {
       let grade = {
         "category": this.gradeGroup.value.type,
         "comment": this.gradeGroup.value.description,
-        "value": this.gradeGroup.value.grade
+        "value": this.gradeGroup.value.grade,
+        "lesson": {
+          id: this.lessonId
+        }
       }
       let courseId = this.route.snapshot.paramMap.get('courseId');
       if (this.course) {

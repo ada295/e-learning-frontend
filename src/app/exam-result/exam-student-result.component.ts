@@ -35,6 +35,7 @@ export class ExamResult {
   examResultId = 0;
   questions: QuestionStudentAnswerResponse[] = [];
   exam: Exam = new Exam();
+  lessonId: number = -1;
   points: number = 0;
   maxPoints: number = 0;
   student: User = new User();

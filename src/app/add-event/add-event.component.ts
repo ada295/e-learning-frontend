@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DateRange} from "@angular/material/datepicker";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {CalendarEvent} from "../api-models";
 import {catchError, of} from "rxjs";
@@ -22,15 +22,12 @@ export class AddEventComponent implements OnInit {
     time: ['', Validators.required],
   })
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private httpClient: HttpClient, public sessionService: SessionService, private route: ActivatedRoute) {
   };
 
 
   ngOnInit(): void {
     let date = this.route.snapshot.paramMap.get('date');
-    console.log(date);
-    //2023-5-23
-    //2023-10-20
     let dateParts = date?.split("-");
     if (this.selected != null && this.selected instanceof Date) {
       if (dateParts != undefined) {
@@ -80,11 +77,15 @@ export class AddEventComponent implements OnInit {
               return of([]);
             })
           )
-          .subscribe(value =>
-            //kolko przestaje sie krecic
-            alert("Wydarzenie dodane!")
-          );
+          .subscribe(value => {
+              alert("Wydarzenie dodane!");
+              this.router.navigateByUrl("/kalendarz");
+            }
+          )
+        ;
       }
+    } else {
+      alert("Popraw błędy w formularzu!");
     }
   }
 }

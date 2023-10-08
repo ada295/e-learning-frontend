@@ -146,6 +146,16 @@
                        [@detailExpand]="element == expandedElementChild ? 'expanded' : 'collapsed'">
                     <div class="example-element-description">
                       {{element.description}}
+
+                      <span *ngIf="element.lessonId">
+                        <hr>
+                        <span *ngIf="element.name == 'Sprawdzian'">
+                        Ocena została dodana do <a href="/lekcja/{{element.lessonId}}/test-opis">Testu</a>
+                        </span>
+                        <span *ngIf="element.name != 'Sprawdzian'">
+                        Ocena została dodana do <a href="/lekcja/{{element.lessonId}}/zadania">Lekcji</a>
+                        </span>
+                      </span>
                     </div>
                   </div>
 

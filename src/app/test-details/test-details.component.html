@@ -4,8 +4,9 @@
       <br>
       <div style="margin-left: 10%; margin-right: 10%; text-align: center">
         {{description}}
+        <hr>
+        Test aktywny od <strong>{{response.exam?.startDate | date: 'dd.MM.YYYY HH:mm' }} </strong> do <strong>{{response.exam?.endDate | date: 'dd.MM.YYYY HH:mm' }}</strong>
       </div>
-      Test aktywny od {{response.exam?.startDate}} do {{response.exam?.endDate}}
 
       <br><br>
       <div>

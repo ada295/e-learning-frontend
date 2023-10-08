@@ -135,6 +135,7 @@ export class Grade {
   category: string | undefined;
   comment: string | undefined;
   value: number | undefined;
+  lesson: Lesson = new Lesson();
 }
 
 export class TaskStudent {
