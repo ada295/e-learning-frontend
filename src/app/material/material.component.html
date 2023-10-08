@@ -1,29 +1,31 @@
-<div class="header-container row">
-  <button class="course-button course-name col-md-4" routerLink="/kursy/{{lesson?.course?.id}}">
-    {{lesson?.course?.name}}
+<mat-grid-list class="header-container" cols="{{getHeaderAmountOfColumnsInGrid()}}"
+               rowHeight="{{getHeaderRowHeightInGrid()}}">
+  <button style="background-color: transparent; border: 0px">
+    <mat-grid-tile class="course-name tile" [style.background-color]="'transparent'"
+                   routerLink="/kursy/{{lesson?.course?.id}}">{{lesson?.course?.name}}</mat-grid-tile>
   </button>
-  <div class="lesson-number col-md-3">Lekcja {{lessonId}}</div>
-  <div class="buttons-container col-md-5">
+  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">Lekcja {{lessonId}}</mat-grid-tile>
+  <mat-grid-tile class="buttons-container tile" [style.background-color]="'transparent'">
     <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test-opis/">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option button-option-material" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
+    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
+    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>
       </div>
     </button>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <div class="materials-container">
 
