@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentSolutionForTask, TaskToDo} from "../api-models";
+import {StudentSolutionForTask} from "../api-models";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
@@ -13,6 +13,10 @@ export class TaskSolutionsForTeacherComponent implements OnInit {
 
   solutions: StudentSolutionForTask[] = [];
 
+  addGradeFlag = false;
+  addGradeStudentId: number | undefined = -1;
+  addGradeLessonId: number | undefined = -1;
+
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
@@ -23,7 +27,20 @@ export class TaskSolutionsForTeacherComponent implements OnInit {
   private loadTaskDetails() {
     let lessonId = this.route.snapshot.paramMap.get('lessonId');
     let taskId = this.route.snapshot.paramMap.get('taskId');
-    this.httpClient.get<StudentSolutionForTask[]>("http://localhost:8080/tasks/"+taskId+"/student-tasks-solutions")
+    this.httpClient.get<StudentSolutionForTask[]>("http://localhost:8080/tasks/" + taskId + "/student-tasks-solutions")
       .subscribe(res => this.solutions = res)
   }
+
+  addGrade(studentId: any, lessonId: any) {
+    this.addGradeFlag = true;
+    this.addGradeStudentId = studentId;
+    this.addGradeLessonId = lessonId;
+  }
+
+  cancelAddGrade() {
+    this.addGradeFlag = false;
+    this.addGradeStudentId = -1;
+    this.addGradeLessonId = -1;
+  }
+
 }

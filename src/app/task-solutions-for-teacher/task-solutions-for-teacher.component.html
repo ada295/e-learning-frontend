@@ -1,43 +1,55 @@
 <div class="container">
-  <h1 style="color: #5e239d;">Rozwiązania:</h1>
-  <div class="row">
-    <mat-card class="col-md-3" style="margin: 1%;" *ngFor="let solution of solutions">
-      <mat-card-header>
-        <mat-card-title>{{solution.student?.firstName}} {{solution.student?.lastName}}</mat-card-title>
-        <mat-card-subtitle>{{solution.student?.email}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <br>
-        <div *ngIf="solution.task?.status == 'AKTYWNE'" class="task-details">
-          Status zadania: Aktywne
-        </div>
-        <div *ngIf="solution.task?.status == 'NIEWYKONANE'" class="task-details">
-           <strong style="color: red">Zadanie nieoddane!</strong>
-        </div>
-        <div *ngIf="solution.task?.status == 'OCENIONE'" class="task-details">
-          Status zadania: <strong style="color: green">{{solution.task?.status}}</strong>
-          <div *ngIf="solution.task?.status == 'OCENIONE'" class="task-details task-points">
-            Ocena: {{solution.task?.taskStudent?.grade?.value}}
+  <div *ngIf="!addGradeFlag">
+    <h1 style="color: #5e239d;">Rozwiązania:</h1>
+    <div class="row">
+      <mat-card *ngFor="let solution of solutions" class="col-md-3" style="margin: 1%;">
+        <mat-card-header>
+          <mat-card-title>{{solution.student?.firstName}} {{solution.student?.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{solution.student?.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <br>
+          <div *ngIf="solution.task?.status == 'AKTYWNE'" class="task-details">
+            Status zadania: Aktywne
           </div>
-        </div>
+          <div *ngIf="solution.task?.status == 'NIEWYKONANE'" class="task-details">
+            <strong style="color: red">Zadanie nieoddane!</strong>
+          </div>
+          <div *ngIf="solution.task?.status == 'OCENIONE'" class="task-details">
+            Status zadania: <strong style="color: green">{{solution.task?.status}}</strong>
+            <div *ngIf="solution.task?.status == 'OCENIONE'" class="task-details task-points">
+              Ocena: {{solution.task?.taskStudent?.grade?.value}}
+            </div>
+          </div>
 
-        <div *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
-          Przesłane pliki:
-        </div>
-        <button *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
-          <div style="float: left">
-            <mat-icon> attach_file</mat-icon>
+          <div *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="task-details file-attachment">
+            Przesłane pliki:
           </div>
-          <div class="file-name">
-            {{solution.task?.taskStudent?.filename}}
-          </div>
-        </button>
-        <br>
-        <mat-divider></mat-divider>
-      </mat-card-content>
-      <mat-card-actions>
-        <button *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" mat-button>Oceń</button>
-      </mat-card-actions>
-    </mat-card>
+          <button *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
+            <div style="float: left">
+              <mat-icon> attach_file</mat-icon>
+            </div>
+            <div class="file-name">
+              {{solution.task?.taskStudent?.filename}}
+            </div>
+          </button>
+          <br>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="addGrade(solution.task?.taskStudent?.student?.id, solution.task?.task?.lesson?.id)"
+                  *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"
+                  color="accent"
+                  mat-button>
+            Oceń
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="addGradeFlag">
+    <app-add-grade [course]="solutions[0].task?.task?.lesson?.course"
+    [studentId]="addGradeStudentId" type="Praca domowa"
+    [lessonId]="addGradeLessonId"></app-add-grade>
   </div>
 </div>

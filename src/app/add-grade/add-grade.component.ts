@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {Course} from "../api-models";
+import {Course, User} from "../api-models";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './add-grade.component.html',
   styleUrls: ['./add-grade.component.css']
 })
-export class AddGradeComponent {
+export class AddGradeComponent implements OnInit {
 
   @Input()
   type = "";
@@ -19,6 +19,8 @@ export class AddGradeComponent {
   studentId: number | undefined;
   @Input()
   lessonId: number | undefined;
+
+  student = new User();
 
   gradeGroup = this.formBuilder.group({
     type: ['', Validators.required],
@@ -30,8 +32,21 @@ export class AddGradeComponent {
               private router: Router) {
   }
 
+  ngOnInit() {
+    let studentId = this.route.snapshot.paramMap.get('studentId');
+    if (this.studentId) {
+      studentId = this.studentId + '';
+    } else {
+      this.studentId = parseInt(studentId + '');
+    }
+
+    this.httpClient.get<User>("http://localhost:8080/students/" + this.studentId)
+      .subscribe(e => this.student = e)
+
+  }
+
   addGrade() {
-    if(this.type) {
+    if (this.type) {
       this.gradeGroup.patchValue({
         type: this.type
       });

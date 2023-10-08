@@ -1,7 +1,7 @@
 <div class="container">
   <div>
     <form class="grade-container" [formGroup]="gradeGroup">
-      <h1 class="header">Jan Kowalski</h1>
+      <h1 class="header">{{student.firstName}} {{student.lastName}}</h1>
       <br>
       <h3 class="text">Wybierz typ oceny: </h3>
       <mat-radio-group class="exam-radio-group" formControlName="type">
@@ -63,6 +63,7 @@
         <button mat-button class="add-button" (click)="addGrade()">Dodaj ocenę</button>
       </div>
     </form>
+  </div>
 </div>
 
 

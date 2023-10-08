@@ -66,7 +66,9 @@ export class GradebookDetailsComponent implements OnInit {
             dataSourceGrade.grade = grade.value;
             dataSourceGrade.value = grade.value + '';
             dataSourceGrade.gradeId = grade.id;
-            dataSourceGrade.lessonId = grade.lesson.id;
+            if(grade.lesson && grade.lesson.id) {
+              dataSourceGrade.lessonId = grade.lesson.id;
+            }
             dataSourceGrade.name = grade.category;
             dataSourceGrade.description = grade.comment;
             summaryDataSource.grades.push(dataSourceGrade);
