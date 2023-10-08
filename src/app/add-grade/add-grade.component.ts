@@ -74,7 +74,7 @@ export class AddGradeComponent implements OnInit {
         .subscribe(e => {
           let courseName = this.route.snapshot.paramMap.get('courseName');
           if (this.course) {
-            courseId = this.course.name + '';
+            courseName = this.course.name + '';
           }
 
           this.router.navigateByUrl("/dziennik/" + courseName + "/" + courseId);

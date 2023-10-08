@@ -25,19 +25,21 @@
           <div *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="task-details file-attachment">
             Przesłane pliki:
           </div>
-          <button *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
+          <br>
+          <button style="padding: 10px" *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
             <div style="float: left">
-              <mat-icon> attach_file</mat-icon>
             </div>
             <div class="file-name">
               {{solution.task?.taskStudent?.filename}}
             </div>
           </button>
           <br>
+          <br>
+
           <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions>
-          <button (click)="addGrade(solution.task?.taskStudent?.student?.id, solution.task?.task?.lesson?.id)"
+          <button (click)="addGrade(solution.student?.id, solution.task?.task?.lesson?.id)"
                   *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"
                   color="accent"
                   mat-button>
