@@ -16,6 +16,7 @@ export class TaskSolutionsForTeacherComponent implements OnInit {
   addGradeFlag = false;
   addGradeStudentId: number | undefined = -1;
   addGradeLessonId: number | undefined = -1;
+   addGradeTaskStudentId: number | undefined = -1;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
@@ -31,9 +32,10 @@ export class TaskSolutionsForTeacherComponent implements OnInit {
       .subscribe(res => this.solutions = res)
   }
 
-  addGrade(studentId: any, lessonId: any) {
+    addGrade(studentId: any, lessonId: any, taskStudentId: any) {
     this.addGradeFlag = true;
     this.addGradeStudentId = studentId;
+    this.addGradeTaskStudentId = taskStudentId;
     this.addGradeLessonId = lessonId;
   }
 
@@ -41,6 +43,7 @@ export class TaskSolutionsForTeacherComponent implements OnInit {
     this.addGradeFlag = false;
     this.addGradeStudentId = -1;
     this.addGradeLessonId = -1;
+    this.addGradeTaskStudentId = -1;
   }
 
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
-import {CourseDetails, Grade, User} from "../api-models";
+import {CourseDetails, Grade, TaskToDo, User} from "../api-models";
 import {ActivatedRoute, Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
@@ -63,14 +63,17 @@ export class GradebookDetailsComponent implements OnInit {
           summaryDataSource.grades = [];
           for (let grade of gradeResponse.grades) {
             let dataSourceGrade = new GradeDataSource();
-            dataSourceGrade.grade = grade.value;
-            dataSourceGrade.value = grade.value + '';
-            dataSourceGrade.gradeId = grade.id;
-            if(grade.lesson && grade.lesson.id) {
-              dataSourceGrade.lessonId = grade.lesson.id;
+            dataSourceGrade.grade = grade.grade.value;
+            dataSourceGrade.value = grade.grade.value + '';
+            dataSourceGrade.gradeId = grade.grade.id;
+            if (grade.grade.lesson && grade.grade.lesson.id) {
+              dataSourceGrade.lessonId = grade.grade.lesson.id;
             }
-            dataSourceGrade.name = grade.category;
-            dataSourceGrade.description = grade.comment;
+            if (grade.task && grade.task.task && grade.task.task.id) {
+              dataSourceGrade.taskId = grade.task.task.id;
+            }
+            dataSourceGrade.name = grade.grade.category;
+            dataSourceGrade.description = grade.grade.comment;
             summaryDataSource.grades.push(dataSourceGrade);
           }
 
@@ -142,12 +145,20 @@ export class GradebookDetailsComponent implements OnInit {
   }
 }
 
+
+export class GradeResp {
+  grade: Grade = new Grade();
+  task: TaskToDo = new TaskToDo();
+}
+
 export class GradeResponse {
   course: CourseDetails | undefined;
   student: User | undefined;
-  grades: Grade[] = [];
+  grades: GradeResp[] = [];
   avg: number | undefined;
 }
+
+
 
 export class SummaryDataSource {
   studentId: number | undefined;
@@ -161,6 +172,7 @@ export class SummaryDataSource {
 export class GradeDataSource {
   gradeId: number | undefined;
   lessonId: number | undefined;
+  taskId: number | undefined;
   grade: number | undefined;
   value: string | undefined;
   name: string | undefined;

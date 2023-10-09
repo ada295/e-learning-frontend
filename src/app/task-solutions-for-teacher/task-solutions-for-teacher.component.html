@@ -39,10 +39,11 @@
           <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions>
-          <button (click)="addGrade(solution.student?.id, solution.task?.task?.lesson?.id)"
-                  *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"
-                  color="accent"
-                  mat-button>
+          <button
+            (click)="addGrade(solution.student?.id, solution.task?.task?.lesson?.id, solution.task?.taskStudent?.id)"
+            *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"
+            color="accent"
+            mat-button>
             Oceń
           </button>
         </mat-card-actions>
@@ -51,7 +52,8 @@
   </div>
   <div *ngIf="addGradeFlag">
     <app-add-grade [course]="solutions[0].task?.task?.lesson?.course"
-    [studentId]="addGradeStudentId" type="Praca domowa"
-    [lessonId]="addGradeLessonId"></app-add-grade>
+                   [lessonId]="addGradeLessonId" [studentId]="addGradeStudentId"
+                   [taskStudentId]="addGradeTaskStudentId"
+                   type="Praca domowa"></app-add-grade>
   </div>
 </div>

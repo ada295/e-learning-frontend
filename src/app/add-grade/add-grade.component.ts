@@ -19,6 +19,9 @@ export class AddGradeComponent implements OnInit {
   studentId: number | undefined;
   @Input()
   lessonId: number | undefined;
+  @Input()
+  taskStudentId: number | undefined;
+
 
   student = new User();
 
@@ -70,7 +73,11 @@ export class AddGradeComponent implements OnInit {
       if (this.course) {
         courseId = this.course.id + '';
       }
-      this.httpClient.post(`http://localhost:8080/courses/${courseId}/add-grade/${studentId}`, grade)
+      let url = `http://localhost:8080/courses/${courseId}/add-grade/${studentId}`;
+      if (this.taskStudentId) {
+        url += "?taskStudentId=" + this.taskStudentId;
+      }
+      this.httpClient.post(url, grade)
         .subscribe(e => {
           let courseName = this.route.snapshot.paramMap.get('courseName');
           if (this.course) {

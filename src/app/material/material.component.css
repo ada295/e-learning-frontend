@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.button-option-tasks {
+  background-color: rgb(72, 36, 134) !important;
+}
+
 .course-name {
   font-size: 45px;
   font-weight: bold;

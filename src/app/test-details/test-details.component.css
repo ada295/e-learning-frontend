@@ -1,3 +1,161 @@
+.header-container {
+  margin-top: 0;
+  margin-left: 50px;
+  margin-right: 75px;
+  height: 150px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-option-tasks {
+  background-color: rgb(72, 36, 134) !important;
+}
+
+.course-name {
+  font-size: 45px;
+  font-weight: bold;
+  color: rgb(103, 58, 183);
+}
+
+.lesson-number {
+  font-size: 45px;
+  font-weight: bold;
+  color: rgb(103, 58, 183);
+  padding-left: 50px;
+}
+
+.button-option {
+  background-color: rgb(103, 58, 183);
+  color: white;
+  width: 120px;
+  height: 100px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  text-align: center;
+  float: right;
+}
+
+.button-option:hover {
+  background-color: rgb(72, 36, 134);
+
+}
+
+.button-option-material {
+  background-color: rgb(72, 36, 134) !important;
+}
+
+.material-icons {
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
+
+.option-name {
+  padding-bottom: 5px;
+  padding-top: 50px;
+  font-size: 15px;
+}
+
+
+.material-container {
+  background-color: rgb(103, 58, 183);
+  color: white;
+}
+
+.mat-grid-tile {
+  background-color: rgb(103, 58, 183);
+  border-radius: 10px;
+  /*width: 40% !important;*/
+
+}
+
+.materials-container {
+  width: 80%;
+  margin: auto;
+}
+
+.material-name {
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(103, 58, 183);
+  color: white !important;
+  text-align: center;
+  font-size:large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 15px;
+}
+
+.icon-container {
+  padding-bottom: 10px;
+}
+
+.button-download {
+  margin: 20px auto auto;
+  height: 90px;
+  background-color: rgb(103, 58, 183);
+  color: white !important;
+  text-align: center;
+  /*float: right;*/
+}
+
+.button-download:hover {
+  background-color: rgb(72, 36, 134);}
+
+.add-icon {
+  font-size: 50px;
+  padding-bottom: 5px;
+}
+
+.add-button-name {
+  font-size: large;
+  font-weight:500;
+  letter-spacing: 1px;
+  padding-top: 20px;
+}
+
+.add-button {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.button-delete {
+  color: white;
+  padding-top: 20px;
+  margin-top: 50px;
+  width: 50px !important;
+  height: 50px !important;
+  float: right;
+  margin-left: 4em;
+}
+
+.trash:hover{
+  color: red;
+  cursor: pointer;
+}
+
+.course-button {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+/*/deep/ .mat-mdc-focus-indicator {*/
+/*  width: 50px !important;*/
+/*  height: 50px !important;*/
+/*  float: right;*/
+/*}*/
+
+/*/deep/ .mat-mdc-button-touch-target {*/
+/*  width: 40px !important;*/
+/*  height: 40px !important;*/
+/*  float: right;*/
+/*}*/
+
+
+
+
+
+
 .container {
   padding-top: 20px;
   padding-bottom: 20px;

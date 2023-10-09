@@ -148,12 +148,16 @@
                       {{element.description}}
 
                       <span *ngIf="element.lessonId">
-                        <hr>
                         <span *ngIf="element.name == 'Sprawdzian'">
+                        <hr>
                         Ocena została dodana do <a href="/lekcja/{{element.lessonId}}/test-opis">Testu</a>
                         </span>
-                        <span *ngIf="element.name != 'Sprawdzian'">
-                        Ocena została dodana do <a href="/lekcja/{{element.lessonId}}/zadania">Lekcji</a>
+                      </span>
+
+                      <span *ngIf="element.taskId">
+                        <span *ngIf="element.name == 'Praca domowa'">
+                        <hr>
+                        Ocena została dodana do <a href="/zadania/{{element.taskId}}">Zadania</a>
                         </span>
                       </span>
                     </div>
