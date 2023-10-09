@@ -1,0 +1,39 @@
+<div class="container">
+
+
+  <h1 style="color: dimgrey">Profil <span *ngIf="sessionService.isTeacher()">nauczyciela</span>
+    <span *ngIf="sessionService.isAdmin()">admina</span>
+    <span *ngIf="sessionService.isStudent()">studenta</span></h1>
+  <div class="user-container">
+    <form [formGroup]="formGroup">
+      <div class="user-details">
+        <h3>Imię: </h3>
+        <input *ngIf="edit" [value]="user.firstName" formControlName="firstName" type="text">
+        <input *ngIf="!edit" [value]="user.firstName" disabled type="text">
+      </div>
+      <div class="user-details">
+        <h3>Nazwisko: </h3>
+        <input *ngIf="edit" [value]="user.lastName" formControlName="lastName" type="text">
+        <input *ngIf="!edit" [value]="user.lastName" disabled type="text">
+      </div>
+      <div class="user-details">
+        <h3>Email: </h3>
+        <input *ngIf="edit" [value]="user.email" formControlName="email" type="text">
+        <input *ngIf="!edit" [value]="user.email" disabled type="text">
+      </div>
+      <div *ngIf="!edit" class="user-details"></div>
+      <div *ngIf="edit" class="user-details">
+        <h3>Hasło: </h3>
+        <input formControlName="password" type="password">
+      </div>
+
+    </form>
+
+  </div>
+
+  <button (click)="switchEdit()" *ngIf="!edit" class="button-edit" mat-button>Edytuj</button>
+  <button (click)="switchEdit()" *ngIf="!edit" class="button-delete" mat-button>Usuń</button>
+  <button (click)="cancelEdit()" *ngIf="edit" class="button-back" mat-button>Anuluj</button>
+  <button (click)="save()" *ngIf="edit" class="button-edit" mat-button>Zapisz</button>
+
+</div>

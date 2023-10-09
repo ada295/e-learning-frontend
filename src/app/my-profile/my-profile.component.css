@@ -1,0 +1,63 @@
+.container {
+  width: 60%;
+  margin: 40px auto auto;
+  padding: 30px 10%;
+  background-color: white;
+  text-align: center;
+  min-height: 300px;
+}
+
+.user-container {
+  text-align: left;
+  margin-top: 50px;
+}
+
+h3 {
+  float: left;
+  width: 24%;
+  margin-left: 5%;
+  margin-bottom: 0;
+  color: rgba(91, 91, 96, 0.85);
+}
+
+
+input {
+  width: 40%;
+  display: block;
+  margin: auto 0px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: rgba(91, 91, 96, 0.85);
+  border-top: 2px solid rgba(91, 91, 96, 0.85);
+  border-left: 2px solid rgba(91, 91, 96, 0.85);
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid rgba(103, 58, 183, 1);
+}
+
+.user-details {
+  margin-bottom: 20px;
+}
+
+.button-edit{
+  background-color: #e3bf32;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}
+
+.button-delete {
+  background-color: #be2424;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}
+
+.button-back {
+  background-color: #afaeae;
+  width: 50px;
+  margin: 10px;
+  color: white;
+}

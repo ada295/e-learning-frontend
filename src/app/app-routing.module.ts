@@ -36,6 +36,7 @@ import {
 } from "./exam-result/exam-teacher-result-details/exam-teacher-result-details.component";
 import {StudentsInCourseComponent} from "./students-in-course/students-in-course.component";
 import {TaskSolutionsForTeacherComponent} from "./task-solutions-for-teacher/task-solutions-for-teacher.component";
+import {MyProfileComponent} from "./my-profile/my-profile.component";
 
 const routes: Routes = [
   {
@@ -88,6 +89,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_ADMIN']
+    }
+  },
+  {
+    path: 'profil',
+    component: MyProfileComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_ADMIN', 'ROLE_STUDENT', 'ROLE_TEACHER']
     }
   },
   {

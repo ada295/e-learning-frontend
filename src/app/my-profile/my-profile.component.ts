@@ -1,28 +1,28 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {Component} from '@angular/core';
 import {User} from "../api-models";
 import {FormBuilder, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {SessionService} from "../session.service";
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.css']
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.css']
 })
-export class UserDetailsComponent implements OnInit {
+export class MyProfileComponent {
   edit = false;
   user: User = new User();
 
   formGroup = this.formBuilder.group({
-    id: ['', [Validators.required]],
     firstName: ['', [Validators.required, Validators.min(2)]],
     lastName: ['', [Validators.required, Validators.min(2)]],
     email: ['', [Validators.required, Validators.min(2), Validators.email]],
-    password: ['',[Validators.max(50)]]
+    password: ['', [Validators.max(50)]]
   });
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder, public sessionService: SessionService) {
 
   }
 
@@ -32,13 +32,11 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.edit = false;
-    let id = this.route.snapshot.paramMap.get('id');
 
-    this.http.get<User>("http://localhost:8080/users/" + id)
+    this.http.get<User>("http://localhost:8080/my-profile/")
       .subscribe((user) => {
         this.user = user;
         this.formGroup.patchValue({
-          id: this.user.id + '',
           firstName: this.user.firstName,
           lastName: this.user.lastName,
           email: this.user.email
@@ -51,12 +49,10 @@ export class UserDetailsComponent implements OnInit {
   }
 
   save() {
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id && this.formGroup.valid) {
-      this.user.id = parseInt(id);
-      this.http.post<User>("http://localhost:8080/change-data-as-admin/",this.formGroup.value)
+    if (this.formGroup.valid) {
+      this.http.post<User>("http://localhost:8080/edit-profile/", this.formGroup.value)
         .subscribe((user) => {
-          this.router.navigateByUrl("/uzytkownicy");
+          this.ngOnInit();
         });
     } else {
       alert("Popraw dane w formularzu!");

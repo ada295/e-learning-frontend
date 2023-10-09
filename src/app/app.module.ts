@@ -66,6 +66,7 @@ import { ExamTeacherResultsListComponent } from './exam-result/exam-teacher-resu
 import { ExamTeacherResultDetailsComponent } from './exam-result/exam-teacher-result-details/exam-teacher-result-details.component';
 import { StudentsInCourseComponent } from './students-in-course/students-in-course.component';
 import { TaskSolutionsForTeacherComponent } from './task-solutions-for-teacher/task-solutions-for-teacher.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { TaskSolutionsForTeacherComponent } from './task-solutions-for-teacher/t
     ExamTeacherResultsListComponent,
     ExamTeacherResultDetailsComponent,
     StudentsInCourseComponent,
-    TaskSolutionsForTeacherComponent
+    TaskSolutionsForTeacherComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

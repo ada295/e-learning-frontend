@@ -14,6 +14,9 @@
       <button mat-button class="button-nav" routerLink="/rejestracja">
         Rejestracja
       </button>
+            <button class="button-nav" mat-button routerLink="/profil">
+        Profil
+      </button>
     </span>
 
 
@@ -27,6 +30,9 @@
       <button mat-button class="button-nav" routerLink="/dziennik">
         Dziennik
       </button>
+      <button class="button-nav" mat-button routerLink="/profil">
+        Profil
+      </button>
     </span>
 
     <span *ngIf="sessionService.isTeacher()">
@@ -34,6 +40,7 @@
 <!--        Utwórz test-->
 <!--      </button>-->
     </span>
+
 
     <button *ngIf="!sessionService.isLoggedUser()" mat-button class="login" routerLink="/login">
       Zaloguj się
