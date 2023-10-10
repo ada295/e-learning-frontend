@@ -2,19 +2,20 @@
   <div class="course-name col-md-4">FIZYKA</div>
   <div class="lesson-number col-md-3">Lekcja</div>
   <div class="buttons-container col-md-5">
-    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test-opis">
+    <button class="button-option" mat-button routerLink="/lekcja/{{ this.task?.task?.lesson?.id}}/test-opis">
       <div class="option-name">Test</div>
       <div class="icon-container">
         <mat-icon>school</mat-icon>
       </div>
     </button>
-    <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/materiały">
+    <button class="button-option" mat-button routerLink="/lekcja/{{ this.task?.task?.lesson?.id}}/materiały">
       <div class="option-name">Materiały</div>
       <div class="icon-container">
         <mat-icon>perm_media</mat-icon>
       </div>
     </button>
-    <button class="button-option button-option-tasks" mat-button routerLink="/lekcja/{{lessonId}}/zadania">
+    <button class="button-option button-option-tasks" mat-button
+            routerLink="/lekcja/{{ this.task?.task?.lesson?.id}}/zadania">
       <div class="option-name">Zadania</div>
       <div class="icon-container">
         <mat-icon>library_books</mat-icon>
@@ -160,11 +161,12 @@
   </mat-accordion>
 
   <div style="text-align: center; margin-top: 85px">
-    <button class="button-edit" mat-button routerLink="/lekcja/{{lessonId}}/zadanie/{{task?.task?.id}}/rozwiązania">
+    <button class="button-edit" mat-button
+            routerLink="/lekcja/{{this.task?.task?.lesson?.id}}/zadanie/{{task?.task?.id}}/rozwiązania">
       Rozwiązania
     </button>
     <button mat-button class="button-edit">Edytuj</button>
-    <button mat-button class="button-delete-task">Usuń</button>
+    <button (click)="delete()" class="button-delete-task" mat-button>Usuń</button>
   </div>
 
 </div>

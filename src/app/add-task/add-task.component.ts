@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {Lesson, Task} from "../api-models";
+import {Task} from "../api-models";
 import {catchError, of} from "rxjs";
 import {DateRange} from "@angular/material/datepicker";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-task',
@@ -19,7 +19,7 @@ export class AddTaskComponent {
     description: ['', Validators.required]
   })
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private httpClient: HttpClient, private route: ActivatedRoute) {
   }
 
 
@@ -41,9 +41,10 @@ export class AddTaskComponent {
             return of([]);
           })
         )
-        .subscribe(value =>
-          //kolko przestaje sie krecic
-          alert("Zadanie dodane!")
+        .subscribe(value => {
+            alert("Zadanie dodane!");
+            this.router.navigateByUrl("/lekcja/" + lessonId+ "/zadania");
+          }
         );
     }
   }

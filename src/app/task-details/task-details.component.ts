@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
 import {Material, TaskToDo} from "../api-models";
@@ -11,13 +11,12 @@ import {Material, TaskToDo} from "../api-models";
 })
 export class TaskDetailsComponent implements OnInit {
 
-  lessonId: string | null = '0';
   panelOpenState = false;
   task: TaskToDo | undefined;
   fileName = '';
   formData = new FormData();
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
+  constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
 
   onFileSelected(event: any) {
@@ -34,8 +33,6 @@ export class TaskDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.lessonId = id;
     this.loadTaskDetails();
   }
 
@@ -68,6 +65,16 @@ export class TaskDetailsComponent implements OnInit {
       this.httpClient.post<Material>(`http://localhost:8080/tasks/${taskId}/upload-solution`, this.formData)
         .subscribe(e => {
           this.loadTaskDetails();
+        });
+    }
+  }
+
+  delete() {
+    if (confirm("Czy na pewno chcesz usunąć zadanie? Usunięcie zadania usunie wszystkie rozwiązania i oceny z tego zadania!")) {
+      let taskId = this.route.snapshot.paramMap.get('id');
+      this.httpClient.delete(`http://localhost:8080/tasks/${taskId}`)
+        .subscribe(e => {
+          this.router.navigateByUrl("/lekcja/" + this.task?.task?.lesson?.id + "/zadania");
         });
     }
   }
