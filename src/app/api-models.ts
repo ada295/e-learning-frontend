@@ -112,8 +112,8 @@ export class CalendarEvent {
 
 export class Task {
   id: number = 0;
-  description: String | undefined;
-  status: String | undefined;
+  description: string | undefined;
+  status: string | undefined;
   endDate: Date | undefined;
   lesson: Lesson | undefined;
 }

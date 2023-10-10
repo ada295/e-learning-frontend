@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
-import {Material, TaskToDo} from "../api-models";
+import {Material, Task, TaskToDo} from "../api-models";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-task-details',
@@ -15,6 +16,9 @@ export class TaskDetailsComponent implements OnInit {
   task: TaskToDo | undefined;
   fileName = '';
   formData = new FormData();
+  editFlag = false;
+  taskEndDate: Date | undefined;
+  taskDescription: string | undefined;
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient, public sessionService: SessionService) {
   }
@@ -56,7 +60,12 @@ export class TaskDetailsComponent implements OnInit {
 
   private loadTaskDetails() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.httpClient.get<TaskToDo>("http://localhost:8080/student-tasks/" + id).subscribe(task => this.task = task)
+    this.httpClient.get<TaskToDo>("http://localhost:8080/student-tasks/" + id)
+      .subscribe(task => {
+        this.task = task;
+        this.taskEndDate = task?.task?.endDate;
+        this.taskDescription = task?.task?.description;
+      })
   }
 
   uploadFile() {
@@ -77,5 +86,29 @@ export class TaskDetailsComponent implements OnInit {
           this.router.navigateByUrl("/lekcja/" + this.task?.task?.lesson?.id + "/zadania");
         });
     }
+  }
+
+  switchEdit() {
+    this.editFlag = !this.editFlag;
+  }
+
+  edit() {
+    let id = this.route.snapshot.paramMap.get('id');
+
+    this.httpClient.post<Task>(`http://localhost:8080/tasks/${id}/edit`, {
+      "endDate": this.taskEndDate,
+      "description": this.taskDescription
+    })
+      .pipe(
+        catchError(error => {
+          alert(error.error);
+          return of([]);
+        })
+      )
+      .subscribe(value => {
+        this.ngOnInit();
+        this.switchEdit()
+        }
+      );
   }
 }

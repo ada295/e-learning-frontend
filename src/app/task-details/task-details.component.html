@@ -118,15 +118,28 @@
   <p class="task-name">Zadanie</p>
 
   <div class="task-details">
-    Termin oddania: {{task?.task?.endDate  | date: 'dd.MM.YYYY'}}
+    Termin oddania:
+    <span *ngIf="!editFlag">
+     {{task?.task?.endDate  | date: 'dd.MM.YYYY'}}
+    </span>
+    <span *ngIf="editFlag"  style="background-color: #481979; color:white; font-size:27px;width: 500px; min-height: 150px">
+    <input style="background-color: #481979; color:white;" (ngModelChange)="taskEndDate = $event" [ngModel]="taskEndDate | date:'yyyy-MM-dd'" matInput type="date"/>
+    </span>
   </div>
-        <div class="task-details" style="margin-bottom: 20px !important;">
-          Treść zadania: </div>
-      <div class="task-description task-details">
+  <div class="task-details" style="margin-bottom: 20px !important;">
+    Treść zadania:
+  </div>
+  <div class="task-description task-details">
+    <span *ngIf="!editFlag">
         {{task?.task?.description}}
-      </div>
+    </span>
+    <span *ngIf="editFlag" style="width: 800px">
+      <textarea style="background-color: #481979; color:white;width: 800px" [(ngModel)]="taskDescription"></textarea>
+    </span>
+  </div>
 
-  <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"  class="task-details file-attachment">
+  <div *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'"
+       class="task-details file-attachment">
     Przesłane pliki:
   </div>
   <button *ngIf="task?.taskStudent?.status == 'WYKONANE' || task?.taskStudent?.status == 'OCENIONE'" class="file-button">
@@ -151,22 +164,29 @@
           Komentarz nauczyciela
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment != null">
-        {{task?.taskStudent?.grade?.comment}}
+      <div *ngIf="!editFlag">
+        <div *ngIf="task?.taskStudent?.grade?.comment != null" class="task-description">
+          {{task?.taskStudent?.grade?.comment}}
+        </div>
+        <div *ngIf="task?.taskStudent?.grade?.comment == null" class="task-description">
+          Brak komentarza
+        </div>
       </div>
-      <div class="task-description" *ngIf="task?.taskStudent?.grade?.comment == null">
-        Brak komentarza
-      </div>
+
     </mat-expansion-panel>
   </mat-accordion>
 
-  <div style="text-align: center; margin-top: 85px">
+  <div *ngIf="!editFlag" style="text-align: center; margin-top: 85px">
     <button class="button-edit" mat-button
             routerLink="/lekcja/{{this.task?.task?.lesson?.id}}/zadanie/{{task?.task?.id}}/rozwiązania">
       Rozwiązania
     </button>
-    <button mat-button class="button-edit">Edytuj</button>
+    <button (click)="switchEdit()" class="button-edit" mat-button>Edytuj</button>
     <button (click)="delete()" class="button-delete-task" mat-button>Usuń</button>
+  </div>
+  <div *ngIf="editFlag" style="text-align: center; margin-top: 85px">
+    <button (click)="edit()" class="button-edit" mat-button>Zapisz</button>
+    <button (click)="switchEdit()" class="button-delete-task" mat-button>Anuluj</button>
   </div>
 
 </div>
