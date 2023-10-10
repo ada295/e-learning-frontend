@@ -45,7 +45,9 @@ export class MaterialComponent {
 
   deleteMaterial(id: number) {
     if (this.sessionService.isTeacher()) {
-      this.httpClient.delete("http://localhost:8080/materials/" + id + "/delete").subscribe(()=> this.loadMaterials());
+      if (confirm("Czy na pewno chcesz usunąć materiał?")) {
+        this.httpClient.delete("http://localhost:8080/materials/" + id + "/delete").subscribe(() => this.loadMaterials());
+      }
     }
   }
 

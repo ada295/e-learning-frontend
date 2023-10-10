@@ -38,6 +38,16 @@ div.row {
   margin-bottom: 30px;
 }
 
+.button-delete {
+  color: white;
+  width: 50px !important;
+}
+
+.trash:hover{
+  color: red;
+  cursor: pointer;
+}
+
 
 
 

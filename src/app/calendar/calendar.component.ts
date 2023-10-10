@@ -3,9 +3,11 @@ import {DateRange} from "@angular/material/datepicker";
 import {Lesson} from "../api-models";
 import {HttpClient} from "@angular/common/http";
 import {SessionService} from "../session.service";
+import {catchError, of} from "rxjs";
 
 
 export class CalendarEvent {
+  id: number | undefined
   day: number | undefined
   month: number | undefined
   year: number | undefined
@@ -77,5 +79,23 @@ export class CalendarComponent implements OnInit {
       return this.selected.getFullYear() + "-" + (this.selected.getMonth()+1) + "-" + this.selected.getDate();
     }
     return "";
+  }
+
+  delete(id: any) {
+    if (confirm("Czy na pewno chcesz usunąć wydarzenie?")) {
+
+      this.httpClient.delete<CalendarEvent>("http://localhost:8080/calendar-events/" + id)
+        .pipe(
+          catchError(error => {
+            alert(error.error);
+            return of([]);
+          })
+        )
+        .subscribe(value => {
+            this.ngOnInit();
+          }
+        )
+      ;
+    }
   }
 }

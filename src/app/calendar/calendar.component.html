@@ -8,11 +8,13 @@
     <div class="event-list" *ngFor="let event of showEvents()">
       <div class="event-elements">
         {{event.hour}}.{{event.minutes}} - {{event.description}}
+        <hr *ngIf="sessionService.isTeacher()">
+        <mat-icon *ngIf="sessionService.isTeacher()" (click)="delete(event.id)" class="trash button-delete">delete_forever</mat-icon>
       </div>
     </div>
   </div>
   <div class="row">
-    <button (click)="addEvent()" style="width: 20%" *ngIf="sessionService.isTeacher()" class="create-button"
+    <button style="width: 20%" *ngIf="sessionService.isTeacher()" class="create-button"
             mat-button routerLink="/dodaj-wydarzenie/{{selectedDateAsString()}}">Dodaj wydarzenie
     </button>
   </div>
