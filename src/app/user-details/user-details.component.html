@@ -34,7 +34,7 @@
   </div>
 
   <button  mat-button class="button-edit" (click)="switchEdit()" *ngIf="!edit">Edytuj</button>
-  <button  mat-button class="button-delete" (click)="switchEdit()" *ngIf="!edit">Usuń</button>
+  <button  mat-button class="button-activate" (click)="switchEdit()" *ngIf="!edit">Zablokuj</button>
   <button  mat-button class="button-back" (click)="cancelEdit()" *ngIf="edit">Anuluj</button>
   <button  mat-button class="button-edit" (click)="save()" *ngIf="edit">Zapisz</button>
 

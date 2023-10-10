@@ -43,21 +43,21 @@ input:focus {
 
 .button-edit{
   background-color: #e3bf32;
-  width: 50px;
+  width: 80px;
   margin: 10px;
   color: white;
 }
 
-.button-delete {
+.button-activate {
   background-color: #be2424;
-  width: 50px;
+  width: 80px;
   margin: 10px;
   color: white;
 }
 
 .button-back {
   background-color: #afaeae;
-  width: 50px;
+  width: 80px;
   margin: 10px;
   color: white;
 }
