@@ -1,6 +1,6 @@
 <div class="header-container row">
   <div class="course-name col-md-4">FIZYKA</div>
-  <div class="lesson-number col-md-3">Lekcja</div>
+<!--  <div class="lesson-number col-md-3">Lekcja</div>-->
   <div class="buttons-container col-md-5">
     <button class="button-option" mat-button routerLink="/lekcja/{{ this.task?.task?.lesson?.id}}/test-opis">
       <div class="option-name">Test</div>
@@ -60,12 +60,12 @@
     </div>
     <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
 
-      <button (click)="fileUpload.click()" *ngIf="task?.status == 'AKTYWNE'" class="upload-btn">
-        +
+      <button mat-mini-fab color="primary" class="upload-btn"
+              (click)="fileUpload.click()">
+        <mat-icon style="margin-top: 20px">attach_file</mat-icon>
       </button>
-
-      <input #fileUpload (change)="onFileSelected($event)"
-             class="file-input" type="file">
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload>
 
       {{fileName || ""}}
     </div>
@@ -177,7 +177,7 @@
   </mat-accordion>
 
   <div *ngIf="!editFlag" style="text-align: center; margin-top: 85px">
-    <button class="button-edit" mat-button
+    <button class="button-solutions" mat-button
             routerLink="/lekcja/{{this.task?.task?.lesson?.id}}/zadanie/{{task?.task?.id}}/rozwiązania">
       Rozwiązania
     </button>

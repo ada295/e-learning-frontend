@@ -4,7 +4,7 @@
     <mat-grid-tile class="course-name tile" [style.background-color]="'transparent'"
                    routerLink="/kursy/{{lesson?.course?.id}}">{{lesson?.course?.name}}</mat-grid-tile>
   </button>
-  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'">{{lesson?.name}}</mat-grid-tile>
+  <mat-grid-tile class="lesson-number tile" [style.background-color]="'transparent'"></mat-grid-tile>
   <mat-grid-tile class="buttons-container tile" [style.background-color]="'transparent'">
     <button class="button-option" mat-button routerLink="/lekcja/{{lessonId}}/test-opis/">
       <div class="option-name">Test</div>
@@ -54,6 +54,14 @@
       </div>
 
       <div *ngIf="sessionService.isTeacher()">
+        <mat-grid-tile>
+        <span>
+        <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-zadanie">
+          <div class="add-button-name">Dodaj zadanie</div>
+          <div><mat-icon class="add-icon">add</mat-icon></div>
+        </button>
+        </span>
+        </mat-grid-tile>
         <mat-grid-tile *ngFor="let task of tasks; let i=index ">
           <div>
             <div class="material-name">Zadanie {{i + 1}}</div>
@@ -70,15 +78,6 @@
           </div>
         </mat-grid-tile>
       </div>
-
-      <mat-grid-tile *ngIf="sessionService.isTeacher()">
-        <span>
-        <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-zadanie">
-          <div class="add-button-name">Dodaj zadanie</div>
-          <div><mat-icon class="add-icon">add</mat-icon></div>
-        </button>
-        </span>
-      </mat-grid-tile>
     </mat-grid-list>
   </div>
 

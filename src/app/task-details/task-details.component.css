@@ -65,6 +65,7 @@
   border-radius: 10px;
   padding: 80px;
   color: white;
+  margin-bottom: 10px;
 }
 
 .task-name {
@@ -163,7 +164,7 @@ mat-panel-title.mat-expansion-panel-header-title {
 }
 
 .create-button {
-  background-color: #f1af55;
+  background-color: #e3bf32;
   color: white;
   width: 15%;
   margin-left: 10px;
@@ -191,6 +192,20 @@ input#file-upload-button  {
   width: 15%;
   margin-left: 10px;
   font-size: 20px;
+}
+
+.button-solutions {
+  border: 2px solid #e3bf32;
+  padding-right: 1px;
+  padding-left: 1px;
+  color: white;
+  min-width: 15%;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.file-input {
+  display: none;
 }
 
 
