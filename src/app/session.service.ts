@@ -40,7 +40,11 @@ export class SessionService {
         localStorage.setItem("isLogged", "true");
         localStorage.setItem("token", response.token);
         localStorage.setItem("role", "ROLE_" + response.role[0].authority);
-        this.router.navigateByUrl("/kursy");
+        if(!this.isAdmin()) {
+          this.router.navigateByUrl("/kursy");
+        } else {
+          this.router.navigateByUrl("/uzytkownicy");
+        }
       }
     });
   }

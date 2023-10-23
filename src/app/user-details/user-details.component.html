@@ -2,6 +2,7 @@
 
 
   <h1 style="color: dimgrey">Szczegóły konta użytkownika</h1>
+  <span *ngIf="user.disabledAccount" style="color: #be2424">Konto zablokowane</span>
   <div class="user-container">
     <form [formGroup]="formGroup">
       <div class="user-details">
@@ -25,7 +26,7 @@
       </div>
       <div *ngIf="!edit" class="user-details"></div>
       <div *ngIf="edit" class="user-details">
-        <h3 >Hasło: </h3>
+        <h3>Hasło: </h3>
         <input type="password" formControlName="password">
       </div>
 
@@ -33,9 +34,10 @@
 
   </div>
 
-  <button  mat-button class="button-edit" (click)="switchEdit()" *ngIf="!edit">Edytuj</button>
-  <button  mat-button class="button-activate" (click)="switchEdit()" *ngIf="!edit">Zablokuj</button>
-  <button  mat-button class="button-back" (click)="cancelEdit()" *ngIf="edit">Anuluj</button>
-  <button  mat-button class="button-edit" (click)="save()" *ngIf="edit">Zapisz</button>
+  <button (click)="switchEdit()" *ngIf="!edit" class="button-edit" mat-button>Edytuj</button>
+  <button (click)="disableAccount()" *ngIf="!edit && !user.disabledAccount" class="button-activate" mat-button>Zablokuj</button>
+  <button (click)="enableAccount()" *ngIf="!edit && user.disabledAccount" class="button-activate" mat-button>Odblokuj</button>
+  <button (click)="cancelEdit()" *ngIf="edit" class="button-back" mat-button>Anuluj</button>
+  <button (click)="save()" *ngIf="edit" class="button-edit" mat-button>Zapisz</button>
 
 </div>

@@ -14,6 +14,7 @@ export class User {
   firstName: string = "";
   lastName: string = "";
   email: string = "";
+  disabledAccount: boolean = false;
   roles: string[] = [];
   customLink: string = "";
 }

@@ -29,14 +29,14 @@ export class AddUserComponent {
   }
 
 
-  addTeacher() {
+  addUser() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
 
       let user = new User();
       user.firstName = this.firstFormGroup.value.name ? this.firstFormGroup.value.name : "";
       user.lastName = this.secondFormGroup.value.surname ? this.secondFormGroup.value.surname : "";
       user.email = this.thirdFormGroup.value.email ? this.thirdFormGroup.value.email : "";
-      user.roles = [this.fourthFormGroup.value.userRole ? this.fourthFormGroup.value.userRole: ""];
+      user.roles = [this.fourthFormGroup.value.userRole ? this.fourthFormGroup.value.userRole : ""];
 
       console.log(user);
 
@@ -44,13 +44,17 @@ export class AddUserComponent {
       this.httpClient.post<any>("http://localhost:8080/auth/register", user)
         .pipe(
           catchError(error => {
-            alert(error.error);
+            if (error.error == "Email unique!") {
+              alert("Konto o podanym emailu już istnieje!");
+            }
             return of([]);
           })
         )
-        .subscribe(value =>
-          //kolko przestaje sie krecic
-          alert("Konto dodane: " + value.password)
+        .subscribe(value => {
+            if (value && value.password) {
+              alert("Konto dodane: " + value.password)
+            }
+          }
         );
     } else {
       alert("Niepoprawne dane");
