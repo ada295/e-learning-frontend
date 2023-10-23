@@ -41,13 +41,14 @@
         </span>
       </mat-grid-tile>
       <div>
-        <div *ngFor="let material of materials">
+        <div *ngFor="let material of materials; let i = index">
           <mat-grid-tile>
             <div>
-              <div class="material-name">{{material.name}}</div>
+              <div matTooltip="{{material.description}}" class="material-name">Materiał {{i + 1}}</div>
               <div class="icon-container">
                 <button class="button-download" mat-button>
-                  <div class="option-name">{{material.filename}}</div>
+                  <div
+                    class="option-name">{{material.filename.length > 11 ? material.filename.substring(0, 9) + '...' : material.filename}}</div>
                   <div class="icon-container" (click)="downloadMaterial(material)">
                     <mat-icon>cloud_download</mat-icon>
                   </div>

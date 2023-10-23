@@ -7,7 +7,8 @@
   <div class="col-md-6">
     <div class="event-list" *ngFor="let event of showEvents()">
       <div class="event-elements">
-        {{event.hour}}.{{event.minutes}} - {{event.description}}
+        bla
+        {{getTimeString(event)}} - {{event.description}}
         <hr *ngIf="sessionService.isTeacher()">
         <mat-icon *ngIf="sessionService.isTeacher()" (click)="delete(event.id)" class="trash button-delete">delete_forever</mat-icon>
       </div>

@@ -1,5 +1,6 @@
 export class Course {
   id: number = 0;
+  owner: User = new User();
   name: string = "";
   description: string = "";
   finished: boolean = false;
@@ -49,7 +50,7 @@ export class Material {
   name: string | undefined;
   description: string | undefined;
   fileType: string | undefined;
-  filename: string | undefined;
+  filename = "plik";
   lesson: Lesson | undefined;
 }
 

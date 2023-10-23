@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <form class="material-container" *ngIf="!materialInformation" [formGroup]="examGroup">
+    <form class="material-container" *ngIf="!materialInformation" [formGroup]="materialGroup">
       <h1 class="header">NOWY MATERIAŁ</h1>
       <br>
       <div class="file-upload">
@@ -22,7 +22,7 @@
       <br><br>
       <div>
         <div><h3 class="text" style="margin-bottom: 10px !important; text-align: left">Podaj opis materiału: </h3></div>
-        <input type="text" style="width: 100%" formControlName="name" required>
+        <input type="text" style="width: 100%" formControlName="description" required>
       </div>
       <br>
       <br><br>

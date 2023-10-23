@@ -2,7 +2,7 @@
   <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Imię</ng-template>
+        <ng-template matStepLabel>Imię użytkownika</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Imię</mat-label>
           <input matInput placeholder="" formControlName="name" required>
@@ -14,7 +14,7 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Nazwisko</ng-template>
+        <ng-template matStepLabel>Nazwisko użytkownika</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Nazwisko</mat-label>
           <input matInput formControlName="surname" placeholder=""
@@ -29,7 +29,7 @@
 
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>E-mail</ng-template>
+        <ng-template matStepLabel>E-mail użytkownika</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>E-mail</mat-label>
           <input matInput formControlName="email" placeholder=""

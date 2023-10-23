@@ -1,5 +1,17 @@
-<h1 style="color: #5e239d; text-align: center">Studenci:</h1>
-
+<br>
+<br>
+<span class="teachers-container" style="color: #5e239d; font-size: 25px; text-align: center">Prowadzący:
+  <span style="color:#000; font-weight: lighter;">
+  {{courseDetails?.course?.owner?.firstName}}
+  {{courseDetails?.course?.owner?.lastName}}
+  ({{courseDetails?.course?.owner?.email}})
+</span>
+</span>
+<br>
+<br>
+<br>
+<br>
+<span class="teachers-container"  style="color: #5e239d; font-size: 25px;text-align: center">Studenci:</span>
 <div *ngIf="users.length > 0" class="teachers-container">
   <mat-table [dataSource]="users">
     <ng-container matColumnDef="firstName">

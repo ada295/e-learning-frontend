@@ -98,4 +98,20 @@ export class CalendarComponent implements OnInit {
       ;
     }
   }
+
+  getTimeString(event: CalendarEvent) {
+    let time = "";
+    if (event.hour != undefined && event.hour < 10) {
+      time += "0" + event.hour + ":";
+    } else {
+      time += event.hour + ":";
+    }
+
+    if (event.minutes != undefined && event.minutes < 10) {
+      time += "0" + event.minutes;
+    } else {
+      time += event.minutes;
+    }
+    return time;
+  }
 }

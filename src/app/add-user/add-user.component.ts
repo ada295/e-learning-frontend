@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../api-models";
 import {catchError, of} from "rxjs";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AddUserComponent {
   });
   isLinear: any;
 
-  constructor(private _formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private router: Router, private _formBuilder: FormBuilder, private httpClient: HttpClient) {
   }
 
 
@@ -52,7 +53,8 @@ export class AddUserComponent {
         )
         .subscribe(value => {
             if (value && value.password) {
-              alert("Konto dodane: " + value.password)
+              alert("Konto dodane: " + value.password);
+              this.router.navigateByUrl("/uzytkownicy");
             }
           }
         );

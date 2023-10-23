@@ -12,8 +12,8 @@ import {ActivatedRoute, Route, Router} from "@angular/router";
 export class AddMaterialComponent {
 
   materialInformation = false;
-  examGroup = this.formBuilder.group({
-    name: ['', Validators.required],
+  materialGroup = this.formBuilder.group({
+    description: ['', Validators.required],
     // file: [File, Validators.required]
     // description: ['', Validators.required],
   })
@@ -32,6 +32,8 @@ export class AddMaterialComponent {
       this.fileName = file.name;
 
       this.formData.append("file", file);
+      this.formData.append("fileName", file.name);
+      this.formData.append("fileType", file.type);
     }
   }
 
@@ -40,10 +42,10 @@ export class AddMaterialComponent {
     if (this.formData.get('file')) {
 
       let material = {
-        "name": "Zadankaaaaa",
-        "description": "Prosze zrob te zadanaka",
-        "type": "PDF",
-        "filename": "zadania.pdf"
+        "name": this.formData.get('fileName'),
+        "description": this.materialGroup.value.description,
+        "type": "OTHER",
+        "filename": this.formData.get('fileName')
       }
       let lessonId = this.route.snapshot.paramMap.get('id');
       this.httpClient.post<Material>(`http://localhost:8080/lessons/${lessonId}/materials`, material)
