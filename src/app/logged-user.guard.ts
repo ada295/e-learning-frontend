@@ -13,11 +13,10 @@ export class LoggedUserGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.sessionService.isLoggedUser()) {
+    if(this.sessionService.isLoggedUser())
       return true;
-    }
+    this.router.navigate(["/login"])
     return false;
-
   }
 
 }

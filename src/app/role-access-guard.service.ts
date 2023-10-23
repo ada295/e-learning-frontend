@@ -13,14 +13,11 @@ export class RoleAccessGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     let roles = route.data['roles'];
     for (let i = 0; i < roles.length; i++) {
-         if(localStorage.getItem("role") == roles[i]) {
+         if(localStorage.getItem("role") == roles[i])
            return true;
-         }
-    }
-
+    } this.router.navigate(["/login"])
     return false;
   }
 

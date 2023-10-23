@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="!addGradeFlag">
-    <h1 style="color: #5e239d;">Rozwiązania:</h1>
+    <h1 style="color: #5e239d; font-size: 50px">Rozwiązania:</h1>
     <div class="row">
       <mat-card *ngFor="let solution of solutions" class="col-md-3" style="margin: 1%;">
         <mat-card-header>
@@ -26,7 +26,7 @@
             Przesłane pliki:
           </div>
           <br>
-          <button style="padding: 10px" *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
+          <button style="padding: 10px; border: 2px solid #e3bf32; background-color: white; border-radius: 2px" *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'" class="file-button">
             <div style="float: left">
             </div>
             <div class="file-name">
@@ -43,7 +43,7 @@
             (click)="addGrade(solution.student?.id, solution.task?.task?.lesson?.id, solution.task?.taskStudent?.id)"
             *ngIf="solution.task?.taskStudent?.status == 'WYKONANE' || solution.task?.taskStudent?.status == 'OCENIONE'"
             color="accent"
-            mat-button>
+            mat-button style="background-color: #e3bf32; color: white">
             Oceń
           </button>
         </mat-card-actions>
