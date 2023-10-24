@@ -177,7 +177,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <div *ngIf="!editFlag" style="text-align: center; margin-top: 85px">
+  <div *ngIf="!editFlag && !task?.task?.lesson?.course?.finished" style="text-align: center; margin-top: 85px">
     <button class="button-solutions" mat-button
             routerLink="/lekcja/{{this.task?.task?.lesson?.id}}/zadanie/{{task?.task?.id}}/rozwiązania">
       Rozwiązania
@@ -185,7 +185,7 @@
     <button (click)="switchEdit()" class="button-edit" mat-button>Edytuj</button>
     <button (click)="delete()" class="button-delete-task" mat-button>Usuń</button>
   </div>
-  <div *ngIf="editFlag" style="text-align: center; margin-top: 85px">
+  <div *ngIf="editFlag && !task?.task?.lesson?.course?.finished" style="text-align: center; margin-top: 85px">
     <button (click)="edit()" class="button-edit" mat-button>Zapisz</button>
     <button (click)="switchEdit()" class="button-delete-task" mat-button>Anuluj</button>
   </div>

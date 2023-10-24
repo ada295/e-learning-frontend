@@ -27,7 +27,7 @@
       <div>
         <span>{{announcement.description}}</span>
       </div>
-      <div *ngIf="sessionService.isTeacher()">
+      <div *ngIf="sessionService.isTeacher() && !course?.course?.finished">
         <hr>
         <button color="accent" mat-button (click)="delete(announcement.id + '')">
           Usuń ogłoszenie
