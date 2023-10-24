@@ -32,7 +32,7 @@
 
   <div class="lessons-container">
     <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'40px'">
-      <mat-grid-tile *ngIf="sessionService.isTeacher()">
+      <mat-grid-tile *ngIf="sessionService.isTeacher() && !lesson?.course?.finished">
         <span>
         <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-materiał">
           <div class="add-button-name">Dodaj nowy materiał</div>

@@ -56,4 +56,6 @@ export class TasksComponent {
   private setAmountOfColumns(width: any) {
     this.desired_columns = Math.trunc(width / 400);
   }
+
+    protected readonly console = console;
 }

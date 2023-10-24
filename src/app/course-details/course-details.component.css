@@ -3,6 +3,16 @@
   margin: 20px 10%;
 }
 
+
+.create-button {
+  /*background-color: #ffd740;*/
+  background-color: #e3bf32;
+  display: block;
+  margin: 0 auto;
+  color: white;
+}
+
+
 .course-name-and-announcement {
   width: 74.5%;
   height: 200px;

@@ -7,7 +7,7 @@
       <div matTooltip="{{courseDetails?.course?.description}}" class="col-sm-3 course-name"><strong>{{courseDetails?.course?.name}}</strong></div>
       <div class="col-sm-6">
         <span class="click-tile">
-          <button *ngIf="sessionService.isTeacher()" class="button-option" mat-button
+          <button *ngIf="sessionService.isTeacher() && !courseDetails?.course?.finished" class="button-option" mat-button
                   (click)="regenerateAccessCode()">
             <div class="option-name button-announcement">Kod: {{courseDetails?.course?.accessCode}}</div>
             <div class="icon-container">
@@ -44,7 +44,7 @@
 
 <div class="lessons-container">
   <mat-grid-list cols="2" rowHeight="2.5:1">
-    <mat-grid-tile *ngIf="sessionService.isTeacher()">
+    <mat-grid-tile *ngIf="sessionService.isTeacher() && !courseDetails?.course?.finished">
       <div>
         <div class="name-lesson" matTooltip="Dodaj nową lekcję" matTooltipPosition="above">Lekcja</div>
         <mat-card class="options-lesson">
@@ -104,5 +104,11 @@
     </div>
 
   </mat-grid-list>
+
+  <br>
+  <br>
+  <button mat-button *ngIf="sessionService.isTeacher() && courseDetails?.course?.finished" (click)="enableCourse()" class="create-button">Wznów kurs</button>
+  <button mat-button *ngIf="sessionService.isTeacher() && !courseDetails?.course?.finished" (click)="disableCourse()" class="create-button">Zakończ kurs</button>
+  <br>
 </div>
 

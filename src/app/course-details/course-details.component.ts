@@ -64,4 +64,20 @@ export class CourseDetailsComponent implements OnInit {
         this.ngOnInit();
       })
   }
+
+  enableCourse() {
+    let id = this.courseDetails?.course?.id;
+    this.httpClient.put("http://localhost:8080/courses/" + id + "/enable", null)
+      .subscribe(() => {
+        this.ngOnInit();
+      })
+  }
+
+  disableCourse() {
+    let id = this.courseDetails?.course?.id;
+    this.httpClient.put("http://localhost:8080/courses/" + id + "/disable", null)
+      .subscribe(() => {
+        this.ngOnInit();
+      })
+  }
 }

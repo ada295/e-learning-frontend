@@ -55,10 +55,11 @@
   </mat-accordion>
   <div *ngIf="sessionService.isStudent()">
 
-    <div *ngIf="task?.status == 'AKTYWNE'" class="task-details file-attachment">
+    <div *ngIf="task?.status == 'AKTYWNE'  && !task?.task?.lesson?.course?.finished"
+         class="task-details file-attachment">
       Dodaj rozwiązanie:
     </div>
-    <div *ngIf="task?.status == 'AKTYWNE'" class="file-upload">
+    <div *ngIf="task?.status == 'AKTYWNE' && !task?.task?.lesson?.course?.finished" class="file-upload">
 
       <button mat-mini-fab color="primary" class="upload-btn"
               (click)="fileUpload.click()">
@@ -82,11 +83,11 @@
       {{task?.taskStudent?.filename}}
     </div>
   </button>
-  <div *ngIf="task?.status=='WYKONANE' && checkDate(task)" class="task-option-container">
+  <div *ngIf="task?.status=='WYKONANE' && checkDate(task) && !task?.task?.lesson?.course?.finished" class="task-option-container">
     <button (click)="deleteTask()" class="button-delete-task" mat-button>Usuń</button>
   </div>
 
-  <div class="task-option-container">
+  <div class="task-option-container" *ngIf="!task?.task?.lesson?.course?.finished">
     <button (click)="uploadFile()" [hidden]="formData.get('file') == null" class="create-button" color="accent"
             mat-button>
       Dodaj

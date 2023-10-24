@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="response">
+  <div *ngIf="response && sessionService.isTeacher() && !lesson?.course?.finished">
     <h1 class="header">Edycja testu</h1>
 
     <form [formGroup]="examGroup" class="lesson-container">
@@ -38,7 +38,9 @@
 
     <br><br>
     <div>
-      <button class="start-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test</button>
+      <button *ngIf=" !lesson?.course?.finished" class="start-button" mat-button
+              routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test
+      </button>
     </div>
   </div>
 </div>

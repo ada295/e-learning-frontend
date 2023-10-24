@@ -40,7 +40,7 @@
 
       <br><br>
       <div>
-        <button *ngIf="sessionService.isStudent()" [disabled]="isActiveTest()" mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Rozpocznij</button>
+        <button *ngIf="sessionService.isStudent() && !lesson?.course?.finished" [disabled]="isActiveTest()" mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Rozpocznij</button>
         <button *ngIf="sessionService.isTeacher()" mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/test">Pokaż szczegóły</button>
       </div>
   </div>
@@ -55,7 +55,8 @@
 
     <br><br>
     <div>
-      <button mat-button class="start-button" routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test</button>
+      <button *ngIf=" !lesson?.course?.finished" class="start-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test
+      </button>
     </div>
   </div>
 </div>
