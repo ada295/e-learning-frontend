@@ -26,7 +26,7 @@ export class TestDetailsComponent implements OnInit{
       .subscribe(exam => {
         this.response = exam;
         if (this.response && this.response.exam) {
-          this.description = this.response.exam.name;
+          this.description = this.response.exam.description;
         }
       });
 

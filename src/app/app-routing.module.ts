@@ -37,6 +37,7 @@ import {
 import {StudentsInCourseComponent} from "./students-in-course/students-in-course.component";
 import {TaskSolutionsForTeacherComponent} from "./task-solutions-for-teacher/task-solutions-for-teacher.component";
 import {MyProfileComponent} from "./my-profile/my-profile.component";
+import {TestDetailsEditComponent} from "./test-details-edit/test-details-edit.component";
 
 const routes: Routes = [
   {
@@ -153,6 +154,14 @@ const routes: Routes = [
     canActivate: [LoggedUserGuard, RoleAccessGuard],
     data: {
       roles: ['ROLE_TEACHER', 'ROLE_STUDENT']
+    }
+  },
+  {
+    path: 'lekcja/:id/test-edycja',
+    component: TestDetailsEditComponent,
+    canActivate: [LoggedUserGuard, RoleAccessGuard],
+    data: {
+      roles: ['ROLE_TEACHER']
     }
   },
   {

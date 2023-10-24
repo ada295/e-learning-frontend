@@ -67,6 +67,7 @@ import { ExamTeacherResultDetailsComponent } from './exam-result/exam-teacher-re
 import { StudentsInCourseComponent } from './students-in-course/students-in-course.component';
 import { TaskSolutionsForTeacherComponent } from './task-solutions-for-teacher/task-solutions-for-teacher.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { TestDetailsEditComponent } from './test-details-edit/test-details-edit.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     ExamTeacherResultDetailsComponent,
     StudentsInCourseComponent,
     TaskSolutionsForTeacherComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    TestDetailsEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<div class="container">
+  <div *ngIf="response">
+    <h1 class="header">Edycja testu</h1>
+
+    <form [formGroup]="examGroup" class="lesson-container">
+      <br>
+      <h3 class="text">Podaj nazwę testu: </h3>
+      <input formControlName="name" required type="text">
+      <br>
+      <h3 class="text">Podaj opis testu: </h3>
+      <textarea formControlName="description"></textarea>
+      <br>
+      <br>
+      <h3 class="text">Podaj daty: </h3>
+      <br>
+      <br>
+      <h3 class="text">- rozpoczęcia testu: </h3>
+      <input formControlName="startDate" matInput type="datetime-local"/>
+      <br>
+      <h3 class="text">- zakończenia testu: </h3>
+      <input formControlName="endDate" type="datetime-local"/>
+      <br>
+      <br>
+      <div>
+        <button (click)="editExam()" class="create-button" mat-button>Edytuj</button>
+        <br>
+        <button class="cancel-button" mat-button routerLink="/lekcja/{{lessonId}}/test-opis">Anuluj</button>
+      </div>
+    </form>
+
+
+    <br>
+  </div>
+
+  <div *ngIf="!response && sessionService.isTeacher()">
+    <h1 class="header">Brak testu!</h1>
+    <br>
+
+    <br><br>
+    <div>
+      <button class="start-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-test">Dodaj test</button>
+    </div>
+  </div>
+</div>
