@@ -53,8 +53,8 @@
         </mat-grid-tile>
       </div>
 
-      <div *ngIf="sessionService.isTeacher() && !lesson?.course?.finished">
-        <mat-grid-tile>
+      <div *ngIf="sessionService.isTeacher()">
+        <mat-grid-tile *ngIf="!lesson?.course?.finished">
         <span>
         <button class="button-download add-button" mat-button routerLink="/lekcja/{{lessonId}}/dodaj-zadanie">
           <div class="add-button-name">Dodaj zadanie</div>
